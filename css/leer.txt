@@ -1,0 +1,2 @@
+En este directorio se pondran todos los .css que se empleen para 
+dar estilos a la web.

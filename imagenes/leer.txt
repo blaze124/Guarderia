@@ -1,0 +1,5 @@
+Aqui se incluiran las imagenes que se necesiten para el estilo de 
+la web.
+
+Si es necesario se crearán subdirectorios para las imagenes que se
+adjunten a las noticias.

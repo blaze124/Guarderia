@@ -11,7 +11,7 @@
 
 	<ul class='menu'>
     	
-        <a href="http://localhost/Guarderia">
+        <a href="http://localhost/Guarderia/index.php/loginController">
         <li class='enlace'>
             Inicio     
         </li>
@@ -22,12 +22,12 @@
         <a href="http://localhost/Guarderia/index.php/menusController">
         <li class='enlace'>Menús mensuales</li>
        	</a>
-        <a href="http://localhost/Guarderia/index.php/accesoController">
-        <li class='enlace'>
-            Acceso
-        </li>
+        <a href="http://localhost/Guarderia/index.php/emailController">
+        <li class="enlace">Correo directo</li>
         </a>
-        
+        <a href="http://localhost/Guarderia">
+        <li class="enlace">Cerrar Sesión</li>
+        </a>
     </ul>
 
 </nav>

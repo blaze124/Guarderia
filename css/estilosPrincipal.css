@@ -9,6 +9,10 @@ body{
 	background:url(http://localhost/Guarderia/imagenes/fondo_web.png) center scroll no-repeat;
 	}
 
+a{
+	text-decoration:none;
+}
+
 .cabecera{
 	border-bottom:solid #606 2px;
 }
@@ -67,3 +71,8 @@ body{
 	width:25%;
 	float:right;
 	}
+	
+.formulario{
+	margin-left: 40%;
+	margin-top:50px;
+}

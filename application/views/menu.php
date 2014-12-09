@@ -10,11 +10,19 @@
 <nav>
 
 	<ul class='menu'>
-    	<li class='enlace'>Inicio</li>
+    	<li class='enlace'>
+        	<a href="http://localhost/Guarderia">
+            	Inicio
+            </a>
+        </li>
         <li class='enlace'>Novedades</li>
         <li class='enlace'>Cursos</li>
         <li class='enlace'>Menús mensuales</li>
-        <li class='enlace'>Acceso</li>
+        <li class='enlace'>
+            <a href="http://localhost/Guarderia/index.php/accesoController">
+            	Acceso
+            </a>
+        </li>
     </ul>
 
 </nav>

@@ -51,10 +51,16 @@ a{
 	
 .cuerpo{
 	margin-left:225px;
+	padding-bottom:70px;
 	}
 
 .pie{
 	clear:both;
+	font-size:12px;
+	border-top:2px solid #606;
+	position:fixed;
+	bottom:0;
+	width:99%;
 	}
 	
 #info{

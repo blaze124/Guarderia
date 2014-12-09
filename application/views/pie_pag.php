@@ -8,7 +8,13 @@
 <body>
 
 <footer class='pie'>
-	<div id='info'>Pie de pagina</div>
+	<div id='info'>
+    <p>
+    	Contacta con nosotros:<br>
+    	-Teléfono: 956 256 906 / 629 692 945<br>
+        -email: eljardincadiz@gmail.com<br>
+    </p>
+    </div>
     <div id='enlaces'>Enlaces a redes sociales</div>
 </footer>
 

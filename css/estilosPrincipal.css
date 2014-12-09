@@ -1,0 +1,69 @@
+@charset "utf-8";
+/* CSS Document */
+
+html{
+	font-family:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
+	}
+
+body{
+	background:url(http://localhost/Guarderia/imagenes/fondo_web.png) center scroll no-repeat;
+	}
+
+.cabecera{
+	border-bottom:solid #606 2px;
+}
+
+#logo{
+	float:left;
+	background-color:#CF0;
+	}
+	
+#nombre{
+	font-size:36px;
+	color:#606;
+	}
+
+.menu{
+	list-style:none;
+	clear:both;
+	float:left;
+	}
+	
+.enlace{
+	border:medium #606 solid;
+	border-radius:25px;
+	padding-left:10px;
+	padding-right:10px;
+	margin-top:10px;
+	color:#606;
+	text-align:center;
+	}
+	
+.enlace:hover{
+	border:medium #00F solid;
+	color:#00F;	
+	border-radius:25px;
+	padding-left:10px;
+	padding-right:10px;
+	margin-top:10px;
+	}
+	
+.cuerpo{
+	margin-left:225px;
+	}
+
+.pie{
+	clear:both;
+	}
+	
+#info{
+	background-color:#FF6;
+	width:75%;
+	float:left;
+	}
+
+#enlaces{
+	background-color:#99F;
+	width:25%;
+	float:right;
+	}

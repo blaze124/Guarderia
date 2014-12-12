@@ -6,13 +6,19 @@
 </head>
 <body>
 
-<form class="formulario" method="POST" action="http://localhost/Guarderia/index.php/loginController">
-
-	Usuario:<input type="text" name="user" /><br>
-	Contraseña:<input type="password" name="pass" /><br>
-    <input type="submit" value="Aceptar" name="Aceptar" />
-    <input type="button" value="Volver" name="Volver" />
-</form>
+<section class='formulario'>
+<?php
+	$this->load->helper('form');
+	
+	echo form_open('http://localhost/Guarderia/index.php/accesoController/acceder');
+	
+	echo "Usuario: <input type='text' name='user' />";echo '<br>';
+	echo "Contraseña: <input type='password' name='pass' />";echo '<br>';
+	echo form_submit('submit','Login');
+	
+	echo form_close();
+?>
+</section>
 
 </body>
 </html>

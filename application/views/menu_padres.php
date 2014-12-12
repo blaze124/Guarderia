@@ -16,12 +16,11 @@
             Inicio     
         </li>
         </a>
-   
-        <li class='enlace'>Novedades</li>
-        <li class='enlace'>Cursos</li>
+        <li class='enlace'>Noticias</li>
         <a href="http://localhost/Guarderia/index.php/menusController">
         <li class='enlace'>Menús mensuales</li>
        	</a>
+        <li class='enlace'>Cursos para Padres</li>
         <a href="http://localhost/Guarderia/index.php/emailController">
         <li class="enlace">Correo directo</li>
         </a>

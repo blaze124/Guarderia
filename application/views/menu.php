@@ -12,20 +12,19 @@
 	<ul class='menu'>
     	
         <a href="http://localhost/Guarderia">
-        <li class='enlace'>
-            Inicio     
-        </li>
+        	<li class='enlace'>Inicio</li>
         </a>
-   
-        <li class='enlace'>Novedades</li>
-        <li class='enlace'>Cursos</li>
+   		
+        <li class='enlace'>Noticias</li>
+        
         <a href="http://localhost/Guarderia/index.php/menusController">
-        <li class='enlace'>Menús mensuales</li>
+        	<li class='enlace'>Menús mensuales</li>
        	</a>
+        
+        <li class='enlace'>Cursos para Padres</li>
+        
         <a href="http://localhost/Guarderia/index.php/accesoController">
-        <li class='enlace'>
-            Acceso
-        </li>
+        	<li class='enlace'>Acceso</li>
         </a>
         
     </ul>

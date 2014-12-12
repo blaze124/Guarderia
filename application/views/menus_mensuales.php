@@ -13,7 +13,7 @@
     </p>
     
     <div align="center">
-    <img align="center" src="http://localhost/Guarderia/imagenes/menu_octubre.jpg" width="70%" height="70%" /> 
+    <img align="center" src="http://localhost/Guarderia/imagenes/menu_octubre.jpg" width="85%" height="85%" /> 
     </div>
     <br>
 </section>

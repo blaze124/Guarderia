@@ -11,8 +11,8 @@
 
 <header align="center" class="cabecera">
 
-	<img src="http://localhost/Guarderia/imagenes/logo/logo.png" width="7%" height="7%" id="logo">
-    <div id="nombre">Bienvenido a la página de la guarderia Bahia Blanca</div>
+	<img src="http://localhost/Guarderia/imagenes/logo/logo.png" width="95px" height="150px" id="logo">
+    <img src="http://localhost/Guarderia/imagenes/logo/titulo.png" width="632px" height="150px">
 
 </header>
 

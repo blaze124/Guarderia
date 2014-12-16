@@ -13,12 +13,11 @@ a{
 
 .cabecera{
 	border-bottom:solid #606 2px;
-	padding-bottom:100px;
 }
 
 #logo{
+	padding-left:65px;
 	float:left;
-	padding-left:50px;
 	}
 	
 #nombre{
@@ -96,4 +95,9 @@ a{
 
 p{
 	color:#0000aa;
+}
+
+.tabla_enlaces{
+	border:2px #606 solid;
+	padding:5px;
 }

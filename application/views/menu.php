@@ -21,7 +21,7 @@
         	<li class='enlace'>Menús mensuales</li>
        	</a>
         
-        <li class='enlace'>Cursos para Padres</li>
+        <li class='enlace'>Cursos y talleres</li>
         
         <a href="http://localhost/Guarderia/index.php/accesoController">
         	<li class='enlace'>Acceso</li>

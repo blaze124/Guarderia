@@ -18,12 +18,10 @@
         <a href="http://localhost/Guarderia/index.php/menusController">
         	<li class='enlace'>Menús mensuales</li>
        	</a>
-        <li class='enlace'>Cursos para Padres</li>
-        <a href="http://localhost/Guarderia/index.php/emailController">
-        	<li class="enlace">Correo directo</li>
-        </a>
+        <li class='enlace'>Cursos y talleres</li>
         <li class='enlace'>Correo con padres</li>
         <li class='enlace'>Gestión de contenidos</li>
+        <li class='enlace'>Mi cuenta</li>
         <a href="http://localhost/Guarderia">
         	<li class="enlace">Cerrar Sesión</li>
         </a>

@@ -21,6 +21,7 @@
         <li class='enlace'>Cursos y talleres</li>
         <li class='enlace'>Correo con padres</li>
         <li class='enlace'>Gestión de contenidos</li>
+        <li class='enlace'>Gestión de usuarios</li>
         <li class='enlace'>Mi cuenta</li>
         <a href="http://localhost/Guarderia">
         	<li class="enlace">Cerrar Sesión</li>

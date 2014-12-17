@@ -39,7 +39,7 @@ class AccesoController extends CI_Controller{
 				else
 				{
 					$row = $consulta->row();
-					if( ($row['nickname'] == $usuario)&&(password_verify($pass,$row['password'])) )
+					if( ($row['nickname'] == $usuario)&&( password_verify($pass,$row['password'])) )
 					{
 						$rol=$this->mainModel->getRol($rol['nickname']);
 						if($rol == 'ALUM'){$_SESSION['rol']=0;}

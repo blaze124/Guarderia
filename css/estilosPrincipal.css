@@ -42,7 +42,8 @@ a{
 	color:#606;
 	text-align:center;
 	}
-	
+.enlace ul {display: none;}
+.enlace:hover ul{display: block;text-align: left; list-style: none;}	
 .enlace:hover{
 	border:medium #0000aa solid;
 	color:#0000aa;	

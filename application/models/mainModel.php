@@ -5,13 +5,10 @@ class MainModel extends CI_Model{
 
 	function iniciaSesion($usuario)
 	{
-		$query="select * from acceso where nickname='".$usuario."'";
-		$consulta=$this->db->query($query);
+		$this->db->where('nickname',$usuario);
+		$query=$this->db->get('acceso');
 		
-		if($consulta->num_rows() != 0){
-			return $consulta;
-		}
-		else{return FALSE;}
+		return $query->num_rows();
 	}
 	
 	function getRol($usuario)
@@ -19,8 +16,20 @@ class MainModel extends CI_Model{
 		$query="select * from usuario where nickname='".$usuario."'";
 		$consulta=$this->db->query($query);
 		
+		$this->db->where('nickname',$usuario);
+		$query=$this->db->get('acceso');
+		
+		$consulta=$query->row->rol;
+		
 		return $consulta;
 	}
-}
+	
+	function altaUser($datos)
+	{
+		$this->db->insert('usuario',$datos);
+		$nickname=array('nickname'=>$datos['nickname']);
+		$this->db->insert(acceso,$nickname);
+	}
 
+}
 ?>

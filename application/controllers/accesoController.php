@@ -18,8 +18,8 @@ class AccesoController extends CI_Controller{
 		$this->load->model('mainModel');
 		
 		if($this->input->post('submit'))
-		{
-			if(($this->input->post('user') == '')|| ($this->input->post('pass') == ''))
+		{ 
+			if($this->input->post('user') == '')
 			{
 				//mostrar error por entrar sin usuario
 				header('location: http://localhost/Guarderia');
@@ -31,17 +31,17 @@ class AccesoController extends CI_Controller{
 				
 				$consulta = $this->mainModel->iniciaSesion($usuario);
 				
-				if($consulta == FALSE)
+				if($consulta == 0)
 				{
 					//Mensaje de error por inventarse usuario
 					header('location: http://localhost/Guarderia');
 				}
 				else
 				{
-					$row = $consulta->row();
-					if( ($row['nickname'] == $usuario)&&( password_verify($pass,$row['password'])) )
+					/*if( ($consulta->nickname == $usuario)&&( password_verify($pass,$row['password'])) )*/
+					if($consulta->row->nickname == $usuario)
 					{
-						$rol=$this->mainModel->getRol($rol['nickname']);
+						$rol=$this->mainModel->getRol($usuario);
 						if($rol == 'ALUM'){$_SESSION['rol']=0;}
 						if($rol == 'PROF'){$_SESSION['rol']=1;}
 						if($rol == 'ADMIN'){$_SESSION['rol']=2;}

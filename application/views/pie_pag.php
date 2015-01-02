@@ -12,7 +12,7 @@
     <p>
     	Contacta con nosotros:<br>
     	-Teléfono: 956 256 906 / 629 692 945<br>
-        -email: eljardincadiz@gmail.com<br>
+        -email: guarderia.bahiablanca@gmail.com<br>
     </p>
     </div>
     <div id='enlaces'>Enlaces a redes sociales</div>

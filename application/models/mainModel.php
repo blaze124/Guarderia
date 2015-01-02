@@ -16,19 +16,16 @@ class MainModel extends CI_Model{
 		$query="select * from usuario where nickname='".$usuario."'";
 		$consulta=$this->db->query($query);
 		
-		$this->db->where('nickname',$usuario);
-		$query=$this->db->get('acceso');
+		$res=$consulta->row->rol;
 		
-		$consulta=$query->row->rol;
-		
-		return $consulta;
+		return $res;
 	}
 	
-	function altaUser($datos)
+	function altaUser($datos,$pass)
 	{
 		$this->db->insert('usuario',$datos);
-		$nickname=array('nickname'=>$datos['nickname']);
-		$this->db->insert(acceso,$nickname);
+		$acceso=array('nickname'=>$datos['nickname'], 'password' => $pass);
+		$this->db->insert('acceso',$acceso);
 	}
 
 }

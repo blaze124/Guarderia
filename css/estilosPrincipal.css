@@ -2,7 +2,7 @@
 /* CSS Document */
 
 body{
-	font-family:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
+	font-family:Trebuchet MS;
 	background:url(http://localhost/Guarderia/imagenes/fondo_web.png);
 	background-attachment:fixed;
 	}
@@ -13,18 +13,21 @@ a{
 
 .cabecera{
 	border-bottom:solid #606 2px;
+	margin-top:175px;
 }
 
 #logo{
-	padding-left:65px;
-	float:left;
-	}
-	
-#nombre{
-	font-size:36px;
-	color:#606;
+	position:absolute;
+	left:60px;
+	top:10px;
 	}
 
+#nombre{
+	position:absolute;
+	left:35%;
+	top:10px;
+	}	
+	
 .menu{
 	list-style:none;
 	clear:both;

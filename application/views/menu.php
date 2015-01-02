@@ -23,7 +23,7 @@
         
         <li class='enlace'>Cursos y talleres</li>
         
-        <a href="http://localhost/Guarderia/index.php/accesoController">
+        <a href="http://localhost/Guarderia/index.php/mainController/Acceder">
         	<li class='enlace'>Acceso</li>
         </a>
         

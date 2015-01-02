@@ -10,7 +10,7 @@
 <?php
 	$this->load->helper('form');
 	
-	echo form_open('http://localhost/Guarderia/index.php/accesoController/acceder');
+	echo form_open('http://localhost/Guarderia/index.php/mainController/Acceder');
 	
 	echo "Usuario: <input type='text' name='user' />";echo '<br>';
 	echo "Contraseña: <input type='password' name='pass' />";echo '<br>';

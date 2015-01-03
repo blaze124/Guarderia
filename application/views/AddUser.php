@@ -29,17 +29,22 @@
 </head>
 <body>
 
+
 <section class='formulario'>
+<?=validation_errors('<div class="errores">','</div>'); ?>
 <?php
 	$this->load->helper('form');
+	
 	$datos= array('name'=>'AltaUsuario');
+	
 	echo form_open('http://localhost/Guarderia/index.php/mainController/AltaUsuario',$datos);
+	
 	echo'<p>Datos del usuario</p>';
 	echo "Administrador <input type='radio'name='ROL' value='ADMIN' onClick='mostrar_campos();' /> ";
 	echo " Profesor <input type='radio'name='ROL' value='PROF' onClick='mostrar_campos();' /> ";
 	echo " Alumno <input type='radio'name='ROL' value='ALUM' onClick='mostrar_campos();' checked/> ";
 	echo '<br>';
-	echo "Nickname: <input type='text' name='nickname' />";
+	echo "Usuario: <input type='text' name='nickname' />";
 	echo'<br>';
 	echo "Nombre: <input type='text' name='Nombre' />";
 	echo '<br>';
@@ -56,11 +61,11 @@
 	
 	echo '<div id="alum" style="display:block;">
 		<p>Datos del tutor</p>
-		Nombre del tutor: <input type="text" name="NombreTutor" /><br>
-		Apellidos del tutor: <input type="text" name="ApellidosTutor" /><br>
-		Email:<input type="email" name="email" /><br>
-		Teléfono:<input type="tel" name="TelContacto" /><br>
-		DNI:<input type="text" name="dni" /><br>
+		Nombre del tutor: <input type="text" name="NombreTutor" value="Nombre del tutor" /><br>
+		Apellidos del tutor: <input type="text" name="ApellidosTutor" value="Apellidos del tutor" /><br>
+		Email:<input type="email" name="email_t" value="xxxx@gmail.com" /><br>
+		Teléfono:<input type="tel" name="TelContacto" value="000000000" /><br>
+		DNI:<input type="text" name="dniT" value="123456789" /><br>
 		</div>';
 		
 	echo form_submit('submit','Aceptar');

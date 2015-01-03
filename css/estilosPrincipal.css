@@ -3,9 +3,12 @@
 
 body{
 	font-family:Trebuchet MS;
-	background:url(http://localhost/Guarderia/imagenes/fondo_web.png);
-	background-attachment:fixed;
-	}
+	background:url(http://localhost/Guarderia/imagenes/fondo_web.png) no-repeat fixed center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
 
 a{
 	text-decoration:none;

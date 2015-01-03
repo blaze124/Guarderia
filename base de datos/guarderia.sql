@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-12-2014 a las 17:57:07
+-- Tiempo de generación: 03-01-2015 a las 16:45:11
 -- Versión del servidor: 5.6.20
 -- Versión de PHP: 5.5.15
 
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `acceso` (
 `id` int(10) unsigned NOT NULL,
   `nickname` varchar(50) NOT NULL,
-  `password` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `password` text NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 -- --------------------------------------------------------
 
@@ -84,11 +84,13 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 `id` int(10) unsigned NOT NULL,
   `nickname` varchar(50) NOT NULL,
   `nombre` varchar(50) NOT NULL,
-  `apellidos` int(100) NOT NULL,
+  `apellidos` varchar(100) NOT NULL,
+  `DNI` varchar(11) DEFAULT NULL,
+  `email` text,
   `rol` enum('ALUM','PROF','ADMIN') NOT NULL DEFAULT 'ALUM',
   `domicilio` text NOT NULL,
   `f_nac` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Índices para tablas volcadas
@@ -132,7 +134,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `acceso`
 --
 ALTER TABLE `acceso`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `imagen`
 --
@@ -152,7 +154,7 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

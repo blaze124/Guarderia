@@ -55,8 +55,7 @@ class MainController extends CI_Controller{
 	function AltaUsuario()
 	{
 		$this->load->database();
-		
-		
+
 		$this->form_validation->set_rules('nickname','Usuario','required|is_unique[usuario.nickname]');
 		$this->form_validation->set_rules('Nombre','Nombre','required');
 		$this->form_validation->set_rules('Apellidos','Apellidos','required');

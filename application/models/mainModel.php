@@ -3,22 +3,26 @@
 class MainModel extends CI_Model{
 	function __construct(){ parent::__construct(); }	
 
-	function iniciaSesion($usuario)
+	function iniciaSesion($datos)
 	{
-		$this->db->where('nickname',$usuario);
-		$query=$this->db->get('acceso');
+		$this->db->select('*');
+		$this->db->from('acceso');
+		$this->db->where('nickname',$datos['nickname']);
+		$consulta=$this->db->get();
+		$res = $consulta->num_rows();
 		
-		return $query->num_rows();
+		return $res;
 	}
 	
 	function getRol($usuario)
 	{
-		$query="select * from usuario where nickname='".$usuario."'";
-		$consulta=$this->db->query($query);
+		$this->db->select('*');
+		$this->db->from('usuario');
+		$this->db->where('nickname',$usuario);
+		$consulta=$this->db->get();
 		
-		$res=$consulta->row->rol;
-		
-		return $res;
+		$res = $consulta->row_array();
+		return $res['rol'];
 	}
 	
 	function altaUser($datos,$pass)
@@ -39,11 +43,11 @@ class MainModel extends CI_Model{
 		else{
 			$insert=array(
 				'nickname'=>$datos['nickname'],
-				'nombre'=>$datos['Nombre'],
-				'apellidos'=>$datos['Apellidos'],
-				'rol'=>$datos['ROL'],
-				'domicilio'=>$datos['Dom'],
-				'f_nac'=>$datos['fnac']
+				'nombre'=>$datos['nombre'],
+				'apellidos'=>$datos['apellidos'],
+				'rol'=>$datos['rol'],
+				'domicilio'=>$datos['domicilio'],
+				'f_nac'=>$datos['f_nac']
 			);
 			$insert2=array(				
 				'nickname'=>$datos['nickname'],

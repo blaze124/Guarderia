@@ -11,7 +11,7 @@
 
 	<ul class='menu'>
     	
-        <a href="http://localhost/Guarderia/index.php/loginController">
+        <a href="http://localhost/Guarderia">
         	<li class='enlace'>Inicio</li>
         </a>
         <li class='enlace'>Noticias</li>
@@ -21,7 +21,7 @@
         <li class='enlace'>Cursos y talleres</li>
         <li class='enlace'>Gestionar Cursos</li>
         <li class='enlace'>Mi cuenta</li>
-        <a href="http://localhost/Guarderia">
+        <a href="http://localhost/Guarderia/index.php/mainController/cerrarSesion">
         	<li class="enlace">Cerrar Sesión</li>
         </a>
     </ul>

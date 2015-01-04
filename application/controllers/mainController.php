@@ -16,33 +16,9 @@ class MainController extends CI_Controller{
 	function index()
 	{
 		$this->load->view('cabecera');
-		$this->load->view('menu');
+		$this->tipoMenu();
 		$this->load->view('cuerpo');
 		$this->load->view('pie_pag');		
-	}
-	
-	function sesionPadres()
-	{
-		$this->load->view('cabecera');
-		$this->load->view('menu_padres');
-		$this->load->view('cuerpo');
-		$this->load->view('pie_pag');
-	}
-	
-	function sesionProfes()
-	{
-		$this->load->view('cabecera');
-		$this->load->view('menu_prof');
-		$this->load->view('cuerpo');
-		$this->load->view('pie_pag');
-	}
-	
-	function sesionAdmin()
-	{
-		$this->load->view('cabecera');
-		$this->load->view('menu_admin');
-		$this->load->view('cuerpo');
-		$this->load->view('pie_pag');
 	}
 	
 	function accesoAlta(){
@@ -59,13 +35,13 @@ class MainController extends CI_Controller{
 		$this->form_validation->set_rules('nickname','Usuario','required|is_unique[usuario.nickname]');
 		$this->form_validation->set_rules('Nombre','Nombre','required');
 		$this->form_validation->set_rules('Apellidos','Apellidos','required');
-		$this->form_validation->set_rules('email','Email','required|valid_email|is_unique[usuario.email]');
-		$this->form_validation->set_rules('dni','DNI','required|is_unique[usuario.dni]|min_length[9]|max_lenght[9]');
+		$this->form_validation->set_rules('email','Email','valid_email|is_unique[usuario.email]');
+		$this->form_validation->set_rules('dni','DNI','is_unique[usuario.dni]|min_length[9]|max_lenght[9]');
 		$this->form_validation->set_rules('Dom','Domicilio','required');
 		$this->form_validation->set_rules('fnac','Fecha de nacimiento','required');
 		$this->form_validation->set_rules('TelContacto','Teléfono','required');
-		$this->form_validation->set_rules('email_t','Email del tutor','required|valid_email|is_unique[tutor.email]');
-		$this->form_validation->set_rules('dniT','DNI del tutor','required|is_unique[tutor.dni]|min_length[9]|max_lenght[9]');
+		$this->form_validation->set_rules('email_t','Email del tutor','valid_email|is_unique[tutor.email]');
+		$this->form_validation->set_rules('dniT','DNI del tutor','is_unique[tutor.dni]|min_length[9]|max_lenght[9]');
 		
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
 		$this->form_validation->set_message('is_unique','El valor para %s ya existe');
@@ -106,8 +82,8 @@ class MainController extends CI_Controller{
 				
 				$password = $this->crypt_blowfish($pass);
 				
-				$this->mainModel->altaUser($data,$password);
-				header('Location: http://localhost/Guarderia/index.php/mainController/sesionAdmin');
+				$this->mainModel->altaUser($data,$pass);
+				header('Location: http://localhost/Guarderia');
 			}
 		}
 	}
@@ -121,7 +97,7 @@ class MainController extends CI_Controller{
 	function localizanos()
 	{
 		$this->load->view('cabecera');
-		$this->load->view('menu');
+		$this->tipoMenu();
 		$this->load->view('localizanos');
 		$this->load->view('pie_pag');
 	}
@@ -137,38 +113,54 @@ class MainController extends CI_Controller{
 	function Acceder()
 	{		
 		$this->load->database();
-		$this->load->model('mainModel');
-		
-		if($this->input->post('submit'))
-		{ 
-			if($this->input->post('user') == '')
-			{
-				//mostrar error por entrar sin usuario
-				header('location: http://localhost/Guarderia');
-			}
-			else
-			{
-				$usuario=$this->input->post('user');
-				$pass=$this->input->post('pass');
-				
-				$consulta = $this->mainModel->iniciaSesion($usuario);
-				
-				if($consulta == 0)
-				{
-					//Mensaje de error por inventarse usuario
-					header('location: http://localhost/Guarderia/index.php/no_existe');
-				}
-				else
-				{
-					$rol=$this->mainModel->getRol($usuario);
-					if($rol == 'ALUM'){$_SESSION['rol']=0; header('location: http://localhost/Guarderia/index.php/mainController/sesionPadres');}
-					if($rol == 'PROF'){$_SESSION['rol']=1; header('location: http://localhost/Guarderia/index.php/mainController/sesionProfes');}
-					if($rol == 'ADMIN'){$_SESSION['rol']=2; header('location: http://localhost/Guarderia/index.php/mainController/sesionAdmin');}
 
-					header('location: http://localhost/Guarderia');
+		$this->form_validation->set_rules('user','Usuario','required');
+		$this->form_validation->set_rules('pass','Contraseña','required');
+		
+		$this->form_validation->set_message('required','El campo %s es obligatorio');
+		
+		if($this->form_validation->run() == FALSE){
+			$this->Acceso();
+		}
+		else{
+			if($this->input->post('submit')){
+				$datos=array(
+					'nickname'=>$this->input->post('user'),
+					'password'=>$this->input->post('pass')
+				);
+				
+				$consulta=$this->mainModel->iniciaSesion($datos);
+				if($consulta == 0){
+					$this->Acceso();
+				}
+				else{
+					$rol = $this->mainModel->getRol($this->input->post('user'));
+					if($rol == 'ALUM'){$_SESSION['rol'] = 0;}
+					else if($rol == 'PROF'){$_SESSION['rol'] = 1;}
+					else{$_SESSION['rol'] = 2;}
+					$this->index();
 				}
 			}
 		}
+	}
+	
+	function tipoMenu()
+	{
+		if(!isset($_SESSION['rol'])){
+			$this->load->view('menu');	
+		}
+		else
+		{
+			if($_SESSION['rol'] == 0){
+				$this->load->view('menu_padres');
+			}
+			else if($_SESSION['rol'] == 1){
+				$this->load->view('menu_prof');
+			}
+			else{
+				$this->load->view('menu_admin');
+			}	
+		}	
 	}
 	
 	function enviarMail($asunto,$contenido,$destino)

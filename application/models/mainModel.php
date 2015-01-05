@@ -68,6 +68,9 @@ class MainModel extends CI_Model{
 	function addContenido($datos,$ruta)
 	{
 		$this->db->insert('noticia',$datos);
+		if($ruta == './imagenes/Novedades/' || $ruta == './imagenes/Cursos/' || $ruta == './imagenes/Menus/'){
+			$ruta = NULL;
+		}
 		
 		if($ruta != NULL)
 		{

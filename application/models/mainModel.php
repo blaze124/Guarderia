@@ -102,5 +102,17 @@ class MainModel extends CI_Model{
 		}
 		return $res;
 	}
+	function delContenido($id)
+	{
+		$this->db->select('*');
+		$this->db->from('noticia');
+		$this->db->where('id',$id);	
+		$this->db->delete();
+		
+		$this->db->select('*');
+		$this->db->from('imagen');
+		$this->db->where('id_noticia',$id);
+		$this->db->delete();
+	}
 }
 ?>

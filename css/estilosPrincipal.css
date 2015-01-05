@@ -18,7 +18,10 @@ a{
 	border-bottom:solid #606 2px;
 	margin-top:175px;
 }
-
+#error_img{
+	width: 5px;
+	height: 5px;
+}
 #logo{
 	position:absolute;
 	left:60px;

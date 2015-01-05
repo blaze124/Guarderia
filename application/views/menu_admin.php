@@ -14,7 +14,7 @@
         <a href="http://localhost/Guarderia">
         	<li class='enlace'>Inicio</li>
         </a>
-        <li class='enlace'>Novedades</li>
+       <a href="http://localhost/Guarderia/index.php/mainController/verContenido"><li class='enlace' >Novedades</li></a>
         <a href="http://localhost/Guarderia/index.php/menusController">
         	<li class='enlace'>Menús mensuales</li>
        	</a>

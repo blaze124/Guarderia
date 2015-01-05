@@ -102,6 +102,24 @@ class MainModel extends CI_Model{
 		}
 		return $res;
 	}
+	function verContenido(){
+	$this->db->select('*');
+	$this->db->from('noticia');
+	$this->db->join('imagen','imagen.id_noticia = noticia.id');
+	$this->db->where('tipo','NOV');
+	$this->db->or_where('tipo','CUR');
+	$return = $this->db->get();
+		$i = 0;
+		$res[0]=0;
+		if($return->num_rows() != 0){
+			while($i < $return->num_rows())
+			{
+				$res[$i] = $return->row_array($i);
+				$i++;			
+			}
+		}
+		return $res;
+	}
 	function delContenido($id)
 	{
 		$this->db->select('*');

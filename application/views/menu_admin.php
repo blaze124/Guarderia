@@ -21,9 +21,8 @@
         <li class='enlace'>Correo con padres</li>
         <li class='enlace'>Gestión de contenidos
         	<ul>
-            <li><a href="http://localhost/Guarderia/index.php/mainController/accesoAlta"> Novedades</a></li>
-            <li><a href=" "> Cursos para padres</a></li>
-            <li><a href=" "> Menus Mensuales</a></li>
+            <li><a href="http://localhost/Guarderia/index.php/mainController/addContenido"> Agregar</a></li>
+            <li><a href="http://localhost/Guarderia/index.php/mainController/delContenido"> Eliminar</a></li>
             </ul>
         </li>
         <li class='enlace'>Gestión de usuarios

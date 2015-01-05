@@ -7,6 +7,7 @@
 <body>
 
 <section class='formulario'>
+<?=validation_errors('<div class="errores">','</div>'); ?>
 <?php
 	$this->load->helper('form');
 	

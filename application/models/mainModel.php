@@ -65,5 +65,39 @@ class MainModel extends CI_Model{
 		$this->db->insert('acceso',$acceso);
 	}
 
+	function addContenido($datos,$ruta)
+	{
+		$this->db->insert('noticia',$datos);
+		
+		if($ruta != NULL)
+		{
+			$imagen = array(
+				'id_noticia'=>$this->db->insert_id(),
+				'ruta'=>$ruta
+			);
+			
+			$this->db->insert('imagen',$imagen);
+		}
+	
+	}
+
+	function getContenido($tipo)
+	{
+		$this->db->select('*');
+		$this->db->from('noticia');
+		$this->db->where('tipo',$tipo);
+		
+		$return = $this->db->get();
+		$i = 0;
+		$res[0]=0;
+		if($return->num_rows() != 0){
+			while($i < $return->num_rows())
+			{
+				$res[$i] = $return->row_array($i);
+				$i++;			
+			}
+		}
+		return $res;
+	}
 }
 ?>

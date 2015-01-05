@@ -144,6 +144,84 @@ class MainController extends CI_Controller{
 		}
 	}
 	
+	function addContenido()
+	{
+		$this->load->view('cabecera');
+		$this->load->view('menu_admin');
+		$this->load->view('addContenido');
+		$this->load->view('pie_pag');
+	}
+	
+	function agregaCont()
+	{
+		$this->load->database();
+		$this->load->helper('url');	
+		$this->form_validation->set_rules('titulo','Titulo','required');
+		
+		$this->form_validation->set_message('required','El campo %s es obligatorio');
+		
+		if($this->form_validation->run() == FALSE){
+			$this->addContenido();
+		}
+		else{
+			if($this->input->post('submit'))
+			{
+				$datos=array(
+				'titular'=>$this->input->post('titulo'),
+				'cuerpo'=>$this->input->post('cuerpo'),
+				'tipo'=>$this->input->post('tipo'),
+				'privilegios'=>$this->input->post('priv'),
+				'fecha'=>date('Y-m-d')
+				);
+			
+				
+				if($datos['tipo']=='NOV'){
+					$config['upload_path'] = 'imagenes/Novedades/';
+				}
+				else if($datos['tipo']=='CUR'){
+					$config['upload_path'] = 'imagenes/Cursos/';
+				}
+				else{
+					$config['upload_path'] = 'imagenes/Menus/';
+				}
+					$config['allowed_types'] = 'gif|jpg|png|GIF|JPG|PNG|jpeg|JPEG';
+					$config['max_size'] = '10000';
+					$config['max_width'] = '0';
+					$config['max_height'] = '0';
+					$config['file_name'] = $this->input->post('userfile');
+					$this->load->library('upload', $config);
+					
+					$this->upload->do_upload();
+					
+					$info = $this->upload->data();
+					
+					$ruta = $info['full_path'];
+					
+					if($this->input->post('userfile') == '')
+					{
+						$ruta = NULL;	
+					}
+					
+					$this->mainModel->addContenido($datos,$ruta);
+					
+					header('Location: http://localhost/Guarderia');
+			}
+			
+		}
+	}
+	
+	function delContenido()
+	{
+		$this->load->database();
+		$data['res1']=$this->mainModel->getContenido('NOV');
+		$data['res2']=$this->mainModel->getContenido('CUR');
+		$data['res3']=$this->mainModel->getContenido('COM');
+		$this->load->view('cabecera');
+		$this->load->view('menu_admin');
+		$this->load->view('delContenido',$data);
+		$this->load->view('pie_pag');
+	}
+	
 	function tipoMenu()
 	{
 		if(!isset($_SESSION['rol'])){

@@ -197,10 +197,10 @@ class MainController extends CI_Controller{
 					
 					$ruta = $info['full_path'];
 					
-					if($this->input->post('userfile') == '')
+					/*if($this->input->post('userfile') == '')
 					{
 						$ruta = NULL;	
-					}
+					}*/
 					
 					$this->mainModel->addContenido($datos,$ruta);
 					

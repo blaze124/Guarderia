@@ -15,18 +15,17 @@
 	echo '<p>Novedades</p>';
 	foreach($res1 as $valor)
 	{
-		
 		echo $valor['id'].' - '.$valor['titular'].' - '.$valor['fecha'].'<br>';
 	}
 	echo '<p>Cursos</p>';
 	foreach($res2 as $valor)
 	{
-		echo $valor.'<br>';
+		echo $valor['id'].' - '.$valor['titular'].' - '.$valor['fecha'].'<br>';
 	}
 	echo '<p>Menus mensuales</p>';
 	foreach($res3 as $valor)
 	{
-		echo $valor.'<br>';
+		echo $valor['id'].' - '.$valor['titular'].' - '.$valor['fecha'].'<br>';
 	}
 ?>
 

@@ -14,11 +14,10 @@
         <a href="http://localhost/Guarderia">
         	<li class='enlace'>Inicio</li>
         </a>
-        <li class='enlace'>Noticias</li>
-        <a href="http://localhost/Guarderia/index.php/menusController">
+        <a href="http://localhost/Guarderia/index.php/mainController/verContenido"><li class='enlace' >Novedades</li></a>
+        <a href="http://localhost/Guarderia/index.php/mainController/menus_mens">
         	<li class='enlace'>Menús mensuales</li>
        	</a>
-        <li class='enlace'>Cursos y talleres</li>
         <li class='enlace'>Gestionar Cursos</li>
         <li class='enlace'>Mi cuenta</li>
         <a href="http://localhost/Guarderia/index.php/mainController/cerrarSesion">

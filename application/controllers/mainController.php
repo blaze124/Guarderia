@@ -235,10 +235,19 @@ class MainController extends CI_Controller{
 	$this->load->database();
 	$data['res']=$this->mainModel->verContenido();
 	$this->load->view('cabecera');
-	$this->load->view('menu_admin');
+	$this->tipoMenu();
 	$this->load->view('verContenido',$data);
 	$this->load->view('pie_pag');
 	}
+	
+	function menus_mens()
+	{
+		$this->load->view('cabecera');
+		$this->tipoMenu();
+		$this->load->view('menus_mensuales');
+		$this->load->view('pie_pag');
+	}
+	
 	function tipoMenu()
 	{
 		if(!isset($_SESSION['rol'])){

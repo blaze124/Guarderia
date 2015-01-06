@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <link href="http://localhost/Guarderia/css/estilosPrincipal.css" type="text/css" rel="stylesheet">
+<link href="http://localhost/Guarderia/css/lightbox.css" rel="stylesheet" />
+<script src="http://localhost/Guarderia/js/jquery-1.11.0.min.js"></script>
+<script src="http://localhost/Guarderia/js/lightbox.min.js"></script>
 </head>
 
 <body>
@@ -13,7 +16,9 @@
     </p>
     
     <div align="center">
-    <img align="center" src="http://localhost/Guarderia/imagenes/menu_octubre.jpg" width="100%" height="100%" /> 
+    <a href="http://localhost/Guarderia/imagenes/menu_octubre.jpg" data-lightbox="image-1" data-title="Menu de Octubre">
+    <img align="center" src="http://localhost/Guarderia/imagenes/menu_octubre.jpg" width="50%" height="50%" /> 
+    </a>
     </div>
     <br>
 </section>

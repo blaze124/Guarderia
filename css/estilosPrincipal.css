@@ -116,7 +116,6 @@ p{
 	width: 70%;
 	background:#CC9;
 	text-align:left;
-	float:right;
 	alignment-adjust:central;
 	margin: 10px;
 	border-radius: 15px;
@@ -142,16 +141,15 @@ p{
 }
 .contenido img{
 	background:#C6F;
-	width: 100px;
-	height: 100px;
+	width: 300px;
 	margin: 10px;
 }
 .text_cont{
-	display:block;
 	width: 80%;
-	float:left;
 	margin-left: 10%;
 	margin-right: 10%;
+	margin-top: 20px;
+	margin-bottom: 30px;
 	background:#FF9;
 	color: #036;
 	text-align: left;
@@ -159,17 +157,11 @@ p{
 }
 .tipo{
 	width: 20%;
-	display: block;
-	float: right;
 	text-align:left;
 	text-wrap:normal:
 }
-.fecha{
-	width: 20%;
-	display: block;
-	float: right;
-	text-align: right;
-	text-wrap:normal;
-	padding-right: 10px;
+.cabeceras{
+	width :80%;
+	display:block;
+	color: #600;
 }
-	

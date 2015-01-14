@@ -9,6 +9,7 @@ class MainController extends CI_Controller{
 		parent::__construct();
 		$this->load->model('mainModel');
 		$this->load->helper('form');
+		$this->load->helper('email');
 		$this->load->library('form_validation');
 		$this->load->library('email');
 	}
@@ -41,7 +42,7 @@ class MainController extends CI_Controller{
 		$this->form_validation->set_rules('fnac','Fecha de nacimiento','required');
 		$this->form_validation->set_rules('TelContacto','Teléfono','required');
 		$this->form_validation->set_rules('email_t','Email del tutor','valid_email|is_unique[tutor.email]');
-		$this->form_validation->set_rules('dniT','DNI del tutor','is_unique[tutor.dni]|min_length[9]|max_lenght[9]');
+		$this->form_validation->set_rules('dniT','DNI del tutor','min_length[9]|max_lenght[9]');
 		
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
 		$this->form_validation->set_message('is_unique','El valor para %s ya existe');
@@ -82,7 +83,7 @@ class MainController extends CI_Controller{
 				
 				$password = $this->crypt_blowfish($pass);
 				
-				$this->mainModel->altaUser($data,$pass);
+				$this->mainModel->altaUser($data,$password);
 				header('Location: http://localhost/Guarderia');
 			}
 		}
@@ -128,17 +129,18 @@ class MainController extends CI_Controller{
 					'nickname'=>$this->input->post('user'),
 					'password'=>$this->input->post('pass')
 				);
-				
+
 				$consulta=$this->mainModel->iniciaSesion($datos);
-				if($consulta == 0){
-					$this->Acceso();
-				}
-				else{
+				if( crypt($this->input->post('pass'),$consulta['password']) == $consulta['password'] )
+				{
 					$rol = $this->mainModel->getRol($this->input->post('user'));
 					if($rol == 'ALUM'){$_SESSION['rol'] = 0;}
 					else if($rol == 'PROF'){$_SESSION['rol'] = 1;}
 					else{$_SESSION['rol'] = 2;}
 					$this->index();
+				}
+				else{
+					show_error(crypt($this->input->post('pass'),$consulta['password']).'|-|'.$consulta);
 				}
 			}
 		}
@@ -287,16 +289,18 @@ class MainController extends CI_Controller{
         $this->email->subject($asunto);
         $this->email->message($contenido);
         
-		$this->email->send();
+		if (!$this->email->send()) {
+			// Raise error message
+			show_error($this->email->print_debugger());
+		}
 	}
 	
 	function crypt_blowfish($password, $digito = 7) {  
-		$set_salt = './1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';  
-		$salt = sprintf('$2a$%02d$', $digito);  
-		for($i = 0; $i < 22; $i++)  
-		{  
-		 $salt .= $set_salt[mt_rand(0, 63)];  
-		}  
+		$salt = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz./';
+		$saltc = sprintf('$2x$%02d$', $numero);
+		for($i = 0; $i < 22; $i++){
+			$saltc .= $salt[ rand(0, strlen($salt)-1) ];
+		}
 		return crypt($password, $salt);  
 	} 
 }

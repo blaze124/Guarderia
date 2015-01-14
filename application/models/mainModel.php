@@ -9,7 +9,7 @@ class MainModel extends CI_Model{
 		$this->db->from('acceso');
 		$this->db->where('nickname',$datos['nickname']);
 		$consulta=$this->db->get();
-		$res = $consulta->num_rows();
+		$res = $consulta->row_array();
 		
 		return $res;
 	}

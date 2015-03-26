@@ -7,14 +7,13 @@
 <body>
 
 <section class='formulario'>
-<?=validation_errors('<div class="errores">','</div>'); ?>
 <?php
 	$this->load->helper('form');
 	
 	echo form_open('http://localhost/Guarderia/index.php/mainController/Acceder');
 	
-	echo "Usuario: <input type='text' name='user' />";echo '<br>';
-	echo "Contraseña: <input type='password' name='pass' />";echo '<br>';
+	echo "Usuario: <input type='text' name='user' />";echo form_error('user');echo '<br>';
+	echo "Contraseña: <input type='password' name='pass' />";echo form_error('pass');echo '<br>';
 	echo form_submit('submit','Login');
 	
 	echo form_close();

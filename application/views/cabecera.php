@@ -11,7 +11,7 @@
 
 <header align="center" class="cabecera">
 
-	<img src="http://localhost/Guarderia/imagenes/logo/logo.png" width="95px" height="150px" id="logo">
+	<img src="http://localhost/Guarderia/imagenes/logo/logo.png" width="114px" height="180px" id="logo">
     <img src="http://localhost/Guarderia/imagenes/logo/titulo.png" width="632px" height="150px" id="nombre">
 
 </header>

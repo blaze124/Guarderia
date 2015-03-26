@@ -20,10 +20,10 @@
         <a href="http://localhost/Guarderia/index.php/mainController/menus_mens">
         <li class='enlace'>Menús mensuales</li>
        	</a>
-        <a href="http://localhost/Guarderia/index.php/emailController">
+        <a href="http://localhost/Guarderia/index.php/mainController/emailCentro">
         <li class="enlace">Correo directo</li>
         </a>
-        <li class='enlace'>Mi cuenta</li>
+         <a href="http://localhost/Guarderia/index.php/mainController/miCuenta"><li class='enlace'>Mi cuenta</li></a>
         <a href="http://localhost/Guarderia/index.php/mainController/cerrarSesion">
         <li class="enlace">Cerrar Sesión</li>
         </a>

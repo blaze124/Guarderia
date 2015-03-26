@@ -9,19 +9,57 @@
 </head>
 
 <body>
-
 <section class="cuerpo">
-	<p>A continuación se muestra el menú que se ofertará en la escuela para el próximo mes, con el objetivo de que todos los padres sean conscientes de cómo se alimentará a sus hijos en nuestra guardería.<br>
-    Este menú es elaborado por una Dietista-Nutricionista contratada por el centro y preparado en la cocina de la que dispone el centro.
-    </p>
-    
-    <div align="center">
-    <a href="http://localhost/Guarderia/imagenes/menu_octubre.jpg" data-lightbox="image-1" data-title="Menu de Octubre">
-    <img align="center" src="http://localhost/Guarderia/imagenes/menu_octubre.jpg" width="50%" height="50%" /> 
-    </a>
-    </div>
-    <br>
-</section>
 
+	<?php
+	$i = 0;
+	$t = count($res);
+	for($i = 0; $i < $t; $i++)
+	{
+		$r = $res[$i]['ruta'];
+		$res[$i]['ruta'] = array($r);
+		
+		$j = $i+1;
+		
+		while($j < $t)
+		{
+			if($res[$i]['id'] == $res[$j]['id'])
+			{
+				$res[$i]['ruta'][] = $res[$j]['ruta'];
+				unset($res[$j]);
+				$res = array_values($res);
+				$t--;
+			}
+			else
+			{
+				$j++;
+			}
+		}
+	}
+
+	foreach($res as $valor)
+	{		
+		echo '<div class="contenido">';
+		echo '<center><div class="titulo"><h2>'.$valor['titular'].'</h2></div>';
+
+		echo '<div class="text_cont"><p>'.$valor['cuerpo'].'</p></div>';
+
+		echo'<p class="comentario">**Click sobre la imagen para ver en tamaño completo**</p>';
+		
+		foreach($valor['ruta'] as $img){
+			$foto = str_replace("C:/xampp/htdocs/","http://localhost/",$img);
+			echo '<a href="'.$foto.'" data-lightbox="image-1" data-title="'.$valor['titular'].'"><img src="'.$foto.'"/></a>';
+		}
+		
+		if($valor['tipo'] == 'NOV'){$tipo = 'Novedades';}
+		else{$tipo = 'Cursos';}
+		
+		echo '<div class="tipo">'.$valor['fecha'].'</div>';
+		echo '</center></div>';
+	}
+	
+	echo '<a href="http://localhost/Guarderia/index.php/mainController/todoMenus"><p align="center">Ver los menús de otros meses</p></a>';
+?>
+</section>
 </body>
 </html>

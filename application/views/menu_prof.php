@@ -15,11 +15,9 @@
         	<li class='enlace'>Inicio</li>
         </a>
         <a href="http://localhost/Guarderia/index.php/mainController/verContenido"><li class='enlace' >Novedades</li></a>
-        <a href="http://localhost/Guarderia/index.php/mainController/menus_mens">
-        	<li class='enlace'>Menús mensuales</li>
-       	</a>
-        <li class='enlace'>Gestionar Cursos</li>
-        <li class='enlace'>Mi cuenta</li>
+        <a href="http://localhost/Guarderia/index.php/mainController/menus_mens"><li class='enlace'>Menús mensuales</li></a>
+        <a href="http://localhost/Guarderia/index.php/mainController/addContenido"><li class='enlace'>Anunciar Cursos</li></a>
+         <a href="http://localhost/Guarderia/index.php/mainController/miCuenta"><li class='enlace'>Mi cuenta</li></a>
         <a href="http://localhost/Guarderia/index.php/mainController/cerrarSesion">
         	<li class="enlace">Cerrar Sesión</li>
         </a>

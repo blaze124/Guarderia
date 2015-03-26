@@ -7,13 +7,22 @@
 
 <body>
 
-<section class="cuerpo">
-	<form method="post" action="" id="envia_mail">
-        Email del centro:<input type="checkbox" name="email1" value="email1" checked/><br>    
-        <textarea cols="100" rows="20" form="envia_mail" name="correo">Texto a enviar</textarea><br>
-        <input type="submit" name="Enviar" value="Enviar" />
-        <input type="button" value="Cancelar" name="Cancelar" />
-    </form>
+<section class="cuerpo" align="center">
+	<h2 class="titulo" >Correo electrónico directo con el centro</h2>
+	
+	<?php
+		$this->load->helper('form');
+		$datos= array('name'=>'sendMail','enctype'=>"multipart/form-data");
+		echo form_open('index.php/mainController/sendMail',$datos);
+	
+		echo"Asunto:<br><input type='text' size='79' name='asunto'><br>";echo form_error('asunto');
+		echo 'Cuerpo:<br><textarea cols="80" rows="10" name="cuerpo"></textarea><br>';echo form_error('cuerpo');
+		
+		echo form_submit('submit','Enviar');
+	
+		echo form_close();
+	?>
+	
 </section>
 
 </body>

@@ -3,7 +3,7 @@
 
 body{
 	font-family:Trebuchet MS;
-	background:url(http://localhost/Guarderia/imagenes/fondo_web.png) no-repeat fixed center;
+	background:url(http://localhost/Guarderia/imagenes/fondo_web2.jpg) no-repeat fixed center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -16,7 +16,7 @@ a{
 
 .cabecera{
 	border-bottom:solid #606 2px;
-	margin-top:175px;
+	margin-top:190px;
 }
 #error_img{
 	width: 5px;
@@ -24,14 +24,14 @@ a{
 }
 #logo{
 	position:absolute;
-	left:60px;
+	left:48px;
 	top:10px;
 	}
 
 #nombre{
 	position:absolute;
-	left:35%;
-	top:10px;
+	left:36%;
+	top:20px;
 	}	
 	
 .menu{
@@ -100,7 +100,7 @@ a{
 }
 
 .titulo{
-	color:#0000aa;
+	color:#a0a;
 }
 
 p{
@@ -111,6 +111,7 @@ p{
 	border:2px #606 solid;
 	padding:5px;
 }
+
 .contenido{
 	display: block;
 	width: 70%;
@@ -121,16 +122,9 @@ p{
 	border-radius: 15px;
 	border-color:#C0C;
 	border:thick;
+	margin-left: 200px;
 }
-.titulo{
-	display: block;
-	width: 60%;
-	background: none;
-	text-align:center;
-	color:#C0C;
-	float:inherit;
-	alignment-adjust:central;
-}
+
 .img_cont{
 	background:#093:
 	width: 80%;
@@ -156,12 +150,24 @@ p{
 	padding: 15px;
 }
 .tipo{
-	width: 20%;
-	text-align:left;
-	text-wrap:normal:
+	width: 30%;
+	text-wrap:normal;
 }
 .cabeceras{
 	width :80%;
 	display:block;
 	color: #600;
+}
+
+.comentario{
+	font-size:12px;
+}
+
+.img_pie{
+	background:none;
+}
+
+.mens_error{
+	font-size:13px;
+	color:#BB0000;
 }

@@ -31,7 +31,6 @@
 
 
 <section class='formulario'>
-<?=validation_errors('<div class="errores">','</div>'); ?>
 <?php
 	$this->load->helper('form');
 	
@@ -42,20 +41,20 @@
 	echo'<p>Datos del usuario</p>';
 	echo "Administrador <input type='radio'name='ROL' value='ADMIN' onClick='mostrar_campos();' /> ";
 	echo " Profesor <input type='radio'name='ROL' value='PROF' onClick='mostrar_campos();' /> ";
-	echo " Alumno <input type='radio'name='ROL' value='ALUM' onClick='mostrar_campos();' checked/> ";
+	echo " Usuario para tutores <input type='radio'name='ROL' value='ALUM' onClick='mostrar_campos();' checked/> ";
 	echo '<br>';
-	echo "Usuario: <input type='text' name='nickname' />";
+	echo "Usuario: <input type='text' name='nickname' />"; echo form_error('nickname');
 	echo'<br>';
-	echo "Nombre: <input type='text' name='Nombre' />";
+	echo "Nombre: <input type='text' name='Nombre' />"; echo form_error('Nombre');
 	echo '<br>';
-	echo "Apellidos: <input type='text' name='Apellidos' />";
+	echo "Apellidos: <input type='text' name='Apellidos' />"; echo form_error('Apellidos');
 	echo '<br>';
 	echo '<div id="no_alum" style="display:none;">
 		Email:<input type="email" name="email"><br>
 		DNI:<input type="text" name="dni"><br>
-		</div>';
-	echo "Domicilio: <input type='text' name='Dom' />"; echo "<br>";
-	echo "Fecha de Nacimiento: <input type='date' name='fnac' />";
+		</div>'; echo form_error('email'); echo form_error('dni');
+	echo "Domicilio: <input type='text' name='Dom' />"; echo form_error('Dom'); echo "<br>";
+	echo "Fecha de Nacimiento: <input type='date' name='fnac' />";echo form_error('fnac');
 	echo '<br>';
 	
 	
@@ -66,7 +65,7 @@
 		Email:<input type="email" name="email_t" value="xxxx@gmail.com" /><br>
 		Teléfono:<input type="tel" name="TelContacto" value="000000000" /><br>
 		DNI:<input type="text" name="dniT" value="123456789" /><br>
-		</div>';
+		</div>';echo form_error('TelContacto'); echo form_error('dniT'); echo form_error('email_t');
 		
 	echo form_submit('submit','Aceptar');
 	

@@ -14,11 +14,15 @@
         <a href="http://localhost/Guarderia">
         	<li class='enlace'>Inicio</li>
         </a>
-       <a href="http://localhost/Guarderia/index.php/mainController/verContenido"><li class='enlace' >Novedades</li></a>
+       <a href="http://localhost/Guarderia/index.php/mainController/verContenido">
+			<li class='enlace' >Novedades</li>
+		</a>
         <a href="http://localhost/Guarderia/index.php/mainController/menus_mens">
         	<li class='enlace'>Menús mensuales</li>
        	</a>
-        <li class='enlace'>Correo con padres</li>
+        <a href="http://localhost/Guarderia/index.php/mainController/mailTutores">
+			<li class='enlace'>Correo con padres</li>
+		</a>
         <li class='enlace'>Gestión de contenidos
         	<ul>
             <li><a href="http://localhost/Guarderia/index.php/mainController/addContenido"> Agregar</a></li>
@@ -28,10 +32,12 @@
         <li class='enlace'>Gestión de usuarios
             <ul>
             <li><a href="http://localhost/Guarderia/index.php/mainController/accesoAlta"> Alta usuario</a></li>
-            <li><a href=" "> Modificar usuario</a></li>
+            <li><a href="http://localhost/Guarderia/index.php/mainController/accesoBaja"> Baja usuario</a></li>
             </ul>
         </li>        
-        <li class='enlace'>Mi cuenta</li>
+        <a href="http://localhost/Guarderia/index.php/mainController/miCuenta">
+			<li class='enlace'>Mi cuenta</li>
+		</a>
         <a href="http://localhost/Guarderia/index.php/mainController/cerrarSesion">
         	<li class="enlace">Cerrar Sesión</li>
         </a>

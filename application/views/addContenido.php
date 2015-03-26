@@ -9,34 +9,38 @@
 <body>
 
 <section class="formulario">
-<?=validation_errors('<div class="errores">','</div>'); ?>
 <?php
 	$this->load->helper('form');
 	$datos= array('name'=>'agregaCont','enctype'=>"multipart/form-data");
 	echo form_open('index.php/mainController/agregaCont',$datos);
 	
 	echo "<p>Tipo de noticia</p>";
-	echo "Novedades<input type='radio' name='tipo' value='NOV'  checked/> ";
-	echo " Cursos para padres<input type='radio' name='tipo' value='CUR' /> ";
-	echo " Menus mensuales<input type='radio' name='tipo' value='COM' /><br> ";
+	if($_SESSION['rol']==2){
+		echo "Novedades<input type='radio' name='tipo' value='NOV'  checked/> ";
+		echo " Escuela de padres<input type='radio' name='tipo' value='CUR' /> ";
+		echo " Menus mensuales<input type='radio' name='tipo' value='COM' /><br> ";
+	}
+	else{
+		echo " Cursos para padres<input type='radio' name='tipo' value='CUR' checked /><br>";
+	}
 	
-	echo "Pública<input type='radio' name='priv' value='PUBLICO'  checked/> ";
-	echo " Privada<input type='radio' name='priv' value='PRIVADO' /><br> ";
+	echo "Público<input type='radio' name='priv' value='PUBLICO'  checked/> ";
+	echo " Privado<input type='radio' name='priv' value='PRIVADO' /><br> ";
 	
 	echo "<p>Título</p>";
-	echo "<input type='text' name='titulo' /><br>";
+	echo "<input type='text' name='titulo' />"; echo form_error('titulo'); echo"<br>";
 	
 	echo "<p>Cuerpo</p>";
-	echo '<textarea cols="100" rows="10" name="cuerpo"></textarea><br>';
+	echo '<textarea cols="100" rows="20" name="cuerpo"></textarea><br>';
 	
 	echo "<p>Insertar imágenes</p>";
-	echo '<input type="file" name="userfile" /><br>';
+	echo '<input type="file" name="userfile[]" multiple /><br>';
 	
 	echo form_submit('submit','Aceptar');
 	
 	echo form_close();
 ?>
-
+<br><br><br><br><br><br>
 </section>
 
 </body>

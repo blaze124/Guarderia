@@ -39,9 +39,9 @@
 	echo form_open('http://localhost/Guarderia/index.php/mainController/AltaUsuario',$datos);
 	
 	echo'<p>Datos del usuario</p>';
-	echo "Administrador <input type='radio'name='ROL' value='ADMIN' onClick='mostrar_campos();' /> ";
-	echo " Profesor <input type='radio'name='ROL' value='PROF' onClick='mostrar_campos();' /> ";
-	echo " Usuario para tutores <input type='radio'name='ROL' value='ALUM' onClick='mostrar_campos();' checked/> ";
+	echo "Administrador <input type='radio' name='ROL' value='ADMIN' onClick='mostrar_campos();' /> ";
+	echo " Profesor <input type='radio' name='ROL' value='PROF' onClick='mostrar_campos();' /> ";
+	echo " Usuario para tutores <input type='radio' name='ROL' value='ALUM' onClick='mostrar_campos();' checked/> ";
 	echo '<br>';
 	echo "Usuario: <input type='text' name='nickname' />"; echo form_error('nickname');
 	echo'<br>';
@@ -59,19 +59,42 @@
 	
 	
 	echo '<div id="alum" style="display:block;">
-		<p>Datos del tutor</p>
-		Nombre del tutor: <input type="text" name="NombreTutor" value="Nombre del tutor" /><br>
-		Apellidos del tutor: <input type="text" name="ApellidosTutor" value="Apellidos del tutor" /><br>
-		Email:<input type="email" name="email_t" value="xxxx@gmail.com" /><br>
-		Teléfono:<input type="tel" name="TelContacto" value="000000000" /><br>
-		DNI:<input type="text" name="dniT" value="123456789" /><br>
-		</div>';echo form_error('TelContacto'); echo form_error('dniT'); echo form_error('email_t');
+		<p>Datos del tutor 1</p>
+		Nombre del tutor: <input type="text" name="NombreTutor"  /><br>
+		Apellidos del tutor: <input type="text" name="ApellidosTutor"  /><br>
+		Email:<input type="email" name="email_t"  /><br>
+		Teléfono:<input type="tel" name="TelContacto" /><br>
+		DNI:<input type="text" name="dniT" /><br>
+		<br>
+		<p>Datos del tutor 2</p>
+		Nombre del tutor: <input type="text" name="NombreTutor2" /><br>
+		Apellidos del tutor: <input type="text" name="ApellidosTutor2" /><br>
+		Email:<input type="email" name="email_t2" /><br>
+		Teléfono:<input type="tel" name="TelContacto2" /><br>
+		DNI:<input type="text" name="dniT2" /><br>
+		<br>
+		<p>Horario Seleccionado</p>
+		<input type="radio" name="horario" value="ESCOLAR"> Horario Escolar (9:00 - 13:00)<br>
+		<input type="radio" name="horario" value="COMPLETO"> Horario Completo (9:00 - 17:00)<br>
+		<input type="radio" name="horario" value="MATINAL"> Aula Matinal (7:30 - 9:00)<br>
+		<input type="radio" name="horario" value="COMEDOR"> Horario Escolar con comedor (9:00 - 14:00)<br>
+		<br>
+		<p>Forma de pago</p>
+		<input type="radio" name="pago" value="EFECTIVO"> Pago en Efectivo<br>
+		<input type="radio" name="pago" value="DOMICILIACION"> Domiciliación Bancaria<br>
+		<br>
+		<p>Autorización para fotografías</p>
+		<input type="radio" name="autorizacion" value="1"> Sí<br>
+		<input type="radio" name="autorizacion" value="0"> No<br>
+		<br>
+		</div>';
+		
+		
 		
 	echo form_submit('submit','Aceptar');
-	
 	echo form_close();
 ?>
 </section>
-
+<br><br><br><br>
 </body>
 </html>

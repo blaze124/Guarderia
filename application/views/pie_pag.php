@@ -18,6 +18,7 @@
     <div id='enlaces'>
 		<a href='http://facebook.es/guarderia.bahiablanca.1' target='_blank'><img class='img_pie' src='http://localhost/Guarderia/imagenes/logo/face.png' width=30px height=30px></a>
 		<a href='http://escuelainfantileljardindecadiz.blogspot.com.es/' target='_blank'><img class='img_pie' src='http://localhost/Guarderia/imagenes/logo/blog.png' width=30px height=30px></a>
+		<a href='https://twitter.com/CEIBahiaBlanca' target='_blank'><img class='img_pie' src='http://localhost/Guarderia/imagenes/logo/twitter.png' width=30px height=30px></a>
 	</div>
 </footer>
 

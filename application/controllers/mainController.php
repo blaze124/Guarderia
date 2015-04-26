@@ -23,17 +23,18 @@ class MainController extends CI_Controller{
 		$this->load->view('cabecera');
 		$this->tipoMenu();
 		$this->load->view('cuerpo');
-		$this->load->view('pie_pag');		
 	}
 	
 	/**
 	* Funcion que carga la pantalla con el formulario de registro de usuarios
 	*/
 	function accesoAlta(){
+		if( !isset($_SESSION['rol']) || $_SESSION['rol'] != 2){
+			show_404();
+		}
 		$this->load->view('cabecera');
-		$this->load->view('menu_admin');
+		$this->tipoMenu();
 		$this->load->view('AddUser');
-		$this->load->view('pie_pag');	
 	}
 	
 	/**
@@ -49,10 +50,7 @@ class MainController extends CI_Controller{
 		$this->form_validation->set_rules('dni','DNI','is_unique[usuario.dni]|min_length[9]|max_lenght[9]');
 		$this->form_validation->set_rules('Dom','Domicilio','required');
 		$this->form_validation->set_rules('fnac','Fecha de nacimiento','required');
-		$this->form_validation->set_rules('TelContacto','Teléfono','required');
-		$this->form_validation->set_rules('email_t','Email del tutor','valid_email|is_unique[tutor.email]');
-		$this->form_validation->set_rules('dniT','DNI del tutor','min_length[9]|max_lenght[9]');
-		
+				
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
 		$this->form_validation->set_message('is_unique','El valor para %s ya existe');
 		$this->form_validation->set_message('valid_email','Direccion de email ya en uso');
@@ -78,7 +76,15 @@ class MainController extends CI_Controller{
 					'apellidosT'=>$this->input->post('ApellidosTutor'),
 					'telefono'=>$this->input->post('TelContacto'),
 					'dni_t'=>$this->input->post('dniT'),
-					'email_t'=>$this->input->post('email_t')
+					'email_t'=>$this->input->post('email_t'),
+					'nombreT2'=>$this->input->post('NombreTutor2'),
+					'apellidosT2'=>$this->input->post('ApellidosTutor2'),
+					'telefono2'=>$this->input->post('TelContacto2'),
+					'dni_t2'=>$this->input->post('dniT2'),
+					'email_t2'=>$this->input->post('email_t2'),
+					'horario'=>$this->input->post('horario'),
+					'pago'=>$this->input->post('pago'),
+					'fotos'=>$this->input->post('autorizacion')
 				);
 				
 				$pass=substr(md5(microtime()),1,8);
@@ -95,7 +101,9 @@ class MainController extends CI_Controller{
 				
 				else{
 					$destino = $data['email_t'];
+					$destino2 = $data['email_t2'];
 				}
+				$this->enviarMail("Bienvenido a la guarderia Bahia Blanca",$cuerpo_mail,$destino);
 				$this->enviarMail("Bienvenido a la guarderia Bahia Blanca",$cuerpo_mail,$destino);
 				
 				$password = $this->crypt_blowfish($pass);
@@ -111,7 +119,7 @@ class MainController extends CI_Controller{
 	*/
 	function cerrarSesion(){
 		session_destroy();
-		header('location: http://localhost/Guarderia');
+		$this->index();
 	}
 	
 	/**
@@ -121,7 +129,6 @@ class MainController extends CI_Controller{
 		$this->load->view('cabecera');
 		$this->tipoMenu();
 		$this->load->view('localizanos');
-		$this->load->view('pie_pag');
 	}
 	
 	/**
@@ -131,7 +138,6 @@ class MainController extends CI_Controller{
 		$this->load->view('cabecera');
 		$this->load->view('menu');
 		$this->load->view('acceso');
-		$this->load->view('pie_pag');
 	}
 	
 	/**
@@ -176,10 +182,12 @@ class MainController extends CI_Controller{
 	* Funcion que nos muestra el formulario que nos permite añadir contenidos a la web
 	*/
 	function addContenido(){
+		if( !isset($_SESSION['rol']) || $_SESSION['rol'] != 2){
+			show_404();
+		}
 		$this->load->view('cabecera');
 		$this->tipoMenu();
 		$this->load->view('addContenido');
-		$this->load->view('pie_pag');
 	}
 	
 	/**
@@ -251,6 +259,9 @@ class MainController extends CI_Controller{
 	* Funcion que nos muestra todo el contenido de la web para permitir el borrado de contenidos
 	*/
 	function delContenido(){
+		if( !isset($_SESSION['rol']) || $_SESSION['rol'] != 2){
+			show_404();
+		}
 		$this->load->database();
 		$data['res1']=$this->mainModel->getContenido('NOV');
 		$data['res2']=$this->mainModel->getContenido('CUR');
@@ -258,11 +269,11 @@ class MainController extends CI_Controller{
 		$this->load->view('cabecera');
 		$this->load->view('menu_admin');
 		$this->load->view('delContenido',$data);
-		$this->load->view('pie_pag');
+
 	}
 	
 	/**
-	* Funcion que ccarga todo el contenido para que el usuario acceda a una noticia anterior
+	* Funcion que carga todo el contenido para que el usuario acceda a una noticia anterior
 	*/
 	function todoContenido(){
 		$this->load->database();
@@ -278,7 +289,6 @@ class MainController extends CI_Controller{
 		$this->load->view('cabecera');
 		$this->tipoMenu();
 		$this->load->view('todoContenido',$data);
-		$this->load->view('pie_pag');
 	}
 	
 	/**
@@ -291,7 +301,6 @@ class MainController extends CI_Controller{
 		$this->load->view('cabecera');
 		$this->tipoMenu();
 		$this->load->view('verContenido',$data);
-		$this->load->view('pie_pag');
 	}
 	
 	/**
@@ -318,7 +327,6 @@ class MainController extends CI_Controller{
 		$this->load->view('cabecera');
 		$this->tipoMenu();
 		$this->load->view('verContenido',$data);
-		$this->load->view('pie_pag');
 	}
 	
 	/**
@@ -332,7 +340,6 @@ class MainController extends CI_Controller{
 		$this->load->view('cabecera');
 		$this->tipoMenu();
 		$this->load->view('todoMenus',$data);
-		$this->load->view('pie_pag');
 	}
 	
 	/**
@@ -345,7 +352,6 @@ class MainController extends CI_Controller{
 		$this->load->view('cabecera');
 		$this->tipoMenu();
 		$this->load->view('menus_mensuales',$data);
-		$this->load->view('pie_pag');
 	}
 
 	/**
@@ -358,13 +364,15 @@ class MainController extends CI_Controller{
 		$this->load->view('cabecera');
 		$this->tipoMenu();
 		$this->load->view('menus_mensuales',$data);
-		$this->load->view('pie_pag');
 	}
 	
 	/**
 	* Funcion que muestra todos los usuarios del sistema para darlos de baja
 	*/
 	function accesoBaja(){
+		if( !isset($_SESSION['rol']) || $_SESSION['rol'] != 2){
+			show_404();
+		}
 		$this->load->database();
 		$data['res1']=$this->mainModel->getUsuarios('ADMIN');
 		$data['res2']=$this->mainModel->getUsuarios('ALUM');
@@ -373,7 +381,6 @@ class MainController extends CI_Controller{
 		$this->load->view('cabecera');
 		$this->tipoMenu();
 		$this->load->view('bajaUsuarios',$data);
-		$this->load->view('pie_pag');
 	}
 	
 	/**
@@ -390,13 +397,15 @@ class MainController extends CI_Controller{
 		$this->load->view('cabecera');
 		$this->tipoMenu();
 		$this->load->view('bajaUsuarios',$data);
-		$this->load->view('pie_pag');
 	}
 	
 	/**
 	* Funcion que cargara el apartado correspondiente al perfil del usuario
 	*/
 	function miCuenta(){
+		if( !isset($_SESSION['rol']) ){
+			show_404();
+		}
 		$this->load->database();
 		
 		$data['res1'] = $this->mainModel->datosUsuario($_SESSION['user']);
@@ -408,17 +417,18 @@ class MainController extends CI_Controller{
 		$this->load->view('cabecera');
 		$this->tipoMenu();
 		$this->load->view('miCuenta',$data);
-		$this->load->view('pie_pag');	
 	}
 	
 	/**
 	* Funcion que mostrara el formulario de modificacion del domicilio de un usuario del sistema
 	*/
 	function nuevoDom(){
+		if( !isset($_SESSION['rol']) ){
+			show_404();
+		}
 		$this->load->view('cabecera');
 		$this->tipoMenu();
 		$this->load->view('nuevoDom');
-		$this->load->view('pie_pag');	
 	}
 	
 	/**
@@ -449,10 +459,12 @@ class MainController extends CI_Controller{
 	* Funcion que mostrara el formulario de modificacion de la direccion de email de un usuario del sistema
 	*/
 	function nuevoEmail(){
+		if( !isset($_SESSION['rol']) ){
+			show_404();
+		}
 		$this->load->view('cabecera');
 		$this->tipoMenu();
-		$this->load->view('nuevoEmail');
-		$this->load->view('pie_pag');	
+		$this->load->view('nuevoEmail');	
 	}
 	
 	/**
@@ -491,10 +503,12 @@ class MainController extends CI_Controller{
 	* Funcion que mostrará el formulario para cambiar la contraseña de un usuario
 	*/
 	function nuevaPass(){
+		if( !isset($_SESSION['rol']) ){
+			show_404();
+		}
 		$this->load->view('cabecera');
 		$this->tipoMenu();
-		$this->load->view('nuevaPass');
-		$this->load->view('pie_pag');	
+		$this->load->view('nuevaPass');	
 	}
 	
 	/**
@@ -541,10 +555,13 @@ class MainController extends CI_Controller{
 	* Funcion que mostrará el formulario de envío de email desde un tutor al centro
 	*/
 	function emailCentro(){
+		if( !isset($_SESSION['rol']) || $_SESSION['rol'] != 0){
+			show_404();
+		}
+		
 		$this->load->view('cabecera');
 		$this->tipoMenu();
 		$this->load->view('email');
-		$this->load->view('pie_pag');	
 	}
 	
 	/**
@@ -575,11 +592,13 @@ class MainController extends CI_Controller{
 	* Función que permite al administrador comunicarse con el tutor de un alumno
 	*/
 	function mailTutores($res=null){
+		if( !isset($_SESSION['rol']) || $_SESSION['rol'] != 2){
+			show_404();
+		}
 		if( !isset($res) ){
 			$this->load->view('cabecera');
 			$this->tipoMenu();
 			$this->load->view('buscaUsuarios');
-			$this->load->view('pie_pag');
 		}
 		else{
 			
@@ -588,7 +607,6 @@ class MainController extends CI_Controller{
 			$this->load->view('cabecera');
 			$this->tipoMenu();			
 			$this->load->view('buscaUsuarios',$data);
-			$this->load->view('pie_pag');
 		}
 	}
 	
@@ -617,13 +635,14 @@ class MainController extends CI_Controller{
 	* Función que en base a un alumno, le envía un email al tutor asociado a la cuenta
 	*/
 	function mailTutor($usuario){
-		
+		if( !isset($_SESSION['rol']) || $_SESSION['rol'] != 2){
+			show_404();
+		}
 		$data['user'] = $usuario;
 		
 		$this->load->view('cabecera');
 		$this->tipoMenu();
 		$this->load->view('emailTutor',$data);
-		$this->load->view('pie_pag');	
 	}
 	
 	/**
@@ -653,6 +672,37 @@ class MainController extends CI_Controller{
 				$this->index();
 			}
 		}
+	}
+	
+	/**
+	* Función que nos listará los alumnos registrados en el sistema
+	*/
+	function consultaAlumnos(){
+		if( !isset($_SESSION['rol']) || $_SESSION['rol'] != 2){
+			show_404();
+		}
+		$this->load->database();
+		
+		$data['res']=$this->mainModel->getAlumnos('ALUM');
+		$this->load->view('cabecera');
+		$this->tipoMenu();
+		$this->load->view('consultaAlumnos',$data);
+	}
+	
+	/**
+	* Función que nos mostrará toda la información relativa a un alumno seleccionado previamente
+	*/
+	function verAlumnoSimple($id){
+		if( !isset($_SESSION['rol']) || $_SESSION['rol'] != 2){
+			show_404();
+		}
+		$this->load->database();
+		
+		$data['res']=$this->mainModel->getAlumno($id);
+		
+		$this->load->view('cabecera');
+		$this->tipoMenu();
+		$this->load->view('consultaAlumno',$data);
 	}
 	
 	/**

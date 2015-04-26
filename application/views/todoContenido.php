@@ -15,12 +15,12 @@
 	echo '<p>Novedades</p>';
 	foreach($res1 as $valor)
 	{
-		echo $valor['id'].' - '.$valor['titular'].' - '.$valor['fecha'].'<a href="http://localhost/Guarderia/index.php/mainController/verContenidoSimple/'.$valor['id'].'"><img src="http://localhost/Guarderia/imagenes/logo/ir.png" style="vertical-align: middle;"></a>'.'<br>';
+		echo $valor['fecha'].' - '.$valor['titular'].'<a href="http://localhost/Guarderia/index.php/mainController/verContenidoSimple/'.$valor['id'].'"><img src="http://localhost/Guarderia/imagenes/logo/ir.png" style="vertical-align: middle;"></a>'.'<br>';
 	}
 	echo '<p>Cursos</p>';
 	foreach($res2 as $valor)
 	{
-		echo $valor['id'].' - '.$valor['titular'].' - '.$valor['fecha'].'<a href="http://localhost/Guarderia/index.php/mainController/verContenidoSimple/'.$valor['id'].'"><img src="http://localhost/Guarderia/imagenes/logo/ir.png" style="vertical-align: middle;"></a>'.'<br>';
+		echo $valor['fecha'].' - '.$valor['titular'].'<a href="http://localhost/Guarderia/index.php/mainController/verContenidoSimple/'.$valor['id'].'"><img src="http://localhost/Guarderia/imagenes/logo/ir.png" style="vertical-align: middle;"></a>'.'<br>';
 	}
 	
 ?>

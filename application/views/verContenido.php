@@ -67,7 +67,7 @@
 
 		foreach($valor['ruta'] as $img){
 			$foto = str_replace("C:/xampp/htdocs/","http://localhost/",$img);
-			echo '<a href="'.$foto.'" data-lightbox="image-1" data-title="'.$valor['titular'].'"><img src="'.$foto.'"/></a>';
+			echo '<a href="'.$foto.'" data-lightbox="image-1" data-title="'.$valor['titular'].'"><img class="img_cont" src="'.$foto.'"/></a>';
 		}
 		
 		if($valor['tipo'] == 'NOV'){$tipo = 'Novedades';}

@@ -18,7 +18,7 @@
 	if($_SESSION['rol']==2){
 		echo "Novedades<input type='radio' name='tipo' value='NOV'  checked/> ";
 		echo " Escuela de padres<input type='radio' name='tipo' value='CUR' /> ";
-		echo " Menus mensuales<input type='radio' name='tipo' value='COM' /><br> ";
+		echo " Menús mensuales<input type='radio' name='tipo' value='COM' /><br> ";
 	}
 	else{
 		echo " Cursos para padres<input type='radio' name='tipo' value='CUR' checked /><br>";

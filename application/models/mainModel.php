@@ -68,9 +68,25 @@ class MainModel extends CI_Model{
 				'email'=>$datos['email_t'],
 				'telefono'=>$datos['telefono']
 			);
+			$insert3=array(				
+				'nickname'=>$datos['nickname'],
+				'nombre'=>$datos['nombreT2'],
+				'apellidos'=>$datos['apellidosT2'],
+				'dni'=>$datos['dni_t2'],
+				'email'=>$datos['email_t2'],
+				'telefono'=>$datos['telefono2']
+			);
+			$insert4=array(
+				'nickname'=>$datos['nickname'],
+				'horario'=>$datos['horario'],
+				'pago'=>$datos['pago'],
+				'fotos'=>$datos['fotos']
+			);
 			
 			$this->db->insert('usuario',$insert);
 			$this->db->insert('tutor',$insert2);
+			$this->db->insert('tutor',$insert3);
+			$this->db->insert('datosalum',$insert4);
 		}
 		$acceso=array('nickname'=>$datos['nickname'], 'password' => $pass);
 		$this->db->insert('acceso',$acceso);
@@ -328,6 +344,7 @@ class MainModel extends CI_Model{
 		
 		$this->db->delete('tutor',array('nickname'=>$res['nickname']));
 		$this->db->delete('acceso',array('nickname'=>$res['nickname']));
+		$this->db->delete('datosalum',array('nickname'=>$res['nickname']));
 		$this->db->delete('usuario',array('id'=>$res['id']));
 	}
 
@@ -416,6 +433,66 @@ class MainModel extends CI_Model{
 		}
 		return $res;
 		
+	}
+
+	/**
+	* Función que buscará los datos de todos los alumnos
+	*/
+	function getAlumnos(){
+		$this->db->select('*');
+		$this->db->from('usuario');
+		$this->db->where('rol','ALUM');
+		$this->db->order_by('usuario.id','asc');
+		
+		$return = $this->db->get();
+		
+		$i = 0;
+		$res[0]=0;
+		if($return->num_rows() != 0){
+			while($i < $return->num_rows())
+			{
+				$res[$i] = $return->row_array($i);
+				$i++;			
+			}
+		}
+		return $res;
+	}
+	
+	/**
+	* Función que buscará los datos de un único alumno los alumnos
+	*/
+	function getAlumno($id){
+		$this->db->select('*');
+		$this->db->from('usuario');
+		$this->db->where('id',$id);
+		
+		$res[0] = $this->db->get()->row_array();
+		
+		$this->db->select('*');
+		$this->db->from('tutor');
+		$this->db->where('nickname',$res[0]['nickname']);
+		
+		$return = $this->db->get();
+		
+		$i = 1;
+		$j = 0;
+		$res[1]=0;
+		if($return->num_rows() != 0){
+			while($j < $return->num_rows())
+			{
+				$res[$i] = $return->row_array($i);
+				$i++;
+				$j++;
+			}
+		}
+		
+		$this->db->select('*');
+		$this->db->from('datosalum');
+		$this->db->where('nickname',$res[0]['nickname']);
+		
+		$res[$i]=$this->db->get()->row_array();
+		
+		return $res;
 	}
 }
 ?>

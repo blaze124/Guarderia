@@ -15,13 +15,14 @@ a{
 }
 
 .cabecera{
-	border-bottom:solid #606 2px;
 	margin-top:190px;
 }
+
 #error_img{
 	width: 5px;
 	height: 5px;
 }
+
 #logo{
 	position:absolute;
 	left:48px;
@@ -33,37 +34,117 @@ a{
 	left:36%;
 	top:20px;
 	}	
-	
-.menu{
-	list-style:none;
+
+.navega{
 	clear:both;
-	float:left;
-	margin-top:15px;
-	padding-left:15px;
-	}
-	
-.enlace{
-	border:medium #606 solid;
-	border-radius:25px;
-	padding-left:10px;
-	padding-right:10px;
-	margin-top:10px;
-	color:#606;
 	text-align:center;
-	}
-.enlace ul {display: none;}
-.enlace:hover ul{display: block;text-align: left; list-style: none;}	
-.enlace:hover{
-	border:medium #0000aa solid;
-	color:#0000aa;	
-	border-radius:25px;
-	padding-left:10px;
-	padding-right:10px;
-	margin-top:10px;
-	}
+	background: -webkit-linear-gradient(#AA44AA,#660066); /*Safari 5.1-6*/
+	background: -o-linear-gradient(#AA44AA,#660066); /*Opera 11.1-12*/
+	background: -moz-linear-gradient(#AA44AA,#660066); /*Fx 3.6-15*/
+	background: linear-gradient(#AA44AA,#660066); /*Standard*/
+}	
 	
+.menu {
+	display: inline;
+	padding-left:15px;
+	padding-right:15px;
+	padding-top:10px;
+	padding-bottom:10px;
+	list-style: none;
+	background: -webkit-linear-gradient(#AA44AA,#660066); /*Safari 5.1-6*/
+	background: -o-linear-gradient(#AA44AA,#660066); /*Opera 11.1-12*/
+	background: -moz-linear-gradient(#AA44AA,#660066); /*Fx 3.6-15*/
+	background: linear-gradient(#AA44AA,#660066); /*Standard*/
+}
+
+.enlace {
+	color:white;
+	display: inline-block;
+	margin:none;
+	position: relative;
+	cursor: pointer;
+	padding-left:15px;
+	padding-right:15px;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+.enlace-img {
+	color:white;
+	display: inline-block;
+	margin:none;
+	position: relative;
+	cursor: pointer;
+	padding-left:15px;
+	padding-right:15px;
+
+}
+
+.enlace:hover {
+	padding-left:15px;
+	padding-right:15px;
+	padding-top:10px;
+	padding-bottom:10px;
+	background: -webkit-linear-gradient(rgba(0,0,255,0.7),rgba(0,0,70,1)); /*Safari 5.1-6*/
+	background: -o-linear-gradient(rgba(0,0,255,0.7),rgba(0,0,70,1)); /*Opera 11.1-12*/
+	background: -moz-linear-gradient(rgba(0,0,255,0.7),rgba(0,0,70,1)); /*Fx 3.6-15*/
+	background: linear-gradient(rgba(0,0,255,0.7), rgba(0,0,70,1)); /*Standard*/
+}
+
+.enlace-img:hover {
+	padding-left:15px;
+	padding-right:15px;
+	padding-top:5px;
+	padding-bottom:10px;
+	background: -webkit-linear-gradient(rgba(0,0,255,0.7),rgba(0,0,70,1)); /*Safari 5.1-6*/
+	background: -o-linear-gradient(rgba(0,0,255,0.7),rgba(0,0,70,1)); /*Opera 11.1-12*/
+	background: -moz-linear-gradient(rgba(0,0,255,0.7),rgba(0,0,70,1)); /*Fx 3.6-15*/
+	background: linear-gradient(rgba(0,0,255,0.7), rgba(0,0,70,1)); /*Standard*/
+}
+
+.enlace ul {
+	padding: 0;
+	position: absolute;
+	top: 39px;
+	left: 0;
+	width: 160px;
+	display: none;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.enlace ul li { 
+	background: -webkit-linear-gradient(rgba(0,0,255,0.7),rgba(0,0,70,1)); /*Safari 5.1-6*/
+	background: -o-linear-gradient(rgba(0,0,255,0.7),rgba(0,0,70,1)); /*Opera 11.1-12*/
+	background: -moz-linear-gradient(rgba(0,0,255,0.7),rgba(0,0,70,1)); /*Fx 3.6-15*/
+	background: linear-gradient(rgba(0,0,255,0.7), rgba(0,0,70,1)); /*Standard*/
+	display: block; 
+	color: #fff;
+	padding-top:2px;
+	padding-bottom:2px;
+}
+
+.enlace ul li:hover { 
+	background: -webkit-linear-gradient(#AA44AA,#660066); /*Safari 5.1-6*/
+	background: -o-linear-gradient(#AA44AA,#660066); /*Opera 11.1-12*/
+	background: -moz-linear-gradient(#AA44AA,#660066); /*Fx 3.6-15*/
+	background: linear-gradient(#AA44AA,#660066); /*Standard*/ 
+}
+
+.enlace:hover ul {
+	display: block;
+	opacity: 1;
+	visibility: visible;
+}
+	
+.enlace ul li a{
+	color:#FFF;
+	text-decoration:none;
+	}	
+
 .cuerpo{
-	margin-left:225px;
+	margin-left:50px;
+	margin-right:50px;
 	padding-bottom:75px;
 	padding-right:10px;
 	}
@@ -89,7 +170,6 @@ a{
 	}
 
 #enlaces{
-	background-color:#99F;
 	width:25%;
 	float:right;
 	}
@@ -126,18 +206,19 @@ p{
 }
 
 .img_cont{
-	background:#093:
-	width: 80%;
+	width: 100%;
 	margin-left: 10%;
 	margin-right: 10%;
 	max-width: 800px;
 	min-width: 200px;
 }
+
 .contenido img{
 	background:#C6F;
 	width: 300px;
 	margin: 10px;
 }
+
 .text_cont{
 	width: 80%;
 	margin-left: 10%;
@@ -149,10 +230,12 @@ p{
 	text-align: left;
 	padding: 15px;
 }
+
 .tipo{
 	width: 30%;
 	text-wrap:normal;
 }
+
 .cabeceras{
 	width :80%;
 	display:block;
@@ -161,10 +244,6 @@ p{
 
 .comentario{
 	font-size:12px;
-}
-
-.img_pie{
-	background:none;
 }
 
 .mens_error{

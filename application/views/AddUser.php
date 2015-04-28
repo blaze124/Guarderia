@@ -53,6 +53,7 @@
 		Email:<input type="email" name="email"><br>
 		DNI:<input type="text" name="dni"><br>
 		</div>'; echo form_error('email'); echo form_error('dni');
+	echo "Grupo: <input type='text' name='Grupo'><br>";
 	echo "Domicilio: <input type='text' name='Dom' />"; echo form_error('Dom'); echo "<br>";
 	echo "Fecha de Nacimiento: <input type='date' name='fnac' />";echo form_error('fnac');
 	echo '<br>';

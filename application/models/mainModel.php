@@ -30,8 +30,20 @@ class MainModel extends CI_Model{
 		$this->db->where('nickname',$usuario);
 		$consulta=$this->db->get();
 		
-		$res = $consulta->row_array();
-		return $res['rol'];
+		if($consulta->num_rows() != 0){
+			$res = $consulta->row_array();
+			return $res['rol'];
+		}
+		else{
+			$this->db->select('*');
+			$this->db->from('usuario_alumno');
+			$this->db->where('nickname',$usuario);
+			$consulta=$this->db->get();
+
+			$res = $consulta->row_array();
+			return $res['rol'];
+		}
+		
 	}
 	
 	/**
@@ -47,7 +59,8 @@ class MainModel extends CI_Model{
 				'domicilio'=>$datos['domicilio'],
 				'f_nac'=>$datos['f_nac'],
 				'dni'=>$datos['dni'],
-				'email'=>$datos['email']
+				'email'=>$datos['email'],
+				'grupo'=>$datos['grupo']
 			);	
 			$this->db->insert('usuario',$insert);
 		}
@@ -58,7 +71,8 @@ class MainModel extends CI_Model{
 				'apellidos'=>$datos['apellidos'],
 				'rol'=>$datos['rol'],
 				'domicilio'=>$datos['domicilio'],
-				'f_nac'=>$datos['f_nac']
+				'f_nac'=>$datos['f_nac'],
+				'grupo'=>$datos['grupo']
 			);
 			$insert2=array(				
 				'nickname'=>$datos['nickname'],
@@ -83,7 +97,7 @@ class MainModel extends CI_Model{
 				'fotos'=>$datos['fotos']
 			);
 			
-			$this->db->insert('usuario',$insert);
+			$this->db->insert('usuario_alumno',$insert);
 			$this->db->insert('tutor',$insert2);
 			$this->db->insert('tutor',$insert3);
 			$this->db->insert('datosalum',$insert4);
@@ -302,11 +316,10 @@ class MainModel extends CI_Model{
 	*/
 	function getUsuarios($rol){
 		if($rol == 'ALUM'){
-			$this->db->select('usuario.*,tutor.email, tutor.telefono');
-			$this->db->from('usuario');
-			$this->db->join('tutor','tutor.nickname = usuario.nickname');
+			$this->db->select('usuario_alumno.*');
+			$this->db->from('usuario_alumno');
 			$this->db->where('rol',$rol);
-			$this->db->order_by('usuario.id','asc');
+			$this->db->order_by('usuario_alumno.id','asc');
 			
 			$return = $this->db->get();
 		}
@@ -334,30 +347,53 @@ class MainModel extends CI_Model{
 	/**
 	* Funcion que elimina al usuario del sistema con identificador = $id
 	*/
-	function bajaUsuario($id){
-		$this->db->select('*');
-		$this->db->from('usuario');
-		$this->db->where('id',$id);
-		
-		$ret = $this->db->get();
-		$res = $ret->row_array();
-		
-		$this->db->delete('tutor',array('nickname'=>$res['nickname']));
-		$this->db->delete('acceso',array('nickname'=>$res['nickname']));
-		$this->db->delete('datosalum',array('nickname'=>$res['nickname']));
-		$this->db->delete('usuario',array('id'=>$res['id']));
+	function bajaUsuario($id,$rol){
+		if($rol != 0){
+			$this->db->select('*');
+			$this->db->from('usuario');
+			$this->db->where('id',$id);
+
+			$ret = $this->db->get();
+			$res = $ret->row_array();
+
+			$this->db->delete('acceso',array('nickname'=>$res['nickname']));
+			$this->db->delete('usuario',array('id'=>$res['id']));
+		}
+		else{
+			$this->db->select('*');
+			$this->db->from('usuario_alumno');
+			$this->db->where('id',$id);
+			
+			$ret = $this->db->get();
+			$res = $ret->row_array();
+
+			$this->db->delete('tutor',array('nickname'=>$res['nickname']));
+			$this->db->delete('acceso',array('nickname'=>$res['nickname']));
+			$this->db->delete('datosalum',array('nickname'=>$res['nickname']));
+			$this->db->delete('usuario_alumno',array('id'=>$res['id']));
+		}
 	}
 
 	/**
 	* Funcion que obtendra toda la informacion de un usuario para mostrarsela
 	*/
-	function datosUsuario($user){
-		$this->db->select('*');
-		$this->db->from('usuario');
-		$this->db->where('nickname',$user);
-		
-		$res = $this->db->get();
-		return $res->row_array();
+	function datosUsuario($user,$rol){
+		if($rol != 0){
+			$this->db->select('*');
+			$this->db->from('usuario');
+			$this->db->where('nickname',$user);
+			
+			$res = $this->db->get();
+			return $res->row_array();
+		}
+		else{
+			$this->db->select('*');
+			$this->db->from('usuario_alumno');
+			$this->db->where('nickname',$user);
+			
+			$res = $this->db->get();
+			return $res->row_array();
+		}
 	}
 	
 	/**
@@ -367,19 +403,36 @@ class MainModel extends CI_Model{
 		$this->db->select('*');
 		$this->db->from('tutor');
 		$this->db->where('nickname',$user);
-		
-		$res = $this->db->get();
-		return $res->row_array();
+		$this->db->order_by('tutor.id','asc');
+		$return = $this->db->get();
+
+		$i = 0;
+		$res[0]=0;
+		if($return->num_rows() != 0){
+			while($i < $return->num_rows())
+			{
+				$res[$i] = $return->row_array($i);
+				$i++;			
+			}
+		}
+		return $res;
 	}
 
 	/**
 	* Funcion que actualiza el domicilio de un usuario
 	*/
-	function cambioDom($data){
+	function cambioDom($data,$rol){
 		$cambio = array('domicilio'=>$data['domicilio']);
 		
-		$this->db->where('nickname',$data['nickname']);
-		$this->db->update('usuario',$cambio);
+		if($rol != 0){
+			$this->db->where('nickname',$data['nickname']);
+			$this->db->update('usuario',$cambio);
+		}
+		else{
+			$this->db->where('nickname',$data['nickname']);
+			$this->db->update('usuario_alumno',$cambio);
+		}
+		
 	}
 	
 	/**
@@ -388,16 +441,12 @@ class MainModel extends CI_Model{
 	function cambioEmail($data){
 		$cambio = array('email'=>$data['email']);
 		
-		$this->db->select('*');
-		$this->db->from('usuario');
-		$this->db->where('nickname',$data['nickname']);
-		$res = $this->db->get()->row_array();
-		if($res['rol'] == 'ALUM'){
-			$this->db->where('nickname',$data['nickname']);
+		if($data['rol'] == '0'){
+			$this->db->where('id',$data['id']);
 			$this->db->update('tutor',$cambio);
 		}
 		else{
-			$this->db->where('nickname',$data['nickname']);
+			$this->db->where('id',$data['id']);
 			$this->db->update('usuario',$cambio);
 		}
 	}
@@ -417,8 +466,7 @@ class MainModel extends CI_Model{
 	*/
 	function buscaUsuarios($cadena){
 		$this->db->select('*');
-		$this->db->from('usuario');
-		$this->db->where('rol','ALUM');
+		$this->db->from('usuario_alumno');
 		$this->db->like('nickname',$cadena,'both');
 		$return =$this->db->get();
 		
@@ -440,9 +488,8 @@ class MainModel extends CI_Model{
 	*/
 	function getAlumnos(){
 		$this->db->select('*');
-		$this->db->from('usuario');
-		$this->db->where('rol','ALUM');
-		$this->db->order_by('usuario.id','asc');
+		$this->db->from('usuario_alumno');
+		$this->db->order_by('usuario_alumno.id','asc');
 		
 		$return = $this->db->get();
 		
@@ -463,7 +510,7 @@ class MainModel extends CI_Model{
 	*/
 	function getAlumno($id){
 		$this->db->select('*');
-		$this->db->from('usuario');
+		$this->db->from('usuario_alumno');
 		$this->db->where('id',$id);
 		
 		$res[0] = $this->db->get()->row_array();

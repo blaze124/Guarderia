@@ -8,7 +8,7 @@
 
 <body>
 
-<section class="formulario">
+<section class="cuerpo">
 <?php
 	$this->load->helper('form');
 	$datos= array('name'=>'agregaCont','enctype'=>"multipart/form-data");

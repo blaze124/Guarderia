@@ -42,6 +42,8 @@ a{
 	background: -o-linear-gradient(#AA44AA,#660066); /*Opera 11.1-12*/
 	background: -moz-linear-gradient(#AA44AA,#660066); /*Fx 3.6-15*/
 	background: linear-gradient(#AA44AA,#660066); /*Standard*/
+	height: 30px;
+	padding-bottom: 10px;
 }	
 	
 .menu {
@@ -51,55 +53,30 @@ a{
 	padding-top:10px;
 	padding-bottom:10px;
 	list-style: none;
-	background: -webkit-linear-gradient(#AA44AA,#660066); /*Safari 5.1-6*/
-	background: -o-linear-gradient(#AA44AA,#660066); /*Opera 11.1-12*/
-	background: -moz-linear-gradient(#AA44AA,#660066); /*Fx 3.6-15*/
-	background: linear-gradient(#AA44AA,#660066); /*Standard*/
 }
 
 .enlace {
+	height: 30px;
 	color:white;
 	display: inline-block;
 	margin:none;
 	position: relative;
 	cursor: pointer;
 	padding-left:15px;
-	padding-right:15px;
-	padding-top:10px;
-	padding-bottom:10px;
-}
-
-.enlace-img {
-	color:white;
-	display: inline-block;
-	margin:none;
-	position: relative;
-	cursor: pointer;
-	padding-left:15px;
-	padding-right:15px;
-
+	padding-right:15px; 
+	vertical-align: middle;
+	padding-top: 10px;
 }
 
 .enlace:hover {
 	padding-left:15px;
 	padding-right:15px;
-	padding-top:10px;
-	padding-bottom:10px;
+	padding-top: 10px;
 	background: -webkit-linear-gradient(rgba(0,0,255,0.7),rgba(0,0,70,1)); /*Safari 5.1-6*/
 	background: -o-linear-gradient(rgba(0,0,255,0.7),rgba(0,0,70,1)); /*Opera 11.1-12*/
 	background: -moz-linear-gradient(rgba(0,0,255,0.7),rgba(0,0,70,1)); /*Fx 3.6-15*/
 	background: linear-gradient(rgba(0,0,255,0.7), rgba(0,0,70,1)); /*Standard*/
-}
-
-.enlace-img:hover {
-	padding-left:15px;
-	padding-right:15px;
-	padding-top:5px;
-	padding-bottom:10px;
-	background: -webkit-linear-gradient(rgba(0,0,255,0.7),rgba(0,0,70,1)); /*Safari 5.1-6*/
-	background: -o-linear-gradient(rgba(0,0,255,0.7),rgba(0,0,70,1)); /*Opera 11.1-12*/
-	background: -moz-linear-gradient(rgba(0,0,255,0.7),rgba(0,0,70,1)); /*Fx 3.6-15*/
-	background: linear-gradient(rgba(0,0,255,0.7), rgba(0,0,70,1)); /*Standard*/
+	vertical-align: middle;
 }
 
 .enlace ul {
@@ -143,25 +120,12 @@ a{
 	}	
 
 .cuerpo{
-	margin-left:50px;
-	margin-right:50px;
+	margin-left:75px;
+	margin-right:75px;
 	padding-bottom:75px;
 	padding-right:10px;
 	}
 
-.pie{
-	clear:both;
-	margin-left:0px;
-	padding-left:5px;
-	margin-right:5px;
-	font-size:12px;
-	border-top:2px solid #606;
-	position:fixed;
-	bottom:0;
-	width:99.5%;
-	background-color:#00aa00;
-	}
-	
 #info{
 	background-color:#FF6;
 	margin-left:-5px;

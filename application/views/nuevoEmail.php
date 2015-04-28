@@ -15,10 +15,10 @@
 	
 	echo form_open('http://localhost/Guarderia/index.php/mainController/cambioEmail',$datos);
 	
-	echo'<p>Introduzca su nueva dirección de  email</p>';
+	echo '<p>Introduzca su nueva dirección de  email</p>';
 	echo "<input type='email' name='email' align='center' />";echo form_error('email'); echo "<br>";
 	echo '<br>';
-		
+	echo '<input type="hidden" name="id" value='.$id.'>';
 	echo form_submit('submit','Aceptar');
 	
 	echo form_close();

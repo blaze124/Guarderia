@@ -25,14 +25,14 @@
         	<li class='enlace'>Acceso</li>
         </a>
         
-		<li class='enlace-img'>
-			<a href='http://facebook.es/guarderia.bahiablanca.1' target='_blank'> <img class='img_pie' src='http://localhost/Guarderia/imagenes/logo/face.png' width=20px height=20px></a>
+		<li class='enlace'>
+			<a href='http://facebook.es/guarderia.bahiablanca.1' target='_blank'> <img src='http://localhost/Guarderia/imagenes/logo/face.png' width=20px height=20px></a>
 		</li>
-		<li class='enlace-img'>
-			<a href='http://escuelainfantileljardindecadiz.blogspot.com.es/' target='_blank'> <img class='img_pie' src='http://localhost/Guarderia/imagenes/logo/blog.png' width=20px height=20px></a>
+		<li class='enlace'>
+			<a href='http://escuelainfantileljardindecadiz.blogspot.com.es/' target='_blank'> <img src='http://localhost/Guarderia/imagenes/logo/blog.png' width=20px height=20px></a>
 		</li>
-		<li class='enlace-img'>
-			<a href='https://twitter.com/CEIBahiaBlanca' target='_blank'> <img class='img_pie' src='http://localhost/Guarderia/imagenes/logo/twitter.png' width=20px height=20px></a>
+		<li class='enlace'>
+			<a href='https://twitter.com/CEIBahiaBlanca' target='_blank'> <img src='http://localhost/Guarderia/imagenes/logo/twitter.png' width=20px height=20px></a>
 		</li>
     </ul>
 

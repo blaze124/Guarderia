@@ -71,6 +71,7 @@ class MainController extends CI_Controller{
 					'domicilio'=>$this->input->post('Dom'),
 					'f_nac'=>$this->input->post('fnac'),
 					'dni'=>$this->input->post('dni'),
+					'grupo'=>$this->input->post('Grupo'),
 					'email'=>$this->input->post('email'),
 					'nombreT'=>$this->input->post('NombreTutor'),
 					'apellidosT'=>$this->input->post('ApellidosTutor'),
@@ -96,15 +97,17 @@ class MainController extends CI_Controller{
 				
 				if($data['rol'] == 'PROF' || $data['rol'] == 'ADMIN')
 				{
-					$destino = $data['email'];
+					$dest = $data['email'];
+					$this->enviarMail("Bienvenido a la Guardería Bahía Blanca",$cuerpo_mail,$dest);
 				}
 				
 				else{
 					$destino = $data['email_t'];
 					$destino2 = $data['email_t2'];
+					
+					$this->enviarMail("Bienvenido a la Guardería Bahía Blanca",$cuerpo_mail,$destino1);
+					$this->enviarMail("Bienvenido a la Guardería Bahía Blanca",$cuerpo_mail,$destino2);
 				}
-				$this->enviarMail("Bienvenido a la guarderia Bahia Blanca",$cuerpo_mail,$destino);
-				$this->enviarMail("Bienvenido a la guarderia Bahia Blanca",$cuerpo_mail,$destino);
 				
 				$password = $this->crypt_blowfish($pass);
 				
@@ -119,7 +122,7 @@ class MainController extends CI_Controller{
 	*/
 	function cerrarSesion(){
 		session_destroy();
-		$this->index();
+		header('Location: http://localhost/Guarderia');
 	}
 	
 	/**
@@ -182,7 +185,7 @@ class MainController extends CI_Controller{
 	* Funcion que nos muestra el formulario que nos permite añadir contenidos a la web
 	*/
 	function addContenido(){
-		if( !isset($_SESSION['rol']) || $_SESSION['rol'] != 2){
+		if( !isset($_SESSION['rol']) || $_SESSION['rol'] == 0){
 			show_404();
 		}
 		$this->load->view('cabecera');
@@ -245,10 +248,7 @@ class MainController extends CI_Controller{
 							$this->mainModel->addImagen($id,$ruta);
 						}
 						
-						header('Location: http://localhost/Guarderia');
-					}
-					else{
-						
+						header('Location:'.base_url());
 					}
 			}
 			
@@ -388,15 +388,9 @@ class MainController extends CI_Controller{
 	*/
 	function borrarUsuario($id){
 		$this->load->database();
-		$this->mainModel->bajaUsuario($id);
+		$this->mainModel->bajaUsuario($id,$_SESSION['rol']);
 		
-		$data['res1']=$this->mainModel->getUsuarios('ADMIN');
-		$data['res2']=$this->mainModel->getUsuarios('ALUM');
-		$data['res3']=$this->mainModel->getUsuarios('PROF');
-		
-		$this->load->view('cabecera');
-		$this->tipoMenu();
-		$this->load->view('bajaUsuarios',$data);
+		header('Location:'.base_url().'/index.php/mainController/accesoBaja');
 	}
 	
 	/**
@@ -408,12 +402,14 @@ class MainController extends CI_Controller{
 		}
 		$this->load->database();
 		
-		$data['res1'] = $this->mainModel->datosUsuario($_SESSION['user']);
+		$res1 = $this->mainModel->datosUsuario($_SESSION['user'],$_SESSION['rol']);
 		
-		if($data['res1']['rol'] == 'ALUM'){
-			$data['res2'] = $this->mainModel->datosTutor($_SESSION['user']);
+		if($res1['rol'] == 'ALUM'){
+			$res2 = $this->mainModel->datosTutor($_SESSION['user']);
 		}
 		
+		$data = array('res1'=>$res1,'res2'=>$res2);
+
 		$this->load->view('cabecera');
 		$this->tipoMenu();
 		$this->load->view('miCuenta',$data);
@@ -449,7 +445,7 @@ class MainController extends CI_Controller{
 					'nickname'=>$_SESSION['user'],
 					'domicilio'=>$this->input->post('Dom')
 				);
-				$this->mainModel->cambioDom($data);
+				$this->mainModel->cambioDom($data,$_SESSION['rol']);
 				$this->miCuenta();
 			}
 		}
@@ -458,13 +454,15 @@ class MainController extends CI_Controller{
 	/**
 	* Funcion que mostrara el formulario de modificacion de la direccion de email de un usuario del sistema
 	*/
-	function nuevoEmail(){
+	function nuevoEmail($id){
 		if( !isset($_SESSION['rol']) ){
 			show_404();
 		}
+
+		$data = array('id'=>$id);
 		$this->load->view('cabecera');
 		$this->tipoMenu();
-		$this->load->view('nuevoEmail');	
+		$this->load->view('nuevoEmail',$data);	
 	}
 	
 	/**
@@ -484,7 +482,9 @@ class MainController extends CI_Controller{
 			if($this->input->post('submit')){
 				$data = array(
 					'nickname'=>$_SESSION['user'],
-					'email'=>$this->input->post('email')
+					'rol' => $_SESSION['rol'],
+					'email'=>$this->input->post('email'),
+					'id' => $this->input->post('id')
 				);
 				$this->mainModel->cambioEmail($data);
 				
@@ -646,7 +646,7 @@ class MainController extends CI_Controller{
 	}
 	
 	/**
-	* Función que enviará un correo electrónico al tutor del alumno seleccionado
+	* Función que enviará un correo electrónico a los tutores del alumno seleccionado
 	*/
 	function sendMailTutor(){
 		$this->load->database();
@@ -665,9 +665,11 @@ class MainController extends CI_Controller{
 				
 				$cuerpo = nl2br($this->input->post('cuerpo'));
 				$asunto = $this->input->post('asunto');
-				echo $destino = $dat['email'];
 				
-				$this->enviarMail($asunto,$cuerpo,$destino);
+				for($i=0; $i < count($dat); $i++){
+
+					$this->enviarMail($asunto,$cuerpo,$dat[$i]['email']);
+				}
 				
 				$this->index();
 			}
@@ -706,7 +708,70 @@ class MainController extends CI_Controller{
 	}
 	
 	/**
-	* Funcion auxiliar que determina que menu lateral mostrar en funcion del tipo de usuario que acceda a la web
+	* Función que nos mostrará el calendario para añadir incidencias
+	*/
+	function incidencias(){
+		if(!isset($_SESSION['rol'])){
+			show_404();
+		}
+
+		$this->load->database();
+		
+		$this->load->view('cabecera');
+		$this->tipoMenu();
+		$this->load->view('calendario_incidencias');
+		
+	}
+
+	/**
+	* Función que va a controlar los eventos del calendario
+	*/
+	function eventos(){
+		if(!isset($_SESSION['rol'])){
+			show_404();
+		}
+		
+		$this->load->view('cabecera');
+		$this->tipoMenu();
+		$this->load->view('calendario_eventos');
+	}
+
+	/**
+	* Función que almacenará un evento en la Base de datos 
+	*/
+	function guardaEvento(){
+		$this->load->database();
+
+
+		$this->form_validation->set_rules('from','Fecha','required');
+		$this->form_validation->set_rules('event','Descripción','required');
+
+		$this->form_validation->set_message('required','El campo %s');
+
+		if($this->form_validation->run() == FALSE){
+			$this->eventos();
+		}
+		else{
+			if($this->input->post('submit')){
+				
+				$fecha = $this->input->post('from');
+				
+				$cuerpo = nl2br($this->input->post('event'));
+								
+				$datos = array('fecha' => $fecha,
+							   'cuerpo' => $cuerpo);
+				
+				$this->mainModel->addEvento($datos,$_SESSION['user']);
+
+				$this->incidencias();
+			}
+		}
+		
+	}
+
+	
+	/**
+	* Funcion auxiliar que determina que menu mostrar en funcion del tipo de usuario que acceda a la web
 	*/
 	function tipoMenu(){
 		if(!isset($_SESSION['rol'])){

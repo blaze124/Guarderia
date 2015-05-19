@@ -7,13 +7,30 @@ class MainController extends CI_Controller{
 	* Funcion constructor de la clase Controlador de nuestro proyecto
 	*/ 
 	function __construct(){
+
+		$preferencias = array(
+			'start_day' => 'monday',
+			'month_type' => 'long',
+			'day_type' => 'long',
+			'show_next_prev' => 'true',
+			'next_prev_url' => 'http://localhost/Guarderia/index.php/mainController/incidencias');
+
+		$preferencias['template'] = '
+		    {table_open}<table class="calendar">{/table_open}
+		    {week_day_cell}<th class="day_header">{week_day}</th>{/week_day_cell}
+		    {cal_cell_content}<span class="day_listing">{day}</span>&nbsp;&bull; {content}&nbsp;{/cal_cell_content}
+		    {cal_cell_content_today}<div class="today"><span class="day_listing">{day}</span>&bull; {content}</div>{/cal_cell_content_today}
+		    {cal_cell_no_content}<span class="day_listing">{day}</span>&nbsp;{/cal_cell_no_content}
+		    {cal_cell_no_content_today}<div class="today"><span class="day_listing">{day}</span></div>{/cal_cell_no_content_today}
+		'; 
+
 		parent::__construct();
 		$this->load->model('mainModel');
 		$this->load->helper('form');
-		$this->load->helper('email');
 		$this->load->library('form_validation');
-		$this->form_validation->set_error_delimiters('<div class="mens_error">', '</div>');
 		$this->load->library('email');
+		$this->form_validation->set_error_delimiters('<div class="mens_error">', '</div>');
+		$this->load->library('calendar',$preferencias);
 	}
 	
 	/**
@@ -195,6 +212,7 @@ class MainController extends CI_Controller{
 	
 	/**
 	* Funcion que procesa el formulario de adicion de contenidos
+	* Falta el difundido a todos en caso de novedad privada
 	*/
 	function agregaCont(){
 		$this->load->database();
@@ -403,13 +421,13 @@ class MainController extends CI_Controller{
 		$this->load->database();
 		
 		$res1 = $this->mainModel->datosUsuario($_SESSION['user'],$_SESSION['rol']);
+		$data['res1'] = $res1;
 		
 		if($res1['rol'] == 'ALUM'){
 			$res2 = $this->mainModel->datosTutor($_SESSION['user']);
+			$data['res2'] = $res2;
 		}
 		
-		$data = array('res1'=>$res1,'res2'=>$res2);
-
 		$this->load->view('cabecera');
 		$this->tipoMenu();
 		$this->load->view('miCuenta',$data);
@@ -532,10 +550,10 @@ class MainController extends CI_Controller{
 			if($this->input->post('submit')){
 				
 				$cuerpo="Su contraseña ha sido cambiada satisfactoriamente<br>
-							  Tu nueva contraseña es: ".$this->input->post('pass1')."<br>";
+							  La nueva contraseña es: ".$this->input->post('pass1')."<br>";
 				$asunto = "Cambio contraseña Guardería Bahía Blanca";
 				
-				$datos=$this->mainModel->datosUsuario($_SESSION['user']);
+				$datos=$this->mainModel->datosUsuario($_SESSION['user'],$_SESSION['rol']);
 				if( $datos['rol'] == 'ALUM' ){ $datos = $this->mainModel->datosTutor($_SESSION['user']); }
 				
 				$this->enviarMail($asunto,$cuerpo,$datos['email']);
@@ -710,67 +728,89 @@ class MainController extends CI_Controller{
 	/**
 	* Función que nos mostrará el calendario para añadir incidencias
 	*/
-	function incidencias(){
+	function incidencias($anno = null, $mes = null){
 		if(!isset($_SESSION['rol'])){
 			show_404();
 		}
 
 		$this->load->database();
 		
-		$this->load->view('cabecera');
-		$this->tipoMenu();
-		$this->load->view('calendario_incidencias');
-		
+		if ($anno == null) {
+			$anno = date('Y');
+		}
+		if($mes == null){
+			$mes = date('m');
+		}
+
+		$incidencias = $this->mainModel->incidencias_mens($anno,$mes);
+
+		$data = array(
+			'anno' => $anno,
+			'mes' => $mes,
+			'incidencias' => $incidencias
+ 			);
+
+        $this->load->view('cabecera');
+        $this->tipoMenu();
+        $this->load->view('calendario_incidencias',$data);
 	}
 
 	/**
-	* Función que va a controlar los eventos del calendario
-	*/
-	function eventos(){
-		if(!isset($_SESSION['rol'])){
+	* Función que nos mostrará una incidencia desde el calendario
+ 	*/
+ 	function verIncidencia($id){
+ 		if(!isset($_SESSION['rol'])){
 			show_404();
 		}
-		
+ 		$this->load->database();
+
+ 		$incidencia=$this->mainModel->getIncidencia($id);
+ 		$comentarios=$this->mainModel->getComentarios($id);
+
+ 		$data = array(
+ 			'incidencia' => $incidencia,
+ 			'comentarios' => $comentarios);
+
+ 		$this->load->view('cabecera');
+        $this->tipoMenu();
+        $this->load->view('verIncidencia',$data);
+
+ 	}
+	
+	/**
+	* Función que nos muestra el formulario para registrar las incidencias diarias
+	*/
+	function addIncidencia(){
 		$this->load->view('cabecera');
-		$this->tipoMenu();
-		$this->load->view('calendario_eventos');
+        $this->tipoMenu();
+        $this->load->view('addIncidencia');
 	}
 
 	/**
-	* Función que almacenará un evento en la Base de datos 
+	* Función que almacenará la incidencia nueva en la base de datos para mostrarla posteriormente a los usuarios
+	* Falta email difundido a los tutores de su grupo
 	*/
-	function guardaEvento(){
+	function addInc(){
 		$this->load->database();
 
-
-		$this->form_validation->set_rules('from','Fecha','required');
-		$this->form_validation->set_rules('event','Descripción','required');
-
-		$this->form_validation->set_message('required','El campo %s');
+		$this->form_validation->set_rules('cuerpo','Cuerpo','required');
+		
+		$this->form_validation->set_message('required','El campo %s es obligatorio');
 
 		if($this->form_validation->run() == FALSE){
-			$this->eventos();
+			$this->addContenido();
 		}
 		else{
 			if($this->input->post('submit')){
-				
-				$fecha = $this->input->post('from');
-				
-				$cuerpo = nl2br($this->input->post('event'));
-								
-				$datos = array('fecha' => $fecha,
-							   'cuerpo' => $cuerpo);
-				
-				$this->mainModel->addEvento($datos,$_SESSION['user']);
-
-				$this->incidencias();
+				$cuerpo = nl2br($this->input->post('cuerpo'));
 			}
+			$this->mainModel->addInc($cuerpo);
+			$this->incidencias();
 		}
 		
 	}
 
-	
-	/**
+ 	/**
 	* Funcion auxiliar que determina que menu mostrar en funcion del tipo de usuario que acceda a la web
 	*/
 	function tipoMenu(){
@@ -797,13 +837,14 @@ class MainController extends CI_Controller{
 	function enviarMail($asunto,$contenido,$destino){
 		$configMail=array(
 			'protocol' => 'smtp',
-            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_host' => 'ssl://smtp.gmail.com',
             'smtp_port' => 465,
             'smtp_user' => 'guarderia.bahiablanca@gmail.com',
             'smtp_pass' => 'guarderia1234',
             'mailtype' => 'html',
             'charset' => 'utf-8',
-            'newline' => "\r\n"
+            'newline' => "\r\n",
+            'validate' => true
 		);
 		
 		$this->email->initialize($configMail);

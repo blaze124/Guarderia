@@ -5,7 +5,7 @@ class MainModel extends CI_Model{
 	* Funcion constructor del modelo de nuestra web
 	*/
 	function __construct(){
-		parent::__construct(); 
+		parent::__construct();
 	}	
 
 	/**
@@ -431,8 +431,7 @@ class MainModel extends CI_Model{
 		else{
 			$this->db->where('nickname',$data['nickname']);
 			$this->db->update('usuario_alumno',$cambio);
-		}
-		
+		}	
 	}
 	
 	/**
@@ -538,6 +537,99 @@ class MainModel extends CI_Model{
 		$this->db->where('nickname',$res[0]['nickname']);
 		
 		$res[$i]=$this->db->get()->row_array();
+		
+		return $res;
+	}
+
+	/**
+	* Función que almacenará una incidencia en la tabla eventos
+	*/
+	function addInc($cuerpo){
+		
+		$this->db->select('*');
+		$this->db->from('usuario');
+		$this->db->where('nickname',$_SESSION['user']);
+		
+		$ret = $this->db->get()->row_array();
+
+		$grupo = $ret['grupo'];
+
+		$data = array(
+			'fecha' => date('Y-m-d'),
+			'cuerpo' => $cuerpo,
+			'grupo' => $grupo);
+
+		$this->db->insert('evento',$data);
+	}
+
+	/**
+	* Función que nos devolverá todas las incidencias del mes del año seleccionado
+	*/
+	function incidencias_mens($anno,$mes){
+
+		$fecha = $anno.'-'.$mes;
+
+		$this->db->select('*');
+		$this->db->from('usuario');
+		$this->db->where('nickname',$_SESSION['user']);
+
+		$ret = $this->db->get()->row_array();
+
+		$grupo = $ret['grupo'];
+
+		$this->db->select('*');
+		$this->db->from('evento');
+		$this->db->like('fecha',$fecha,'after');
+
+		$return = $this->db->get();
+
+		$i=0;
+		$j=0;
+		$res = array();
+		if($return->num_rows() != 0){
+			while($j < $return->num_rows())
+			{
+				$res[$i] = $return->row_array($i);
+				$i++;
+				$j++;
+			}
+		}
+		
+		return $res;
+	}
+
+	/**
+	* Función que nos devolverá la incidencia con la id seleccionada
+	*/
+	function getIncidencia($id){
+		$this->db->select('*');
+		$this->db->from('evento');
+		$this->db->where('id',$id);
+
+		return $ret = $this->db->get()->row_array();
+	}
+
+	/**
+	* Función que nos devolverá los comentarios de los tutores a una incidencia con la id seleccionada
+	*/
+	function getComentarios($id){
+		$this->db->select('*');
+		$this->db->from('comentario');
+		$this->db->where('evento',$id);
+
+		$return = $this->db->get();
+
+		$i=0;
+		$j=0;
+		$res=array();
+		if($return->num_rows() != 0){
+			while($j < $return->num_rows())
+			{
+				$res[$i] = $return->row_array($i);
+				$i++;
+				$j++;
+			}
+		}
 		
 		return $res;
 	}

@@ -15,7 +15,7 @@
 	echo '<p>Alumnos</p>';
 	foreach($res as $valor)
 	{
-		echo $valor['nickname'].' - '.$valor['nombre'].' '.$valor['apellidos'].'<a href="'.base_url().'index.php/mainController/verAlumnoSimple/'.$valor['id'].'"><img src="<?php echo base_url()?>imagenes/logo/ir.png" style="vertical-align: middle;"></a>'.'<br>';
+		echo $valor['nickname'].' - '.$valor['nombre'].' '.$valor['apellidos'].'<a href="'.base_url().'index.php/mainController/verAlumnoSimple/'.$valor['id'].'"><img src="'.base_url().'imagenes/logo/ir.png" style="vertical-align: middle;"></a>'.'<br>';
 	}
 
 ?>

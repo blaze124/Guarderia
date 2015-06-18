@@ -15,17 +15,17 @@
 	echo '<p>Novedades</p>';
 	foreach($res1 as $valor)
 	{
-		echo $valor['id'].' - '.$valor['titular'].' - '.$valor['fecha'].'<a href="'.base_url().'index.php/mainController/borrarContenido/'.$valor['id'].'"><img src="<?php echo base_url()?>imagenes/logo/error.png" style="vertical-align: middle;"></a>'.'<br>';
+		echo $valor['id'].' - '.$valor['titular'].' - '.$valor['fecha'].'<a href="'.base_url().'index.php/mainController/borrarContenido/'.$valor['id'].'"><img src="'.base_url().'imagenes/logo/error.png" style="vertical-align: middle;"></a>'.'<br>';
 	}
 	echo '<p>Cursos</p>';
 	foreach($res2 as $valor)
 	{
-		echo $valor['id'].' - '.$valor['titular'].' - '.$valor['fecha'].''.base_url().'index.php/mainController/borrarContenido/'.$valor['id'].'"><img src="<?php echo base_url()?>imagenes/logo/error.png" style="vertical-align: middle;"></a>'.'<br>';
+		echo $valor['id'].' - '.$valor['titular'].' - '.$valor['fecha'].'<a href="'.base_url().'index.php/mainController/borrarContenido/'.$valor['id'].'"><img src="'.base_url().'imagenes/logo/error.png" style="vertical-align: middle;"></a>'.'<br>';
 	}
 	echo '<p>Menus mensuales</p>';
 	foreach($res3 as $valor)
 	{
-		echo $valor['id'].' - '.$valor['titular'].' - '.$valor['fecha'].''.base_url().'index.php/mainController/borrarContenido/'.$valor['id'].'"><img src="<?php echo base_url()?>imagenes/logo/error.png " style="vertical-align: middle;"></a>'.'<br>';
+		echo $valor['id'].' - '.$valor['titular'].' - '.$valor['fecha'].'<a href="'.base_url().'index.php/mainController/borrarContenido/'.$valor['id'].'"><img src="'.base_url().'imagenes/logo/error.png " style="vertical-align: middle;"></a>'.'<br>';
 	}
 ?>
 

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link href="http://localhost/Guarderia/css/estilosPrincipal.css" type="text/css" rel="stylesheet">
+<link href="<?php echo base_url()?>css/estilosPrincipal.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
@@ -14,7 +14,7 @@
 	
 	$datos= array('name'=>'AltaUsuario');
 	
-	echo form_open('http://localhost/Guarderia/index.php/mainController/cambioPass',$datos);
+	echo form_open('index.php/mainController/cambioPass',$datos);
 	
 	echo'<p>Introduzca su nueva contraseña</p>';
 	echo'<p class="comentario">Las contraseñas deben tener entre 8 y 16 caracteres.</p>';

@@ -2,10 +2,10 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link href="http://localhost/Guarderia/css/estilosPrincipal.css" type="text/css" rel="stylesheet">
-<link href="http://localhost/Guarderia/css/lightbox.css" rel="stylesheet" />
-<script src="http://localhost/Guarderia/js/jquery-1.11.0.min.js"></script>
-<script src="http://localhost/Guarderia/js/lightbox.min.js"></script>
+<link href="<?php echo base_url()?>css/estilosPrincipal.css" type="text/css" rel="stylesheet">
+<link href="<?php echo base_url()?>css/lightbox.css" rel="stylesheet" />
+<script src="<?php echo base_url()?>js/jquery-1.11.0.min.js"></script>
+<script src="<?php echo base_url()?>js/lightbox.min.js"></script>
 </head>
 
 <body>
@@ -42,7 +42,7 @@
 		echo '<div class="contenido">';
 		echo '<center><div class="titulo"><h2>'.$valor['titular'].'</h2></div>';
 
-		echo '<div class="text_cont"><p>'.$valor['cuerpo'].'</p></div>';
+		echo '<div><p>'.$valor['cuerpo'].'</p></div>';
 
 		echo'<p class="comentario">**Click sobre la imagen para ver en tamaño completo**</p>';
 		
@@ -58,7 +58,7 @@
 		echo '</center></div>';
 	}
 	
-	echo '<a href="http://localhost/Guarderia/index.php/mainController/todoMenus"><p align="center">Ver los menús de otros meses</p></a>';
+	echo '<a href="'.base_url().'index.php/mainController/todoMenus"><p align="center">Ver los menús de otros meses</p></a>';
 ?>
 </section>
 </body>

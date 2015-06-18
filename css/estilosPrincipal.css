@@ -14,6 +14,10 @@ a{
 	text-decoration:none;
 }
 
+a:visited{
+	text-decoration: none;
+}
+
 .cabecera{
 	margin-top:190px;
 }
@@ -44,6 +48,7 @@ a{
 	background: linear-gradient(#AA44AA,#660066); /*Standard*/
 	height: 30px;
 	padding-bottom: 10px;
+	text-decoration: none;
 }	
 	
 .menu {
@@ -53,6 +58,7 @@ a{
 	padding-top:10px;
 	padding-bottom:10px;
 	list-style: none;
+	text-decoration: none;
 }
 
 .enlace {
@@ -66,6 +72,7 @@ a{
 	padding-right:15px; 
 	vertical-align: middle;
 	padding-top: 10px;
+	text-decoration: none;
 }
 
 .enlace:hover {
@@ -144,7 +151,7 @@ a{
 }
 
 .titulo{
-	color:#a0a;
+	color:#7302B0;
 }
 
 p{
@@ -152,20 +159,55 @@ p{
 }
 
 .tabla_enlaces{
-	border:2px #606 solid;
-	padding:5px;
+	border:3px #7302B0 solid;
+	border-radius: 15px 3px 15px 3px; 
+	color:#7302B0;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:7px;
+	padding-right:7px;
+	background: -webkit-linear-gradient(right top, #D8EFFF,#B2DFFF); /*Safari 5.1-6*/
+	background: -o-linear-gradient(right top, #D8EFFF,#B2DFFF); /*Opera 11.1-12*/
+	background: -moz-linear-gradient(right top, #D8EFFF,#B2DFFF); /*Fx 3.6-15*/
+	background: linear-gradient(right top, #D8EFFF,#B2DFFF); /*Standard*/ 
 }
+
+.tabla_enlaces a{
+	color:#7302B0;
+}
+
+.tabla_enlaces:hover{
+	border:3px solid;
+	border-color:#7302B0;
+	border-radius: 15px 3px 15px 3px; 
+	color:#7302B0;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:7px;
+	padding-right:7px;
+	background: -webkit-linear-gradient(right top, #D5BCFF,#B28BF4); /*Safari 5.1-6*/
+	background: -o-linear-gradient(right top, #D5BCFF,#B28BF4); /*Opera 11.1-12*/
+	background: -moz-linear-gradient(right top, #D5BCFF,#B28BF4); /*Fx 3.6-15*/
+	background: linear-gradient(right top, #D5BCFF,#B28BF4); /*Standard*/ 
+}
+
 
 .contenido{
 	display: block;
-	width: 70%;
-	background:#CC9;
-	text-align:left;
-	margin: 10px;
+	width: 80%;
+	background:#D8EFFF;
 	border-radius: 15px;
-	border-color:#C0C;
-	border:thick;
-	margin-left: 200px;
+	padding-top: 10px;
+	padding-bottom: 30px;
+	padding-right: 20px;
+	padding-left: 20px;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top:10px;
+	height: 100%;
+	margin-bottom: 15px;
+	border:3px solid;
+	border-color:#7302B0;
 }
 
 .contenido-calendario{
@@ -187,7 +229,6 @@ p{
 }
 
 .contenido img{
-	background:#C6F;
 	width: 300px;
 	margin: 10px;
 }
@@ -222,6 +263,17 @@ p{
 .mens_error{
 	font-size:13px;
 	color:#BB0000;
+}
+
+.img-portada{
+	background: #D8EFFF;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-radius: 20px;
+	border-width: 3px;
+	border:solid #609;
+	padding-left: 25px;
+	padding-right: 25px;
 }
 
 /*Estilos del calendario*/

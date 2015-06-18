@@ -1,12 +1,11 @@
 <!doctype html>
 <html>
 <head>
-<link href="http://localhost/Guarderia/css/estilosPrincipal.css" type="text/css" rel="stylesheet">
-<link href="../../CSS/lightbox.css" rel="stylesheet" />
-<script src="../../js/jquery-1.11.0.min.js"></script>
-<script src="../../js/lightbox.min.js"></script>
+<link href="<?php echo base_url() ?>css/estilosPrincipal.css" type="text/css" rel="stylesheet">
+<link href="<?php echo base_url() ?>css/lightbox.css" rel="stylesheet" />
+<script src="<?php echo base_url() ?>js/jquery-1.11.0.min.js"></script>
+<script src="<?php echo base_url() ?>js/lightbox.min.js"></script>
 <meta charset="utf-8">
-<title>Documento sin título</title>
 </head>
 
 <body>
@@ -61,7 +60,7 @@
 		echo '<div class="contenido">';
 		echo '<center><div class="titulo"><h2>'.$valor['titular'].'</h2></div>';
 
-		echo '<div class="text_cont"><p>'.$valor['cuerpo'].'</p></div>';
+		echo '<div><p>'.$valor['cuerpo'].'</p></div>';
 		
 		echo'<p class="comentario">**Click sobre la imagen para ver en tamaño completo**</p>';
 
@@ -77,7 +76,7 @@
 		echo '</center></div>';
 	}
 	
-	echo '<a href="http://localhost/Guarderia/index.php/mainController/todoContenido"><p align="center">Ver todas las noticias</p></a>';
+	echo '<a href="'.base_url().'index.php/mainController/todoContenido"><p align="center">Ver todas las noticias</p></a>';
 ?>
 
 	

@@ -316,9 +316,8 @@ class MainModel extends CI_Model{
 	*/
 	function getUsuarios($rol){
 		if($rol == 'ALUM'){
-			$this->db->select('usuario_alumno.*');
+			$this->db->select('*');
 			$this->db->from('usuario_alumno');
-			$this->db->where('rol',$rol);
 			$this->db->order_by('usuario_alumno.id','asc');
 			
 			$return = $this->db->get();
@@ -568,10 +567,17 @@ class MainModel extends CI_Model{
 	function incidencias_mens($anno,$mes){
 
 		$fecha = $anno.'-'.$mes;
-
-		$this->db->select('*');
-		$this->db->from('usuario');
-		$this->db->where('nickname',$_SESSION['user']);
+		
+		if($_SESSION['rol'] == 1){
+			$this->db->select('*');
+			$this->db->from('usuario');
+			$this->db->where('nickname',$_SESSION['user']);
+		}
+		elseif($_SESSION['rol'] == 0){
+			$this->db->select('*');
+			$this->db->from('usuario_alumno');
+			$this->db->where('nickname',$_SESSION['user']);
+		}
 
 		$ret = $this->db->get()->row_array();
 
@@ -610,6 +616,13 @@ class MainModel extends CI_Model{
 	}
 
 	/**
+	* Funcion que nos almacenará en la base de datos los comentarios que realicen los tutores
+	*/
+	function addCom($datos){
+		$this->db->insert('comentario',$datos);
+	}
+
+	/**
 	* Función que nos devolverá los comentarios de los tutores a una incidencia con la id seleccionada
 	*/
 	function getComentarios($id){
@@ -633,5 +646,6 @@ class MainModel extends CI_Model{
 		
 		return $res;
 	}
+
 }
 ?>

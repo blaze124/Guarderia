@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link href="http://localhost/Guarderia/css/estilosPrincipal.css" type="text/css" rel="stylesheet">
+<link href="<?php echo base_url()?>css/estilosPrincipal.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
@@ -64,7 +64,7 @@
 				break;
 		}
 	
-	echo('<br><a href="http://localhost/Guarderia/index.php/mainController/consultaAlumnos"><button type="button">Volver a selección de alumnos</button></a>');
+	echo('<br><a href="'.base_url().'index.php/mainController/consultaAlumnos"><button type="button">Volver a selección de alumnos</button></a>');
 	
 	?>
 	

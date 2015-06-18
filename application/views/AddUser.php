@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link href="http://localhost/Guarderia/css/estilosPrincipal.css" type="text/css" rel="stylesheet">
+<link href="<?php echo base_url()?>css/estilosPrincipal.css" type="text/css" rel="stylesheet">
 
 <script type="text/javascript">
 <!-- 
@@ -36,7 +36,7 @@
 	
 	$datos= array('name'=>'AltaUsuario');
 	
-	echo form_open('http://localhost/Guarderia/index.php/mainController/AltaUsuario',$datos);
+	echo form_open('index.php/mainController/AltaUsuario',$datos);
 	
 	echo'<p>Datos del usuario</p>';
 	echo "Administrador <input type='radio' name='ROL' value='ADMIN' onClick='mostrar_campos();' /> ";

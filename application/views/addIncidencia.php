@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link href="http://localhost/Guarderia/css/estilosPrincipal.css" type="text/css" rel="stylesheet">
+<link href="<?php echo base_url()?>css/estilosPrincipal.css" type="text/css" rel="stylesheet">
 
 </head>
 
@@ -15,7 +15,7 @@
 	echo form_open('index.php/mainController/addInc',$datos);
 	
 	echo "<p>Qué ha sucedido hoy</p>";
-	echo '<textarea cols="100" rows="20" name="cuerpo"></textarea><br>';
+	echo '<textarea cols="100" rows="15" name="cuerpo"></textarea><br>';
 	
 	echo form_submit('submit','Aceptar');
 	echo form_close();

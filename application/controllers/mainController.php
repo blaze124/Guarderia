@@ -122,7 +122,7 @@ class MainController extends CI_Controller{
 					$destino = $data['email_t'];
 					$destino2 = $data['email_t2'];
 					
-					$this->enviarMail("Bienvenido a la Guardería Bahía Blanca",$cuerpo_mail,$destino1);
+					$this->enviarMail("Bienvenido a la Guardería Bahía Blanca",$cuerpo_mail,$destino);
 					$this->enviarMail("Bienvenido a la Guardería Bahía Blanca",$cuerpo_mail,$destino2);
 				}
 				
@@ -554,9 +554,16 @@ class MainController extends CI_Controller{
 				$asunto = "Cambio contraseña Guardería Bahía Blanca";
 				
 				$datos=$this->mainModel->datosUsuario($_SESSION['user'],$_SESSION['rol']);
-				if( $datos['rol'] == 'ALUM' ){ $datos = $this->mainModel->datosTutor($_SESSION['user']); }
+				if( $datos['rol'] == 'ALUM' ){ 
+					$datos = $this->mainModel->datosTutor($_SESSION['user']); 
+					foreach ($datos as $valor) {
+						$this->enviarMail($asunto,$cuerpo,$valor['email']);
+					}
+				}
+				else{
+					$this->enviarMail($asunto,$cuerpo,$datos['email']);
+				}
 				
-				$this->enviarMail($asunto,$cuerpo,$datos['email']);
 				
 				$pass = $this->crypt_blowfish($this->input->post('pass1'));
 				
@@ -769,7 +776,8 @@ class MainController extends CI_Controller{
 
  		$data = array(
  			'incidencia' => $incidencia,
- 			'comentarios' => $comentarios);
+ 			'comentarios' => $comentarios,
+ 			'id' => $id);
 
  		$this->load->view('cabecera');
         $this->tipoMenu();
@@ -807,6 +815,112 @@ class MainController extends CI_Controller{
 			$this->mainModel->addInc($cuerpo);
 			$this->incidencias();
 		}
+	}
+
+	/**
+	* Función que nos mostrará el formulario para que los tutores añadan comentarios a las incidencias diarias
+	*/
+	function addComentario($id){
+		$this->load->view('cabecera');
+        $this->tipoMenu();
+        $this->load->view('addComentario',array('id'=>$id));
+	}
+
+	/**
+	* Función que almacenará el comentario del tutor en la base de datos
+	*/
+	function addCom(){
+		$this->load->database();
+
+		$this->form_validation->set_rules('cuerpo','Cuerpo','required');
+		
+		$this->form_validation->set_message('required','El campo %s es obligatorio');
+
+		if($this->form_validation->run() == FALSE){
+			$this->addContenido();
+		}
+		else{
+			if($this->input->post('submit')){
+				$cuerpo = nl2br($this->input->post('cuerpo'));
+				$id= $this->input->post('id');
+
+				$datos = array('cuerpo' => $cuerpo,
+							   'evento' => $id,
+							   'nickname' => $_SESSION['user']);
+			}
+
+			$this->mainModel->addCom($datos);
+			$this->incidencias();
+		}
+	}
+
+	/**
+	* Función que mostrará el apartado de cómo trabajamos
+	*/
+	function trabajamos(){
+		$this->load->view('cabecera');
+        $this->tipoMenu();
+        $this->load->view('como_trabajamos');
+	}
+
+	/**
+	* Función que mostrará el apartado de qué ofrecemos
+	*/
+	function ofrecemos(){
+		$this->load->view('cabecera');
+        $this->tipoMenu();
+        $this->load->view('ofrecemos');
+	}
+
+	/**
+	* Función que mostrará el apartado acerca de las instalaciones del centro
+	*/
+	function instalaciones(){
+		$this->load->view('cabecera');
+        $this->tipoMenu();
+        $this->load->view('instalaciones');
+	}
+
+	/**
+	* Función que mostrará el apartado sobre el proyecto educativo
+	*/
+	function proyecto_edu(){
+		$this->load->view('cabecera');
+        $this->tipoMenu();
+        $this->load->view('proyecto_edu');
+	}
+
+	/**
+	* Función que mostrará el apartado de las señas de identidad del centro
+	*/
+	function identidad(){
+		$this->load->view('cabecera');
+        $this->tipoMenu();
+        $this->load->view('identidad');
+	}
+
+	/**
+	* Función que mostrará el apartado acerca de cómo es un día en la escuela
+	*/
+	function dia_escuela(){
+		$this->load->view('cabecera');
+        $this->tipoMenu();
+        $this->load->view('dia_en_escuela');
+	}
+
+	/**
+	* Función que mostrará el apartado de contacto
+	*/
+	function contacto(){
+		$this->load->view('cabecera');
+        $this->tipoMenu();
+        $this->load->view('contacto');
+	}
+
+	/**
+	* Función que procesara el formulario de contacto
+	*/
+	function consultaPublica(){
 		
 	}
 

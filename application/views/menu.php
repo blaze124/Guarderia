@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link href="http://localhost/Guarderia/css/estilosPrincipal.css" type="text/css" rel="stylesheet">
+<link href="<?php echo base_url()?>css/estilosPrincipal.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
@@ -11,28 +11,39 @@
 
 	<ul class='menu' >
     	
-        <a href="http://localhost/Guarderia">
-        	<li class='enlace'>Inicio</li>
+        <a href="<?php echo base_url() ?>" >
+        	<li class='enlace'><img src="<?php echo base_url()?>/imagenes/logo/home.png" width=20px height=20px>
+            <ul>
+                <a href="<?php echo base_url()?>index.php/mainController/trabajamos"><li>Cómo Trabajamos</li></a>
+                <a href="<?php echo base_url()?>index.php/mainController/ofrecemos"><li>Qué ofrecemos</li></a>
+                <a href="<?php echo base_url()?>index.php/mainController/instalaciones"><li>Instalaciones y recursos</li></a>
+                <a href="<?php echo base_url()?>index.php/mainController/proyecto_edu"><li>Método y proyecto educativo</li></a>
+                <a href="<?php echo base_url()?>index.php/mainController/identidad"><li>Nuestras señas de identidad</li></a>
+                <a href="<?php echo base_url()?>index.php/mainController/dia_escuela"><li>Un día en la escuela</li></a>
+                <a href="<?php echo base_url()?>index.php/mainController/localizanos"><li>Localízanos</li></a>
+                <a href="<?php echo base_url()?>index.php/mainController/contacto"><li>Contacta con nosotros</li></a>
+            </ul>
+            </li>
         </a>
    		
-        <a href="http://localhost/Guarderia/index.php/mainController/verContenido"><li class='enlace' >Novedades</li></a>
+        <a href="<?php echo base_url() ?>index.php/mainController/verContenido"><li class='enlace' >Novedades</li></a>
         
-        <a href="http://localhost/Guarderia/index.php/mainController/menus_mens">
+        <a href="<?php echo base_url() ?>index.php/mainController/menus_mens">
         	<li class='enlace'>Menús mensuales</li>
        	</a>
         
-        <a href="http://localhost/Guarderia/index.php/mainController/Acceso">
+        <a href="<?php echo base_url() ?>index.php/mainController/Acceso">
         	<li class='enlace'>Acceso</li>
         </a>
         
 		<li class='enlace'>
-			<a href='http://facebook.es/guarderia.bahiablanca.1' target='_blank'> <img src='http://localhost/Guarderia/imagenes/logo/face.png' width=20px height=20px></a>
+			<a href='http://facebook.es/guarderia.bahiablanca.1' target='_blank'> <img src='<?php echo base_url()?>imagenes/logo/face.png' width=20px height=20px></a>
 		</li>
 		<li class='enlace'>
-			<a href='http://escuelainfantileljardindecadiz.blogspot.com.es/' target='_blank'> <img src='http://localhost/Guarderia/imagenes/logo/blog.png' width=20px height=20px></a>
+			<a href='http://escuelainfantileljardindecadiz.blogspot.com.es/' target='_blank'> <img src='<?php echo base_url()?>imagenes/logo/blog.png' width=20px height=20px></a>
 		</li>
 		<li class='enlace'>
-			<a href='https://twitter.com/CEIBahiaBlanca' target='_blank'> <img src='http://localhost/Guarderia/imagenes/logo/twitter.png' width=20px height=20px></a>
+			<a href='https://twitter.com/CEIBahiaBlanca' target='_blank'> <img src='<?php echo base_url()?>imagenes/logo/twitter.png' width=20px height=20px></a>
 		</li>
     </ul>
 

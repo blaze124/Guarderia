@@ -16,10 +16,11 @@
 
 			if(count($incidencias) != 0){
 				foreach ($incidencias as $valor) {
+					$fecha = date("d-m-Y",strtotime($valor['fecha']));
 					$valor['fecha'] = substr($valor['fecha'], -2);
 					if($valor['fecha'] < 10){substr($valor['fecha'], -1);}
 
-					$datos[$valor['fecha']] = '<a href="'.base_url().'index.php/mainController/verIncidencia/'.$valor['id'].'">Evento '.$valor['id'].'</a>';
+					$datos[$valor['fecha']] = '<a href="'.base_url().'index.php/mainController/verIncidencia/'.$valor['id'].'">Evento día '.$fecha.'<br>Grupo '.$valor['grupo'].'</a>';
 				}
 
 				echo $this->calendar->generate($anno,$mes, $datos);

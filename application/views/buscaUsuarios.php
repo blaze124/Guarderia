@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link href="http://localhost/Guarderia/css/estilosPrincipal.css" type="text/css" rel="stylesheet">
+<link href="<?php echo base_url()?>css/estilosPrincipal.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
@@ -24,7 +24,7 @@
 
 			foreach ($res['0'] as $valor){
 				echo '<b>Usuario:</b> '.$valor['nickname'];
-				echo'<a href="http://localhost/Guarderia/index.php/mainController/mailTutor/'.$valor['nickname'].'"><img src="http://localhost/Guarderia/imagenes/logo/ir.png" style="vertical-align: middle;"></a>';
+				echo'<a href="'.base_url().'index.php/mainController/mailTutor/'.$valor['nickname'].'"><img src="'.base_url().'imagenes/logo/ir.png" style="vertical-align: middle;"></a>';
 				echo'<br>';
 			}
 		}

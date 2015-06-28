@@ -76,7 +76,7 @@
 		echo '</center></div>';
 	}
 	
-	echo '<a href="'.base_url().'index.php/mainController/todoContenido"><p align="center">Ver todas las noticias</p></a>';
+	echo '<a href="'.base_url().'index.php/mainController/todoContenido"><p align="center"><button>Ver todas las noticias</button></p></a>';
 ?>
 
 	

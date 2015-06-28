@@ -462,11 +462,27 @@ class MainModel extends CI_Model{
 	/**
 	* Funcion que buscara a todos los alumnos que contenga una cadena de caracteres en su nombre de usuario
 	*/
-	function buscaUsuarios($cadena){
-		$this->db->select('*');
-		$this->db->from('usuario_alumno');
-		$this->db->like('nickname',$cadena,'both');
-		$return =$this->db->get();
+	function buscaUsuarios( $cadena,$usuario=null){
+		if(!isset($usuario)){
+			$this->db->select('*');
+			$this->db->from('usuario_alumno');
+			$this->db->like('nickname',$cadena,'both');
+			$return =$this->db->get();
+				
+		}
+		else{
+		
+			$this->db->select('*');
+			$this->db->from('usuario');
+			$this->db->where('nickname',$usuario);
+			$tutor =$this->db->get()->row_array();
+
+			$this->db->select('*');
+			$this->db->from('usuario_alumno');
+			$this->db->where('grupo',$tutor['grupo']);
+			$this->db->like('nickname',$cadena,'both');
+			$return =$this->db->get();
+		}
 		
 		$i = 0;
 		$res[0]=0;
@@ -478,7 +494,6 @@ class MainModel extends CI_Model{
 			}
 		}
 		return $res;
-		
 	}
 
 	/**
@@ -504,7 +519,7 @@ class MainModel extends CI_Model{
 	}
 	
 	/**
-	* Función que buscará los datos de un único alumno los alumnos
+	* Función que buscará los datos de un único alumno
 	*/
 	function getAlumno($id){
 		$this->db->select('*');
@@ -516,6 +531,7 @@ class MainModel extends CI_Model{
 		$this->db->select('*');
 		$this->db->from('tutor');
 		$this->db->where('nickname',$res[0]['nickname']);
+		$this->db->order_by('id','asc');
 		
 		$return = $this->db->get();
 		
@@ -525,7 +541,7 @@ class MainModel extends CI_Model{
 		if($return->num_rows() != 0){
 			while($j < $return->num_rows())
 			{
-				$res[$i] = $return->row_array($i);
+				$res[$i] = $return->row_array($j);
 				$i++;
 				$j++;
 			}
@@ -558,7 +574,7 @@ class MainModel extends CI_Model{
 			'cuerpo' => $cuerpo,
 			'grupo' => $grupo);
 
-		$this->db->insert('evento',$data);
+		$this->db->insert('incidencia',$data);
 	}
 
 	/**
@@ -568,39 +584,59 @@ class MainModel extends CI_Model{
 
 		$fecha = $anno.'-'.$mes;
 		
-		if($_SESSION['rol'] == 1){
+		if($_SESSION['rol'] != 2){
+			if($_SESSION['rol'] == 1){
+				$this->db->select('*');
+				$this->db->from('usuario');
+				$this->db->where('nickname',$_SESSION['user']);
+			}
+			elseif($_SESSION['rol'] == 0){
+				$this->db->select('*');
+				$this->db->from('usuario_alumno');
+				$this->db->where('nickname',$_SESSION['user']);
+			}
+
+			$ret = $this->db->get()->row_array();
+
+			$grupo = $ret['grupo'];
+
 			$this->db->select('*');
-			$this->db->from('usuario');
-			$this->db->where('nickname',$_SESSION['user']);
-		}
-		elseif($_SESSION['rol'] == 0){
-			$this->db->select('*');
-			$this->db->from('usuario_alumno');
-			$this->db->where('nickname',$_SESSION['user']);
-		}
+			$this->db->from('incidencia');
+			$this->db->like('fecha',$fecha,'after');
 
-		$ret = $this->db->get()->row_array();
+			$return = $this->db->get();
 
-		$grupo = $ret['grupo'];
-
-		$this->db->select('*');
-		$this->db->from('evento');
-		$this->db->like('fecha',$fecha,'after');
-
-		$return = $this->db->get();
-
-		$i=0;
-		$j=0;
-		$res = array();
-		if($return->num_rows() != 0){
-			while($j < $return->num_rows())
-			{
-				$res[$i] = $return->row_array($i);
-				$i++;
-				$j++;
+			$i=0;
+			$j=0;
+			$res = array();
+			if($return->num_rows() != 0){
+				while($j < $return->num_rows())
+				{
+					$res[$i] = $return->row_array($i);
+					$i++;
+					$j++;
+				}
 			}
 		}
-		
+		else{
+			$this->db->select('*');
+			$this->db->from('incidencia');
+			$this->db->like('fecha',$fecha,'after');
+
+			$return = $this->db->get();
+
+			$i=0;
+			$j=0;
+			$res = array();
+			if($return->num_rows() != 0){
+				while($j < $return->num_rows())
+				{
+					$res[$i] = $return->row_array($i);
+					$i++;
+					$j++;
+				}
+			}
+		}
 		return $res;
 	}
 
@@ -609,7 +645,7 @@ class MainModel extends CI_Model{
 	*/
 	function getIncidencia($id){
 		$this->db->select('*');
-		$this->db->from('evento');
+		$this->db->from('incidencia');
 		$this->db->where('id',$id);
 
 		return $ret = $this->db->get()->row_array();
@@ -623,12 +659,12 @@ class MainModel extends CI_Model{
 	}
 
 	/**
-	* Función que nos devolverá los comentarios de los tutores a una incidencia con la id seleccionada
+	* Función que nos devolverá los comentarios de los tutores a la incidencia con id equivalente al parámetro
 	*/
 	function getComentarios($id){
 		$this->db->select('*');
 		$this->db->from('comentario');
-		$this->db->where('evento',$id);
+		$this->db->where('incidencia',$id);
 
 		$return = $this->db->get();
 
@@ -647,5 +683,68 @@ class MainModel extends CI_Model{
 		return $res;
 	}
 
+	/**
+	* Función que nos devolverá la información de todos los tutores dados de alta para enviarles un mensaje difundido
+	* Si se especifica un grupo solo se seleccionarán los tutores cuyo hijo pertenezca ese grupo
+	*/
+	function getTutores($grupo){
+
+		if(!isset($grupo)){
+			$this->db->select('*');
+			$this->db->from('tutor');
+			$return = $this->db->get();
+
+			$i=0;
+			$j=0;
+			$res=array();
+			if($return->num_rows() != 0){
+				while($j < $return->num_rows())
+				{
+					$res[$i] = $return->row_array($i);
+					$i++;
+					$j++;
+				}
+			}
+			
+			return $res;
+		}
+		else{
+			$this->db->select('*');
+			$this->db->from('usuario_alumno');
+			$this->db->where('grupo',$grupo);
+			$return1 = $this->db->get()->row_array();
+
+			$this->db->select('*');
+			$this->db->from('tutor');
+			$this->db->where('nickname',$return1['nickname']);
+			$return = $this->db->get();
+
+			$i=0;
+			$j=0;
+			$res=array();
+			if($return->num_rows() != 0){
+				while($j < $return->num_rows())
+				{
+					$res[$i] = $return->row_array($i);
+					$i++;
+					$j++;
+				}
+			}
+			
+			return $res;
+		}
+	}
+
+	/**
+	* Función auxiliar que nos devolverá el grupo de un profesor
+	*/
+	function getGrupo($nickname){
+		$this->db->select('*');
+		$this->db->from('usuario');
+		$this->db->where('nickname',$nickname);
+		$return = $this->db->get()->row_array();
+
+		return $return['grupo'];
+	}
 }
 ?>

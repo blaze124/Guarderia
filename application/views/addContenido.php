@@ -14,6 +14,8 @@
 	$datos= array('name'=>'agregaCont','enctype'=>"multipart/form-data");
 	echo form_open('index.php/mainController/agregaCont',$datos);
 	
+	echo '<div class="contenido" align="center">';
+
 	echo "<p>Tipo de noticia</p>";
 	if($_SESSION['rol']==2){
 		echo "Novedades<input type='radio' name='tipo' value='NOV'  checked/> ";
@@ -31,13 +33,15 @@
 	echo "<input type='text' name='titulo' />"; echo form_error('titulo'); echo"<br>";
 	
 	echo "<p>Cuerpo</p>";
-	echo '<textarea cols="100" rows="20" name="cuerpo"></textarea><br>';
+	echo '<textarea cols="80" rows="20" name="cuerpo"></textarea><br>';
 	
 	echo "<p>Insertar imágenes</p>";
 	echo '<input type="file" name="userfile[]" multiple /><br>';
 	
 	echo form_submit('submit','Aceptar');
 	
+	echo '</div>';
+
 	echo form_close();
 ?>
 <br><br><br><br><br><br>

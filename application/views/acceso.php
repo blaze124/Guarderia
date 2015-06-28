@@ -6,16 +6,16 @@
 </head>
 <body>
 
-<section class='formulario'>
+<section class='cuerpo'>
 <?php
 	$this->load->helper('form');
 	
 	echo form_open(base_url().'index.php/mainController/Acceder');
-	
-	echo "Usuario: <input type='text' name='user' />";echo form_error('user');echo '<br>';
-	echo "Contraseña: <input type='password' name='pass' />";echo form_error('pass');echo '<br>';
+	echo '<div class="contenido" align="center">';
+	echo "<input type='text' name='user' placeholder=' Usuario'/>";echo form_error('user');echo '<br>';
+	echo "<input type='password' name='pass' placeholder=' Contraseña'/>";echo form_error('pass');echo '<br>';
 	echo form_submit('submit','Login');
-	
+	echo '</div>';
 	echo form_close();
 ?>
 </section>

@@ -9,22 +9,22 @@
 <body>
 
 <section class='cuerpo'>
-
+<div class="contenido">
 <?php
 	$i = 0;
 	echo '<p>Novedades</p>';
 	foreach($res1 as $valor)
 	{
-		echo $valor['fecha'].' - '.$valor['titular'].'<a href="'.base_url().'index.php/mainController/verContenidoSimple/'.$valor['id'].'"><img src="<?php echo base_url()?>imagenes/logo/ir.png" style="vertical-align: middle;"></a>'.'<br>';
+		echo $valor['fecha'].' - '.$valor['titular'].'<a href="'.base_url().'index.php/mainController/verContenidoSimple/'.$valor['id'].'"><img src="'.base_url().'imagenes/logo/ir.png" style="vertical-align: middle; height:25px; width:25px;"></a>'.'<br>';
 	}
 	echo '<p>Cursos</p>';
 	foreach($res2 as $valor)
 	{
-		echo $valor['fecha'].' - '.$valor['titular'].'<a href="'.base_url().'index.php/mainController/verContenidoSimple/'.$valor['id'].'"><img src="<?php echo base_url()?>imagenes/logo/ir.png" style="vertical-align: middle;"></a>'.'<br>';
+		echo $valor['fecha'].' - '.$valor['titular'].'<a href="'.base_url().'index.php/mainController/verContenidoSimple/'.$valor['id'].'"><img src="'.base_url().'imagenes/logo/ir.png" style="vertical-align: middle; height:25px; width:25px;"></a>'.'<br>';
 	}
 	
 ?>
-
+</div>
 </section>
 
 </body>

@@ -26,6 +26,7 @@ class MainController extends CI_Controller{
 
 		parent::__construct();
 		$this->load->model('mainModel');
+		$this->load->helper('download');
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->library('email');
@@ -212,7 +213,6 @@ class MainController extends CI_Controller{
 	
 	/**
 	* Funcion que procesa el formulario de adicion de contenidos
-	* Falta el difundido a todos en caso de novedad privada
 	*/
 	function agregaCont(){
 		$this->load->database();
@@ -266,6 +266,19 @@ class MainController extends CI_Controller{
 							$this->mainModel->addImagen($id,$ruta);
 						}
 						
+						if($datos['privilegios'] == 'PRIVADO'){
+							$tutores = $this->mainModel->getTutores();
+							$i=0;
+							$emails=array();
+							foreach ($tutores as $valor) {
+								$emails[$i] = $valor['email'];
+							}
+
+							$cuerpo = "Se ha realizado una nueva publicación en la página web de la Guardería que podría ser de su interés<br>";
+							$asunto = "Guardería Bahía Blanca: Nuevo contenido disponible";
+							$this->enviarMailOculto($emails,$cuerpo,$asunto);
+						}
+
 						header('Location:'.base_url());
 					}
 			}
@@ -617,7 +630,7 @@ class MainController extends CI_Controller{
 	* Función que permite al administrador comunicarse con el tutor de un alumno
 	*/
 	function mailTutores($res=null){
-		if( !isset($_SESSION['rol']) || $_SESSION['rol'] != 2){
+		if( !isset($_SESSION['rol']) || $_SESSION['rol'] == 0){
 			show_404();
 		}
 		if( !isset($res) ){
@@ -650,7 +663,12 @@ class MainController extends CI_Controller{
 		}
 		else{
 			if($this->input->post('submit')){
-				$res = $this->mainModel->buscaUsuarios($this->input->post('busqueda'));
+				if($_SESSION['rol'] == 2){
+					$res = $this->mainModel->buscaUsuarios($this->input->post('busqueda'));	
+				}
+				else{
+					$res = $this->mainModel->buscaUsuarios($this->input->post('busqueda'),$_SESSION['user']);
+				}
 				$this->mailTutores($res);
 			}
 		}
@@ -660,7 +678,7 @@ class MainController extends CI_Controller{
 	* Función que en base a un alumno, le envía un email al tutor asociado a la cuenta
 	*/
 	function mailTutor($usuario){
-		if( !isset($_SESSION['rol']) || $_SESSION['rol'] != 2){
+		if( !isset($_SESSION['rol']) || $_SESSION['rol'] == 0){
 			show_404();
 		}
 		$data['user'] = $usuario;
@@ -796,7 +814,6 @@ class MainController extends CI_Controller{
 
 	/**
 	* Función que almacenará la incidencia nueva en la base de datos para mostrarla posteriormente a los usuarios
-	* Falta email difundido a los tutores de su grupo
 	*/
 	function addInc(){
 		$this->load->database();
@@ -813,6 +830,24 @@ class MainController extends CI_Controller{
 				$cuerpo = nl2br($this->input->post('cuerpo'));
 			}
 			$this->mainModel->addInc($cuerpo);
+
+			$grupo = $this->mainModel->getGrupo($_SESSION['user']);
+
+			$tutores = $this->mainModel->getTutores($grupo);
+
+			$i=0;
+			$emails=array();
+			foreach ($tutores as $valor) {
+				$emails[$i] = $valor['email'];
+			}
+
+			$cuerpo = "Se ha publicado en la web de la guardería qué ha hecho su hijo en el día de hoy.<br>
+					   Si desea comprobarlo y darnos su opinión solo tiene que acceder a la sección habilitada para este fin.<br>
+					   Cualquier sugerencia será agradecida ya que nos ayudará a dar un mejor servicio para todos.<br><br>
+					   Que tenga un buen día.";
+			$asunto = "Guardería Bahía Blanca: Actividad diaria";
+			$this->enviarMailOculto($emails,$cuerpo,$asunto);
+
 			$this->incidencias();
 		}
 	}
@@ -921,9 +956,35 @@ class MainController extends CI_Controller{
 	* Función que procesara el formulario de contacto
 	*/
 	function consultaPublica(){
-		
-	}
 
+		$this->form_validation->set_rules('nombre','Nombre','required');
+		$this->form_validation->set_rules('email','email','required');
+
+		$this->form_validation->set_message('required','El campo %s es obligatorio');
+		
+		if($this->form_validation->run() == FALSE){
+			$this->addContenido();
+		}
+		else{
+			if($this->input->post('submit')){
+				$consulta = nl2br($this->input->post('consulta'));
+				$nombre= $this->input->post('nombre');
+				$email = $this->input->post('email');
+				
+				$destino = 'guarderia.bahiablanca@gmail.com';
+				$asunto = 'Consulta desde la web';
+
+				$cuerpo = 'Tiene una consulta realizada desde la web.<br>
+						   El nombre del interesado es: '.$nombre.'<br>
+						   Su correo electrónico es: '.$email.'<br>
+						   La consulta es la siguiente: <br><br>'.$consulta;
+
+				$this->enviarMail($asunto,$cuerpo,$destino);
+			}
+			$this->index();
+		}
+	}
+	
  	/**
 	* Funcion auxiliar que determina que menu mostrar en funcion del tipo de usuario que acceda a la web
 	*/
@@ -974,6 +1035,34 @@ class MainController extends CI_Controller{
 		}
 	}
 	
+	/**
+	* Función que enviará los mensajes con copia oculta para grupos de tutores
+	*/
+	function enviarMailOculto($emails,$cuerpo,$asunto){
+		$configMail=array(
+			'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.gmail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'guarderia.bahiablanca@gmail.com',
+            'smtp_pass' => 'guarderia1234',
+            'mailtype' => 'html',
+            'charset' => 'utf-8',
+            'newline' => "\r\n",
+            'validate' => true
+		);
+		
+		$this->email->initialize($configMail);
+		
+		$this->email->from('guarderia.bahiablanca@gmail.com','Guarderia Bahia Blanca');
+		$this->email->bcc($emails);
+        $this->email->subject($asunto);
+        $this->email->message($cuerpo);
+        
+		if (!$this->email->send()) {
+			// Raise error message
+			show_error($this->email->print_debugger());
+		}
+	}
 	/**
 	* Funcion auxiliar que se emplea para encriptar informacion
 	*/

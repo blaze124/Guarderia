@@ -23,7 +23,7 @@
         	<?php
         		$this->load->helper('form');
     			$datos= array('name'=>'consultaPublica','enctype'=>"multipart/form-data");
-    			echo form_open(base_url().'consultaPublica',$datos);
+    			echo form_open(base_url().'index.php/mainController/consultaPublica',$datos);
     		
     			echo "Nombre y Apellidos:<input type='text' size='50' name='nombre' /><br>";
 
@@ -31,7 +31,7 @@
     			
     			echo 'Mensaje:<br><textarea cols="75" rows="15" name="consulta"></textarea><br>';
 
-    			echo form_submit('submit','Buscar');
+    			echo form_submit('submit','Enviar');
     		
     			echo form_close();
         	?>

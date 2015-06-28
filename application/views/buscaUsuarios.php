@@ -11,6 +11,9 @@
 	<h2 class="titulo" >Búsqueda de usuarios para contactar<br> por correo electrónico</h2>
 	
 	<?php
+
+		echo '<div class="contenido">';
+
 		$this->load->helper('form');
 		$datos= array('name'=>'buscaUsuarios','enctype'=>"multipart/form-data");
 		echo form_open('index.php/mainController/buscaUsuarios',$datos);
@@ -24,11 +27,13 @@
 
 			foreach ($res['0'] as $valor){
 				echo '<b>Usuario:</b> '.$valor['nickname'];
-				echo'<a href="'.base_url().'index.php/mainController/mailTutor/'.$valor['nickname'].'"><img src="'.base_url().'imagenes/logo/ir.png" style="vertical-align: middle;"></a>';
+				echo'<a href="'.base_url().'index.php/mainController/mailTutor/'.$valor['nickname'].'"><img src="'.base_url().'imagenes/logo/ir.png" style="vertical-align: middle; height:25px; width:25px;"></a>';
 				echo'<br>';
 			}
 		}
-	
+		
+		echo '</div>';
+
 		echo form_close();
 	?>
 	

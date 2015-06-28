@@ -9,27 +9,26 @@
 
 <section class='cuerpo' >
 
-	<?php
+	<?php		
+		echo '<div class="contenido" align="center">';
 
-		echo'<h1 align="center" class="titulo">Datos del Alumno</h1>';
-		
 		echo('<h3 class="titulo">Datos de Usuario</h3>');
-		echo('<b>Usuario</b>: '.$res[0]['nickname'].'<br>');
+		echo('<p><b>Usuario</b>: '.$res[0]['nickname'].'<br>');
 		echo('<b>Nombre y Apellidos</b>: '.$res[0]['nombre'].' '.$res[0]['apellidos'].'<br>');
 		echo('<b>Fecha de Nacimiento</b>: '.$res[0]['f_nac'].'<br>');
-		echo('<b>Domicilio</b>: '.$res[0]['domicilio']);
+		echo('<b>Domicilio</b>: '.$res[0]['domicilio'].'</p>');
 		
 		echo('<h3 class="titulo">Datos del Tutor 1</h3>');
-		echo('<b>Nombre y Apellidos</b>: '.$res[1]['nombre'].' '.$res[1]['apellidos'].'<br>');
+		echo('<p><b>Nombre y Apellidos</b>: '.$res[1]['nombre'].' '.$res[1]['apellidos'].'<br>');
 		echo('<b>Email</b>: '.$res[1]['email'].'<br>');
-		echo('<b>Teléfono</b>: '.$res[1]['telefono'].'<br>');
+		echo('<b>Teléfono</b>: '.$res[1]['telefono'].'</p>');
 	
 		echo('<h3 class="titulo">Datos del Tutor 2</h3>');
-		echo('<b>Nombre y Apellidos</b>: '.$res[2]['nombre'].' '.$res[2]['apellidos'].'<br>');
+		echo('<p><b>Nombre y Apellidos</b>: '.$res[2]['nombre'].' '.$res[2]['apellidos'].'<br>');
 		echo('<b>Email</b>: '.$res[2]['email'].'<br>');
-		echo('<b>Teléfono</b>: '.$res[2]['telefono'].'<br>');
+		echo('<b>Teléfono</b>: '.$res[2]['telefono'].'</p>');
 		
-		echo('<h3 class="titulo">Datos Administrativos</h3>');
+		echo('<h3 class="titulo">Datos Administrativos</h3><p>');
 		
 		switch($res[3]['horario']){
 			case 'ESCOLAR':
@@ -63,9 +62,11 @@
 				echo('<b>Autorización para fotografías</b>: No<br>');
 				break;
 		}
-	
+	echo '</p>';
 	echo('<br><a href="'.base_url().'index.php/mainController/consultaAlumnos"><button type="button">Volver a selección de alumnos</button></a>');
 	
+	echo '</div>';
+
 	?>
 	
 </section>

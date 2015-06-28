@@ -29,7 +29,7 @@
 				echo $this->calendar->generate($anno,$mes);
 			}
 			if($_SESSION['rol'] == 1){
-				echo '<br><a href="'.base_url().'index.php/mainController/addIncidencia" ><button>Añadir Incidencia</button></a>';
+				echo '<br><a href="'.base_url().'index.php/mainController/addIncidencia" ><div align="center"><button>Añadir Incidencia</button></div></a>';
 			}
 		?>
 

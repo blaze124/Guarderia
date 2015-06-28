@@ -98,7 +98,52 @@
 
      <h1 class="titulo" align="center">Galería de imágenes</h1>
      <div class="contenido">
-     	
+     	<a href="<?php echo base_url()?>imagenes/Galeria/010.JPG" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/010.JPG"/>
+        </a>
+        <a href="<?php echo base_url()?>imagenes/Galeria/002.JPG" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/002.JPG"/>
+        </a>
+        <a href="<?php echo base_url()?>imagenes/Galeria/005.JPG" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/005.JPG"/>
+        </a>
+        <a href="<?php echo base_url()?>imagenes/Galeria/008.JPG" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/008.JPG"/>
+        </a>
+        <a href="<?php echo base_url()?>imagenes/Galeria/012.JPG" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/012.JPG"/>
+        </a>
+        <a href="<?php echo base_url()?>imagenes/Galeria/016.JPG" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/016.JPG"/>
+        </a>
+        <a href="<?php echo base_url()?>imagenes/Galeria/017.JPG" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/017.JPG"/>
+        </a>
+        <a href="<?php echo base_url()?>imagenes/Galeria/019.JPG" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/019.JPG"/>
+        </a>
+        <a href="<?php echo base_url()?>imagenes/Galeria/022.JPG" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/022.JPG"/>
+        </a>
+        <a href="<?php echo base_url()?>imagenes/Galeria/024.JPG" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/024.JPG"/>
+        </a>
+        <a href="<?php echo base_url()?>imagenes/Galeria/028.JPG" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/028.JPG"/>
+        </a>
+        <a href="<?php echo base_url()?>imagenes/Galeria/034.JPG" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/034.JPG"/>
+        </a>
+        <a href="<?php echo base_url()?>imagenes/Galeria/032.JPG" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/032.JPG"/>
+        </a>
+        <a href="<?php echo base_url()?>imagenes/Galeria/040.JPG" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/040.JPG"/>
+        </a>
+        <a href="<?php echo base_url()?>imagenes/Galeria/041.JPG" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/041.JPG"/>
+        </a>
+
      </div>
 </section>
 

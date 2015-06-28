@@ -7,8 +7,8 @@
 
 <body>
 
-<section class='formulario'>
-
+<section class='cuerpo'>
+<div class="contenido" align="center">
 <?php
 	$this->load->helper('form');
 	
@@ -27,6 +27,9 @@
 	
 	echo form_close();
 ?>
+
+</div>
+
 </section>
 
 </body>

@@ -47,7 +47,7 @@
 		echo'<p class="comentario">**Click sobre la imagen para ver en tamaño completo**</p>';
 		
 		foreach($valor['ruta'] as $img){
-			$foto = str_replace("C:/xampp/htdocs/","http://localhost/",$img);
+			$foto = str_replace("C:/xampp/htdocs/Guarderia/",base_url(),$img);
 			echo '<a href="'.$foto.'" data-lightbox="image-1" data-title="'.$valor['titular'].'"><img src="'.$foto.'"/></a>';
 		}
 		
@@ -55,10 +55,10 @@
 		else{$tipo = 'Cursos';}
 		
 		echo '<div class="tipo">'.$valor['fecha'].'</div>';
+		echo '<p>Para ver la imagen en más grande, pulse <a href="'.$foto.'" target="_blank"><b>aquí</b></a></p>';
 		echo '</center></div>';
 	}
-	
-	echo '<a href="'.base_url().'index.php/mainController/todoMenus"><p align="center">Ver los menús de otros meses</p></a>';
+	echo '<a href="'.base_url().'index.php/mainController/todoMenus"><p align="center"><button>Ver todos los menús</button></p></a>';
 ?>
 </section>
 </body>

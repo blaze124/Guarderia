@@ -23,7 +23,7 @@
 		echo '</div>';
 	}
 	if($_SESSION['rol'] == 0){
-		echo '<a href="'.base_url().'index.php/mainController/addComentario/'.$id.'"><button>Añadir comentario</button></a>';
+		echo '<a href="'.base_url().'index.php/mainController/addComentario/'.$id.'"><div align="center"><button>Añadir comentario</button></div></a>';
 	}
 ?>
 

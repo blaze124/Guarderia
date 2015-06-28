@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-05-2015 a las 22:07:35
+-- Tiempo de generación: 26-06-2015 a las 20:54:12
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `acceso` (
 `id` int(10) unsigned NOT NULL,
   `nickname` varchar(50) NOT NULL,
   `password` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `acceso`
@@ -39,7 +39,8 @@ CREATE TABLE IF NOT EXISTS `acceso` (
 INSERT INTO `acceso` (`id`, `nickname`, `password`) VALUES
 (10, 'admin', '124YC6OXr.CGM'),
 (18, 'alumno', '12XxC5gyBd0qQ'),
-(19, 'profesor', '12KfN6iTulDVI');
+(19, 'profesor', '12KfN6iTulDVI'),
+(20, 'alumno2', '1286OpF..GPh6');
 
 -- --------------------------------------------------------
 
@@ -52,7 +53,15 @@ CREATE TABLE IF NOT EXISTS `comentario` (
   `evento` int(11) NOT NULL,
   `nickname` varchar(100) NOT NULL,
   `cuerpo` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `comentario`
+--
+
+INSERT INTO `comentario` (`id`, `evento`, `nickname`, `cuerpo`) VALUES
+(1, 3, 'alumno2', 'Soy el tutor del alumno Alumno2 y me parece perfecto como se gestiona todo esto.'),
+(2, 6, 'alumno2', 'me alegro');
 
 -- --------------------------------------------------------
 
@@ -66,14 +75,15 @@ CREATE TABLE IF NOT EXISTS `datosalum` (
   `horario` enum('ESCOLAR','COMEDOR','COMPLETO','MATINAL') NOT NULL,
   `pago` enum('EFECTIVO','DOMICILIACION') NOT NULL,
   `fotos` tinyint(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `datosalum`
 --
 
 INSERT INTO `datosalum` (`id`, `nickname`, `horario`, `pago`, `fotos`) VALUES
-(2, 'alumno', 'ESCOLAR', 'EFECTIVO', 0);
+(2, 'alumno', 'ESCOLAR', 'EFECTIVO', 0),
+(3, 'alumno2', 'COMPLETO', 'DOMICILIACION', 0);
 
 -- --------------------------------------------------------
 
@@ -86,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `evento` (
   `fecha` date NOT NULL,
   `grupo` varchar(100) NOT NULL,
   `cuerpo` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `evento`
@@ -94,7 +104,10 @@ CREATE TABLE IF NOT EXISTS `evento` (
 
 INSERT INTO `evento` (`id`, `fecha`, `grupo`, `cuerpo`) VALUES
 (1, '2015-05-11', 'Amarillo', 'Hoy no hemos hecho nada de nada.<br />\r\n<br />\r\nProbamos saltos de línea y codificación para que todo sea correcto.<br />\r\n<br />\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices bibendum venenatis. Curabitur id ultrices magna. Maecenas accumsan erat quis sodales feugiat. Nunc dapibus metus scelerisque, condimentum dolor nec, feugiat lacus. Nunc id porttitor dui. Mauris non molestie lectus. Integer non tellus at sem ultricies condimentum. Donec eu purus sollicitudin, tempor dui a, ultricies magna. Phasellus pellentesque placerat suscipit. In sit amet nisi metus. Nullam finibus nisi et nulla semper lobortis. Aliquam auctor sapien et risus mattis faucibus. Aliquam erat volutpat.<br />\r\n<br />\r\nPellentesque rutrum, turpis et tristique dictum, leo lorem cursus ipsum, eu molestie mi tortor commodo purus. Sed non nunc vehicula, consequat ante eget, malesuada lorem. Nunc rutrum egestas nisi, at condimentum nulla malesuada non. Mauris non aliquam erat, vitae tempor nulla. Sed sed nisi nec lacus commodo dapibus vitae non orci. Pellentesque non urna elit. Mauris semper efficitur dolor, quis gravida nibh porttitor sit amet. Integer urna sem, ultrices sed congue sit amet, condimentum non metus. Praesent ut fermentum turpis. Aliquam tempus et nisi dignissim cursus. Maecenas sit amet tortor tempus, euismod diam nec, facilisis eros. Morbi ac sapien interdum, auctor dui sit amet, sagittis nisi. Vivamus quis ipsum sed tortor lacinia cursus. Sed ut tempor tellus.<br />\r\n<br />\r\nFusce bibendum felis eu velit auctor, in ultricies purus blandit. Pellentesque sit amet efficitur urna. Praesent in cursus lorem. Maecenas varius, metus auctor vestibulum tincidunt, ante magna dictum quam, eu hendrerit magna quam eu purus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec lacus in urna suscipit sodales. Praesent in dui tempus, pretium enim vel, dignissim felis. Phasellus molestie id arcu ac imperdiet. Maecenas nunc ligula, congue ac molestie eget, aliquet vel tellus.<br />\r\n<br />\r\nQuisque faucibus ipsum in consequat fermentum. Suspendisse potenti. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed quis ultricies mi. Curabitur aliquet, purus quis feugiat accumsan, sem purus convallis augue, finibus varius ante dui a risus. Morbi nibh mi, cursus dapibus interdum in, molestie sit amet lorem. Morbi rutrum dignissim laoreet. Aliquam at tempus orci. Cras non lobortis nunc. Nunc tincidunt sem ut augue auctor, et viverra velit imperdiet. Sed justo augue, tincidunt eu laoreet eu, maximus auctor lacus. Integer porta mauris sed est varius tempor et quis arcu. Vestibulum pharetra ligula vitae lectus facilisis, consequat consectetur lectus euismod. Nulla et sodales risus, sed gravida metus.<br />\r\n<br />\r\nNunc sed mauris pharetra, euismod massa a, auctor purus. Duis eu orci et sem pharetra bibendum. Vestibulum commodo sem faucibus auctor suscipit. Quisque tincidunt metus sit amet enim viverra condimentum. Aliquam at odio molestie, elementum tellus a, condimentum nisl. In fermentum, nisl sit amet laoreet maximus, tellus felis maximus justo, at lacinia augue urna vel lectus. In venenatis sem in fringilla lobortis. Duis mattis turpis id pulvinar mattis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam a molestie tellus. Maecenas volutpat est quis lacus efficitur rhoncus. Vivamus efficitur odio a nisi mollis fringilla. Phasellus ultricies leo ac libero finibus rutrum. Integer imperdiet sapien vitae purus mollis, non lacinia ante congue.'),
-(3, '2015-05-19', 'Amarillo', 'Hoy estamos probando a ver cómo se hacen las inserciones en la base de datos y si se meten datos duplicados.<br />\r\n<br />\r\nLos saltos de línea y las palabras acentuadas o con eñe ya están probadas anteriormente y se sabe que funcionan perfectamente.<br />\r\n');
+(3, '2015-05-19', 'Amarillo', 'Hoy estamos probando a ver cómo se hacen las inserciones en la base de datos y si se meten datos duplicados.<br />\r\n<br />\r\nLos saltos de línea y las palabras acentuadas o con eñe ya están probadas anteriormente y se sabe que funcionan perfectamente.<br />\r\n'),
+(4, '2015-06-21', 'Amarillo', 'Hoy publicaremos que queremos probar el tema de los email difundidos.'),
+(5, '2015-06-21', 'Amarillo', 'Hoy publicaremos que queremos probar el tema de los email difundidos.'),
+(6, '2015-06-21', 'Amarillo', 'Hoy publicaremos que queremos probar el tema de los email difundidos.');
 
 -- --------------------------------------------------------
 
@@ -165,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `tutor` (
   `email` text NOT NULL,
   `telefono` text NOT NULL,
   `dni` varchar(9) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tutor`
@@ -173,7 +186,9 @@ CREATE TABLE IF NOT EXISTS `tutor` (
 
 INSERT INTO `tutor` (`id`, `nickname`, `nombre`, `apellidos`, `email`, `telefono`, `dni`) VALUES
 (3, 'alumno', 'Tutor1', 'Ap1', 'axfdghyd@77.cpm', '956777777', '76025369M'),
-(4, 'alumno', 'Tutor2', 'Ap2', 'blazedecai@hotmail.com', '702335544', '72456798P');
+(4, 'alumno', 'Tutor2', 'Ap2', 'blazedecai@hotmail.com', '702335544', '72456798P'),
+(5, 'alumno2', 'Tutor1', 'Apellidos Simples', 'alejandro.melerorodriguez@alum.uca.es', '699885522', '75123456M'),
+(6, 'alumno2', 'Tutor2', 'Largos y Compuestos Validos', 'email1234@email.com', '956114477', '49987654N');
 
 -- --------------------------------------------------------
 
@@ -217,14 +232,15 @@ CREATE TABLE IF NOT EXISTS `usuario_alumno` (
   `domicilio` text NOT NULL,
   `f_nac` date NOT NULL,
   `grupo` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuario_alumno`
 --
 
 INSERT INTO `usuario_alumno` (`id`, `nickname`, `nombre`, `apellidos`, `rol`, `domicilio`, `f_nac`, `grupo`) VALUES
-(1, 'alumno', 'Alumno', 'Ap1 Ap2', 'ALUM', 'Avenida de mi casa, 123, 11005, Cádiz', '2013-11-06', 'Rojo');
+(1, 'alumno', 'Alumno', 'Ap1 Ap2', 'ALUM', 'Avenida de mi casa, 123, 11005, Cádiz', '2013-11-06', 'Rojo'),
+(2, 'alumno2', 'Alumno2', 'Apellidos Largos y Compuestos', 'ALUM', 'Ronda Inventada, 7, 3º C, 11100, San Fernando', '2013-09-30', 'Amarillo');
 
 --
 -- Índices para tablas volcadas
@@ -292,22 +308,22 @@ ALTER TABLE `usuario_alumno`
 -- AUTO_INCREMENT de la tabla `acceso`
 --
 ALTER TABLE `acceso`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-MODIFY `id` int(255) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(255) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `datosalum`
 --
 ALTER TABLE `datosalum`
-MODIFY `id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `evento`
 --
 ALTER TABLE `evento`
-MODIFY `id` int(255) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `id` int(255) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `imagen`
 --
@@ -322,7 +338,7 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=56;
 -- AUTO_INCREMENT de la tabla `tutor`
 --
 ALTER TABLE `tutor`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
@@ -332,7 +348,23 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 -- AUTO_INCREMENT de la tabla `usuario_alumno`
 --
 ALTER TABLE `usuario_alumno`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `datosalum`
+--
+ALTER TABLE `datosalum`
+ADD CONSTRAINT `datosalum_ibfk_1` FOREIGN KEY (`nickname`) REFERENCES `usuario_alumno` (`nickname`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tutor`
+--
+ALTER TABLE `tutor`
+ADD CONSTRAINT `tutor_ibfk_1` FOREIGN KEY (`nickname`) REFERENCES `usuario_alumno` (`nickname`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

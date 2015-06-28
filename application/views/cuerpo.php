@@ -20,13 +20,43 @@
     </div>
 	<!-- Slider aqui -->
 
-    <div align="center">
-        <figure>
-            <img src="<?php echo base_url()?>imagenes/inicio/021.jpg" width="70%" class="img-portada"/>
+   <!-- <div  id="galeria" align="center">
+        <figure class="slider">
+            <figure><img src="<?php echo base_url()?>imagenes/inicio/044.jpg" alt></figure>
+            <figure><img src="<?php echo base_url()?>imagenes/inicio/009.jpg" alt></figure>
         </figure>
     </div>
+    -->
+   
+                
+    <div id="slider-container">
+        <div id="slider-box">
+            <div class="slider-element" align="center">
+                <img src="<?php echo base_url()?>imagenes/inicio/044.jpg" alt>
+            </div>
+            <div class="slider-element" align="center">
+                <img src="<?php echo base_url()?>imagenes/inicio/009.jpg" alt>
+            </div>
+            <div class="slider-element" align="center">
+                <img src="<?php echo base_url()?>imagenes/inicio/036.jpg" alt>
+            </div>
+        </div>
+    </div>
+    
 
 	<!-- Fin Slider -->
+
+
+    <div align="center">
+        <a href="<?php echo base_url()?>index.php/mainController/trabajamos"><img src="<?php echo base_url()?>imagenes/secciones/trabajamos.png" height='60px' width='140px' style="border:3px solid #660099; border-radius:10px; padding-left:3px; padding-right:3px; margin:2px; background-color:#D8EFFF"></a>
+        <a href="<?php echo base_url()?>index.php/mainController/ofrecemos"><img src="<?php echo base_url()?>imagenes/secciones/ofrecemos.png" height='60px' width='140px' style="border:3px solid #660099; border-radius:10px; padding-left:3px; padding-right:3px; margin:2px; background-color:#D8EFFF"></a>
+        <a href="<?php echo base_url()?>index.php/mainController/instalaciones"><img src="<?php echo base_url()?>imagenes/secciones/instalaciones.png" height='60px' width='140px' style="border:3px solid #660099; border-radius:10px; padding-left:3px; padding-right:3px; margin:2px; background-color:#D8EFFF"></a>
+        <a href="<?php echo base_url()?>index.php/mainController/proyecto_edu"><img src="<?php echo base_url()?>imagenes/secciones/proyecto_edu.png" height='60px' width='140px' style="border:3px solid #660099; border-radius:10px; padding-left:3px; padding-right:3px; margin:2px; background-color:#D8EFFF"></a>
+        <a href="<?php echo base_url()?>index.php/mainController/identidad"><img src="<?php echo base_url()?>imagenes/secciones/identidad.png" height='60px' width='140px' style="border:3px solid #660099; border-radius:10px; padding-left:3px; padding-right:3px; margin:2px; background-color:#D8EFFF"></a>
+        <a href="<?php echo base_url()?>index.php/mainController/dia_escuela"><img src="<?php echo base_url()?>imagenes/secciones/dia_escuela.png" height='60px' width='140px' style="border:3px solid #660099; border-radius:10px; padding-left:3px; padding-right:3px; margin:2px; background-color:#D8EFFF"></a>
+        <a href="<?php echo base_url()?>index.php/mainController/localizanos"><img src="<?php echo base_url()?>imagenes/secciones/localizanos.png" height='60px' width='140px' style="border:3px solid #660099; border-radius:10px; padding-left:3px; padding-right:3px; margin:2px; background-color:#D8EFFF"></a>
+        <a href="<?php echo base_url()?>index.php/mainController/contacto"><img src="<?php echo base_url()?>imagenes/secciones/contacto.png" height='60px' width='140px' style="border:3px solid #660099; border-radius:10px; padding-left:3px; padding-right:3px; margin:2px; background-color:#D8EFFF"></a>
+    </div>
 
     <h1 class="titulo" align="center">Quienes somos</h1>
     <div class="contenido">
@@ -80,19 +110,6 @@
             Apoyamos a los padres en su labor educativa y colaboramos con ellos.
         </p>
     </div>
-
-	<table align="center">
-    <tr>
-    	<td class="tabla_enlaces" align="center"><a href="<?php echo base_url()?>index.php/mainController/trabajamos">Cómo Trabajamos</a></td>
-        <td class="tabla_enlaces" align="center"><a href="<?php echo base_url()?>index.php/mainController/ofrecemos">Qué Ofrecemos</a></td>
-        <td class="tabla_enlaces" align="center"><a href="<?php echo base_url()?>index.php/mainController/instalaciones">Instalaciones<br>y Equipamiento</a></td>
-        <td class="tabla_enlaces" align="center"><a href="<?php echo base_url()?>index.php/mainController/proyecto_edu">Método y<br>Proyecto Educativo</a></td>
-        <td class="tabla_enlaces" align="center"><a href="<?php echo base_url()?>index.php/mainController/identidad">Nuestras Señas<br>de Indentidad</a></td>
-        <td class="tabla_enlaces" align="center"><a href="<?php echo base_url()?>index.php/mainController/dia_escuela">Un Día en la Escuela</a></td>
-        <td class="tabla_enlaces" align="center"><a href="<?php echo base_url()?>index.php/mainController/localizanos">Localízanos</a></td>
-		<td class="tabla_enlaces" align="center"><a href="<?php echo base_url()?>index.php/mainController/contacto">Contacta con Nosotros</a></td>
-    </tr>
-    </table>
 
 </section>
 

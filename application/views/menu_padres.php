@@ -11,20 +11,19 @@
 
 	<ul class='menu' >
     	
-        <a href="<?php echo base_url() ?>">
-            <li class='enlace'><img src="<?php echo base_url()?>/imagenes/logo/home.png" width=20px height=20px>
+        <li class='enlace'>Información
             <ul>
+                <a href="<?php echo base_url() ?>"><li>Bienvenidos</li></a>
                 <a href="<?php echo base_url()?>index.php/mainController/trabajamos"><li>Cómo Trabajamos</li></a>
                 <a href="<?php echo base_url()?>index.php/mainController/ofrecemos"><li>Qué ofrecemos</li></a>
-                <a href="<?php echo base_url()?>index.php/mainController/instalaciones"><li>Instalaciones y recursos</li></a>
+                <a href="<?php echo base_url()?>index.php/mainController/instalaciones"><li>Instalaciones y Equipamiento</li></a>
                 <a href="<?php echo base_url()?>index.php/mainController/proyecto_edu"><li>Método y proyecto educativo</li></a>
                 <a href="<?php echo base_url()?>index.php/mainController/identidad"><li>Nuestras señas de identidad</li></a>
                 <a href="<?php echo base_url()?>index.php/mainController/dia_escuela"><li>Un día en la escuela</li></a>
                 <a href="<?php echo base_url()?>index.php/mainController/localizanos"><li>Localízanos</li></a>
                 <a href="<?php echo base_url()?>index.php/mainController/contacto"><li>Contacta con nosotros</li></a>
             </ul>
-            </li>
-        </a>
+        </li>
         <a href="<?php echo base_url()?>index.php/mainController/verContenido"><li class='enlace' >Novedades</li></a>
         <a href="<?php echo base_url()?>index.php/mainController/menus_mens"><li class='enlace'>Menús mensuales</li></a>
         <a href="<?php echo base_url()?>index.php/mainController/incidencias"><li class='enlace'>Incidencias Diarias</li></a>

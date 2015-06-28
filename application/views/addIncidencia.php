@@ -14,13 +14,16 @@
 	$datos= array('name'=>'addInc','enctype'=>"multipart/form-data");
 	echo form_open('index.php/mainController/addInc',$datos);
 	
+	echo '<div class="contenido" align="center">';
+
 	echo "<p>Qué ha sucedido hoy</p>";
 	echo '<textarea cols="100" rows="15" name="cuerpo"></textarea><br>';
 	
 	echo form_submit('submit','Aceptar');
 	echo form_close();
 
-	echo '<a href="'.base_url().'index.php/mainController/incidencias"><button>Volver</button></a>';
+	echo '</div>';
+
 ?>
 <br><br><br><br><br><br>
 </section>

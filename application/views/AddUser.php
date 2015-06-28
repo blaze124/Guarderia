@@ -30,7 +30,7 @@
 <body>
 
 
-<section class='formulario'>
+<section class='cuerpo'>
 <?php
 	$this->load->helper('form');
 	
@@ -38,47 +38,49 @@
 	
 	echo form_open('index.php/mainController/AltaUsuario',$datos);
 	
+	echo '<div class="contenido" align="center">';
+
 	echo'<p>Datos del usuario</p>';
 	echo "Administrador <input type='radio' name='ROL' value='ADMIN' onClick='mostrar_campos();' /> ";
 	echo " Profesor <input type='radio' name='ROL' value='PROF' onClick='mostrar_campos();' /> ";
 	echo " Usuario para tutores <input type='radio' name='ROL' value='ALUM' onClick='mostrar_campos();' checked/> ";
 	echo '<br>';
-	echo "Usuario: <input type='text' name='nickname' />"; echo form_error('nickname');
+	echo "<input type='text' name='nickname' placeholder=' Usuario'/>"; echo form_error('nickname');
 	echo'<br>';
-	echo "Nombre: <input type='text' name='Nombre' />"; echo form_error('Nombre');
+	echo "<input type='text' name='Nombre' placeholder=' Nombre'/>"; echo form_error('Nombre');
 	echo '<br>';
-	echo "Apellidos: <input type='text' name='Apellidos' />"; echo form_error('Apellidos');
+	echo "<input type='text' name='Apellidos' placeholder=' Apellidos'/>"; echo form_error('Apellidos');
 	echo '<br>';
 	echo '<div id="no_alum" style="display:none;">
-		Email:<input type="email" name="email"><br>
-		DNI:<input type="text" name="dni"><br>
+		<input type="email" name="email" placeholder=" e-mail"><br>
+		<input type="text" name="dni" placeholder=" DNI"><br>
 		</div>'; echo form_error('email'); echo form_error('dni');
-	echo "Grupo: <input type='text' name='Grupo'><br>";
-	echo "Domicilio: <input type='text' name='Dom' />"; echo form_error('Dom'); echo "<br>";
-	echo "Fecha de Nacimiento: <input type='date' name='fnac' />";echo form_error('fnac');
+	echo "<input type='text' name='Grupo' placeholder=' Grupo'><br>";
+	echo "<input type='text' name='Dom' placeholder=' Domicilio'/>"; echo form_error('Dom'); echo "<br>";
+	echo "<input type='date' name='fnac' placeholder=' Fecha de nacimiento'/>";echo form_error('fnac');
 	echo '<br>';
 	
 	
 	echo '<div id="alum" style="display:block;">
 		<p>Datos del tutor 1</p>
-		Nombre del tutor: <input type="text" name="NombreTutor"  /><br>
-		Apellidos del tutor: <input type="text" name="ApellidosTutor"  /><br>
-		Email:<input type="email" name="email_t"  /><br>
-		Teléfono:<input type="tel" name="TelContacto" /><br>
-		DNI:<input type="text" name="dniT" /><br>
+		<input type="text" name="NombreTutor" placeholder=" Nombre del tutor" /><br>
+		<input type="text" name="ApellidosTutor" placeholder=" Apellidos del tutor" /><br>
+		<input type="email" name="email_t" placeholder=" e-mail del tutor" /><br>
+		<input type="tel" name="TelContacto" placeholder=" Teléfono de contacto"/><br>
+		<input type="text" name="dniT" placeholder=" DNI del tutor"/><br>
 		<br>
 		<p>Datos del tutor 2</p>
-		Nombre del tutor: <input type="text" name="NombreTutor2" /><br>
-		Apellidos del tutor: <input type="text" name="ApellidosTutor2" /><br>
-		Email:<input type="email" name="email_t2" /><br>
-		Teléfono:<input type="tel" name="TelContacto2" /><br>
-		DNI:<input type="text" name="dniT2" /><br>
+		<input type="text" name="NombreTutor2" placeholder=" Nombre del tutor"/><br>
+		<input type="text" name="ApellidosTutor2" placeholder=" Apellidos del tutor"/><br>
+		<input type="email" name="email_t2" placeholder=" e-mail del tutor"/><br>
+		<input type="tel" name="TelContacto2" placeholder=" Telefono de contacto"/><br>
+		<input type="text" name="dniT2" placeholder=" DNI del tutor"/><br>
 		<br>
 		<p>Horario Seleccionado</p>
-		<input type="radio" name="horario" value="ESCOLAR"> Horario Escolar (9:00 - 13:00)<br>
-		<input type="radio" name="horario" value="COMPLETO"> Horario Completo (9:00 - 17:00)<br>
+		<input type="radio" name="horario" value="ESCOLAR"> Escolar (9:00 - 13:00)<br>
+		<input type="radio" name="horario" value="COMPLETO"> Completo (9:00 - 17:00)<br>
 		<input type="radio" name="horario" value="MATINAL"> Aula Matinal (7:30 - 9:00)<br>
-		<input type="radio" name="horario" value="COMEDOR"> Horario Escolar con comedor (9:00 - 14:00)<br>
+		<input type="radio" name="horario" value="COMEDOR"> Comedor (9:00 - 14:00)<br>
 		<br>
 		<p>Forma de pago</p>
 		<input type="radio" name="pago" value="EFECTIVO"> Pago en Efectivo<br>
@@ -89,10 +91,11 @@
 		<input type="radio" name="autorizacion" value="0"> No<br>
 		<br>
 		</div>';
+	
+		echo form_submit('submit','Aceptar');
+	
+	echo '</div>';
 		
-		
-		
-	echo form_submit('submit','Aceptar');
 	echo form_close();
 ?>
 </section>

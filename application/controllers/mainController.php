@@ -193,7 +193,7 @@ class MainController extends CI_Controller{
 					$this->index();
 				}
 				else{
-					show_error('Datos de acceso no son correctos');
+					$this->Acceso();
 				}
 			}
 		}
@@ -699,7 +699,7 @@ class MainController extends CI_Controller{
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
 		
 		if($this->form_validation->run() == FALSE){
-			$this->emailCentro();
+			$this->mailTutor();
 		}
 		else{
 			if($this->input->post('submit')){
@@ -823,7 +823,7 @@ class MainController extends CI_Controller{
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
 
 		if($this->form_validation->run() == FALSE){
-			$this->addContenido();
+			$this->addIncidencia();
 		}
 		else{
 			if($this->input->post('submit')){
@@ -872,7 +872,7 @@ class MainController extends CI_Controller{
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
 
 		if($this->form_validation->run() == FALSE){
-			$this->addContenido();
+			$this->addComentario();
 		}
 		else{
 			if($this->input->post('submit')){
@@ -963,7 +963,7 @@ class MainController extends CI_Controller{
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
 		
 		if($this->form_validation->run() == FALSE){
-			$this->addContenido();
+			$this->contacto();
 		}
 		else{
 			if($this->input->post('submit')){

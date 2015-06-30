@@ -504,7 +504,7 @@ class MainController extends CI_Controller{
 		
 		$this->form_validation->set_rules('email','email','valid_email|required|is_unique[usuario.email]|is_unique[tutor.email]');
 		$this->form_validation->set_message('required','El campo %s es obligatorio.');
-		$this->form_validation->set_message('is_unique','El %s introducido ya existe en el sistema.');
+		$this->form_validation->set_message('is_unique','El %s introducido ya está en uso.');
 		
 		if($this->form_validation->run() == FALSE){
 			$this->nuevoEmail();

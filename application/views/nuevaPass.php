@@ -19,8 +19,8 @@
 	echo'<p>Introduzca su nueva contraseña</p>';
 	echo'<p class="comentario">Las contraseñas deben tener entre 8 y 16 caracteres.</p>';
 
-	echo "Nueva contraseña:<input type='password' name='pass1' align='center' />"; echo form_error('pass1'); echo "<br>";
-	echo "Repita la nueva contraseña:<input type='password' name='pass2' align='center' />"; echo form_error('pass2'); echo "<br>";
+	echo "<input type='password' name='pass1' align='center' placeholder='Nueva contraseña'/>"; echo form_error('pass1'); echo "<br>";
+	echo "<input type='password' name='pass2' align='center' placeholder='Repita la ueva contraseña'/>"; echo form_error('pass2'); echo "<br>";
 	echo '<br>';
 		
 	echo form_submit('submit','Aceptar');

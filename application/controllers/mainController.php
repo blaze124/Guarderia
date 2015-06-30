@@ -639,12 +639,19 @@ class MainController extends CI_Controller{
 			$this->load->view('buscaUsuarios');
 		}
 		else{
+			if($res[0] == 0){
+				$this->load->view('cabecera');
+				$this->tipoMenu();
+				$this->load->view('buscaUsuarios');
+			}
+			else{
+				$data['res']= array($res);
 			
-			$data['res']= array($res);
+				$this->load->view('cabecera');
+				$this->tipoMenu();			
+				$this->load->view('buscaUsuarios',$data);	
+			}
 			
-			$this->load->view('cabecera');
-			$this->tipoMenu();			
-			$this->load->view('buscaUsuarios',$data);
 		}
 	}
 	
@@ -680,6 +687,9 @@ class MainController extends CI_Controller{
 	function mailTutor($usuario){
 		if( !isset($_SESSION['rol']) || $_SESSION['rol'] == 0){
 			show_404();
+		}
+		if(!isset($usuario)){
+			$this->mailTutores();
 		}
 		$data['user'] = $usuario;
 		

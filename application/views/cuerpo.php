@@ -18,17 +18,9 @@
             Es una satisfacción para nosotros darte la bienvenida a nuestra web, que nace con la intención de ofrecer, con claridad y transparencia, información de interés sobre nuestro Centro de Educación Infantil.
         </p>
     </div>
-	<!-- Slider aqui -->
 
-   <!-- <div  id="galeria" align="center">
-        <figure class="slider">
-            <figure><img src="<?php echo base_url()?>imagenes/inicio/044.jpg" alt></figure>
-            <figure><img src="<?php echo base_url()?>imagenes/inicio/009.jpg" alt></figure>
-        </figure>
-    </div>
-    -->
-   
-                
+	<!-- Inicio Slider -->
+  
     <div id="slider-container">
         <div id="slider-box">
             <div class="slider-element" align="center">

@@ -309,11 +309,6 @@ div.today {
 
 /* Estilos para slider */
 
-#slider-arrows {
-    margin: -10% auto 0 auto;
-    width: 80%;
-}
-
 #slider-box {
     height: 100%;
     width: 300%;

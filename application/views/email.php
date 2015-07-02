@@ -17,7 +17,9 @@
 		
 			echo"Asunto:<br><input type='text' size='79' name='asunto'><br>";echo form_error('asunto');
 			echo 'Cuerpo:<br><textarea cols="80" rows="10" name="cuerpo"></textarea><br>';echo form_error('cuerpo');
-			
+			if(isset($user)){
+				echo '<input type="hidden" name="user" value='.$user.'>';
+			}
 			echo form_submit('submit','Enviar');
 		
 			echo form_close();

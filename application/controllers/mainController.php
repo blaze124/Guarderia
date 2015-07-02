@@ -417,9 +417,9 @@ class MainController extends CI_Controller{
 	/**
 	* Funcion que efectua la baja de un usuario
 	*/
-	function borrarUsuario($id){
+	function borrarUsuario($id,$rol){
 		$this->load->database();
-		$this->mainModel->bajaUsuario($id,$_SESSION['rol']);
+		$this->mainModel->bajaUsuario($id,$rol);
 		
 		header('Location:'.base_url().'/index.php/mainController/accesoBaja');
 	}
@@ -709,7 +709,7 @@ class MainController extends CI_Controller{
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
 		
 		if($this->form_validation->run() == FALSE){
-			$this->mailTutor();
+			$this->mailTutor($this->input->post('user'));
 		}
 		else{
 			if($this->input->post('submit')){

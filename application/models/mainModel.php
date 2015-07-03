@@ -263,6 +263,16 @@ class MainModel extends CI_Model{
 		
 		$this->db->delete('imagen',array('id_noticia'=>$id));
 	}
+
+	/**
+	* Funcion que elimina una incidencia y sus comentarios del sistema
+	*/
+	function delIncidencia($id){	
+		
+		$this->db->delete('incidencia',array('id'=>$id));
+		
+		$this->db->delete('comentario',array('incidencia'=>$id));
+	}
 	
 	/**
 	* Funcion que carga el menu mensual más reciente introducido en el sistema
@@ -347,7 +357,7 @@ class MainModel extends CI_Model{
 	* Funcion que elimina al usuario del sistema con identificador = $id
 	*/
 	function bajaUsuario($id,$rol){
-		if($rol != 0){
+		if($rol != 'ALUM'){
 			$this->db->select('*');
 			$this->db->from('usuario');
 			$this->db->where('id',$id);
@@ -650,6 +660,27 @@ class MainModel extends CI_Model{
 
 		return $ret = $this->db->get()->row_array();
 	}
+
+	/**
+	* Función que nos devolverá la información de todas las incidencias registradas
+	*/
+	function getIncidencias(){
+		$this->db->select('*');
+		$this->db->from('incidencia');
+		
+		$return = $this->db->get();
+		
+		$i = 0;
+		$res[0]=0;
+		if($return->num_rows() != 0){
+			while($i < $return->num_rows())
+			{
+				$res[$i] = $return->row_array($i);
+				$i++;			
+			}
+		}
+		return $res;
+	}	
 
 	/**
 	* Funcion que nos almacenará en la base de datos los comentarios que realicen los tutores

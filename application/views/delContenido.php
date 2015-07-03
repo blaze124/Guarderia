@@ -13,21 +13,48 @@
 <?php
 	$i = 0;
 	echo '<div class="contenido" >';
-	echo '<p>Novedades</p>';
+	echo '<p><b>Novedades</b></p>';
 	foreach($res1 as $valor)
 	{
-		echo $valor['id'].' - '.$valor['titular'].' - '.$valor['fecha'].'<a href="'.base_url().'index.php/mainController/borrarContenido/'.$valor['id'].'"><img src="'.base_url().'imagenes/logo/error.png" style="vertical-align: middle; height:25px; width:25px;"></a>'.'<br>';
+		if($res1['0'] == 0){
+			echo '<p> Aún no se ha añadido ningún contenido de este tipo.</p>';
+		}
+		else{
+			echo $valor['id'].' - '.$valor['titular'].' - '.$valor['fecha'].'<a href="'.base_url().'index.php/mainController/borrarContenido/'.$valor['id'].'"><img src="'.base_url().'imagenes/logo/error.png" style="vertical-align: middle; height:25px; width:25px;"></a>'.'<br>';
+		}
 	}
-	echo '<p>Cursos</p>';
+	echo '<p><b>Cursos</b></p>';
 	foreach($res2 as $valor)
 	{
-		echo $valor['id'].' - '.$valor['titular'].' - '.$valor['fecha'].'<a href="'.base_url().'index.php/mainController/borrarContenido/'.$valor['id'].'"><img src="'.base_url().'imagenes/logo/error.png" style="vertical-align: middle; height:25px; width:25px;"></a>'.'<br>';
+		if($res2['0'] == 0){
+			echo '<p> Aún no se ha añadido ningún contenido de este tipo.</p>';
+		}
+		else{
+			echo $valor['id'].' - '.$valor['titular'].' - '.$valor['fecha'].'<a href="'.base_url().'index.php/mainController/borrarContenido/'.$valor['id'].'"><img src="'.base_url().'imagenes/logo/error.png" style="vertical-align: middle; height:25px; width:25px;"></a>'.'<br>';
+		}	
 	}
-	echo '<p>Menus mensuales</p>';
+	echo '<p><b>Menus mensuales</b></p>';
 	foreach($res3 as $valor)
 	{
-		echo $valor['id'].' - '.$valor['titular'].' - '.$valor['fecha'].'<a href="'.base_url().'index.php/mainController/borrarContenido/'.$valor['id'].'"><img src="'.base_url().'imagenes/logo/error.png " style="vertical-align: middle; height:25px; width:25px;"></a>'.'<br>';
+		if($res3['0'] == 0){
+			echo '<p> Aún no se ha añadido ningún contenido de este tipo.</p>';
+		}
+		else{
+			echo $valor['id'].' - '.$valor['titular'].' - '.$valor['fecha'].'<a href="'.base_url().'index.php/mainController/borrarContenido/'.$valor['id'].'"><img src="'.base_url().'imagenes/logo/error.png " style="vertical-align: middle; height:25px; width:25px;"></a>'.'<br>';
+		}
 	}
+	echo '<p><b>Incidencias</b></p>';
+	foreach($res4 as $valor)
+	{
+		if($res4['0'] == 0){
+			echo '<p> Aún no se ha añadido ningún contenido de este tipo.</p>';
+		}
+		else{
+			echo $valor['id'].' - '.$valor['grupo'].' - '.$valor['fecha'].'<a href="'.base_url().'index.php/mainController/borrarIncidencia/'.$valor['id'].'"><img src="'.base_url().'imagenes/logo/error.png " style="vertical-align: middle; height:25px; width:25px;"></a>'.'<br>';
+		}
+	}
+
+
 	echo '</div>';
 ?>
 

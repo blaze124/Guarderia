@@ -13,10 +13,15 @@
 	<?php
 		$i = 0;
 		echo '<div class="contenido">';		
-		echo '<p>Alumnos</p>';
+		echo '<p><b>Alumnos</b></p>';
 		foreach($res as $valor)
 		{
-			echo $valor['nickname'].' - '.$valor['nombre'].' '.$valor['apellidos'].'<a href="'.base_url().'index.php/mainController/verAlumnoSimple/'.$valor['id'].'"><img src="'.base_url().'imagenes/logo/ir.png" style="vertical-align: middle; width:30px; height:30px;" /></a>'.'<br>';
+			if($res['0'] == 0){
+			echo '<p> No hay Alumnos registrados.</p>';
+			}
+			else{
+				echo $valor['nickname'].' - '.$valor['nombre'].' '.$valor['apellidos'].'<a href="'.base_url().'index.php/mainController/verAlumnoSimple/'.$valor['id'].'"><img src="'.base_url().'imagenes/logo/ir.png" style="vertical-align: middle; width:30px; height:30px;" /></a>'.'<br>';
+			}
 		}
 		echo '</div>';
 	?>

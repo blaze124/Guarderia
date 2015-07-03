@@ -297,6 +297,7 @@ class MainController extends CI_Controller{
 		$data['res1']=$this->mainModel->getContenido('NOV');
 		$data['res2']=$this->mainModel->getContenido('CUR');
 		$data['res3']=$this->mainModel->getContenido('COM');
+		$data['res4']=$this->mainModel->getIncidencias();
 		$this->load->view('cabecera');
 		$this->load->view('menu_admin');
 		$this->load->view('delContenido',$data);
@@ -343,6 +344,15 @@ class MainController extends CI_Controller{
 		$this->delContenido();
 	}
 	
+	/**
+	* Funcion que borra la incidencia con campo id = $id y los comentarios asociados
+	*/
+	function borrarIncidencia($id){
+		$this->load->database();
+		$this->mainModel->delIncidencia($id);
+		$this->delContenido();
+	}
+
 	/**
 	* Funcion que obtiene de la base de datos las noticias mas recientes para mostrarlas a los usuarios
 	*/
@@ -968,7 +978,8 @@ class MainController extends CI_Controller{
 	function consultaPublica(){
 
 		$this->form_validation->set_rules('nombre','Nombre','required');
-		$this->form_validation->set_rules('email','email','required');
+		$this->form_validation->set_rules('email','Correo Electrónico','required');
+		$this->form_validation->set_rules('consulta','Mensaje','required');
 
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
 		

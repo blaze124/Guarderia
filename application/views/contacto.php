@@ -25,11 +25,11 @@
     			$datos= array('name'=>'consultaPublica','enctype'=>"multipart/form-data");
     			echo form_open(base_url().'index.php/mainController/consultaPublica',$datos);
     		
-    			echo "Nombre y Apellidos:<input type='text' size='50' name='nombre' /><br>";
+    			echo "<input type='text' size='50' name='nombre' placeholder=' Nombre y Apellidos'/><br>";echo form_error('nombre');
 
-    			echo "Correo Electrónico:<input type='email' size='50' name='email' /><br>";echo form_error('email');
+    			echo "<input type='email' size='50' name='email' placeholder=' Correo Electrónico'/><br>";echo form_error('email');
     			
-    			echo 'Mensaje:<br><textarea cols="75" rows="15" name="consulta"></textarea><br>';
+    			echo 'Mensaje:<br><textarea cols="75" rows="15" name="consulta"></textarea><br>';echo form_error('consulta');
 
     			echo form_submit('submit','Enviar');
     		

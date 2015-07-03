@@ -313,6 +313,11 @@ div.today {
     height: 100%;
     width: 300%;
 
+    -moz-animation: autoSlider 15s infinite linear;
+    -o-animation: autoSlider 15s infinite linear;
+    -webkit-animation: autoSlider 15s infinite linear;
+    animation: autoSlider 15s infinite linear;
+
     -webkit-transition: all 0.75s ease;
     -moz-transition: all 0.75s ease;
     -ms-transition: all 0.75s ease;
@@ -360,28 +365,6 @@ div.today {
 
 #element3:checked ~ #slider-container #slider-box {
     margin-left: -200%;
-}
-
-#slider-arrows label {
-    color: transparent;
-    cursor: pointer;
-    display: none;
-    font-size: 2rem;
-    height: 20px;
-    width: 20px;
-}
-
-#slider-box {
-	-moz-animation: autoSlider 15s infinite linear;
-    -o-animation: autoSlider 15s infinite linear;
-    -webkit-animation: autoSlider 15s infinite linear;
-    animation: autoSlider 15s infinite linear;
-
-    -webkit-transition: all 0.75s ease;
-    -moz-transition: all 0.75s ease;
-    -ms-transition: all 0.75s ease;
-    -o-transition: all 0.75s ease;
-    transition: all 0.75s ease;
 }
 
 @keyframes autoSlider {

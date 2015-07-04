@@ -130,7 +130,7 @@ class MainController extends CI_Controller{
 				$password = $this->crypt_blowfish($pass);
 				
 				$this->mainModel->altaUser($data,$password);
-				header('Location: '.base_url());
+				header('Location: '.base_url().'index.php/mainController/accesoAlta');
 			}
 		}
 	}

@@ -20,6 +20,11 @@
 					$valor['fecha'] = substr($valor['fecha'], -2);
 					if($valor['fecha'] < 10){substr($valor['fecha'], -1);}
 
+					if(isset( $datos[$valor['fecha']] )){
+						$cad = $datos[$valor['fecha']];
+						$datos[$valor['fecha']] = $cad.'<br><a href="'.base_url().'index.php/mainController/verIncidencia/'.$valor['id'].'">Evento día '.$fecha.'<br>Grupo '.$valor['grupo'].'</a>';
+					}
+
 					$datos[$valor['fecha']] = '<a href="'.base_url().'index.php/mainController/verIncidencia/'.$valor['id'].'">Evento día '.$fecha.'<br>Grupo '.$valor['grupo'].'</a>';
 				}
 

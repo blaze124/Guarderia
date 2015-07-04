@@ -130,7 +130,7 @@ class MainController extends CI_Controller{
 				$password = $this->crypt_blowfish($pass);
 				
 				$this->mainModel->altaUser($data,$password);
-				header('Location: http://localhost/Guarderia');
+				header('Location: '.base_url());
 			}
 		}
 	}
@@ -140,7 +140,7 @@ class MainController extends CI_Controller{
 	*/
 	function cerrarSesion(){
 		session_destroy();
-		header('Location: http://localhost/Guarderia');
+		header('Location: '.base_url());
 	}
 	
 	/**
@@ -183,7 +183,11 @@ class MainController extends CI_Controller{
 				);
 
 				$consulta=$this->mainModel->iniciaSesion($datos);
-				if( crypt($this->input->post('pass'),$consulta['password']) == $consulta['password'] )
+
+				if($consulta == array()){
+					$this->Acceso();
+				}
+				elseif( crypt($this->input->post('pass'),$consulta['password']) == $consulta['password'] )
 				{
 					$rol = $this->mainModel->getRol($this->input->post('user'));
 					if($rol == 'ALUM'){$_SESSION['rol'] = 0;}
@@ -1084,6 +1088,7 @@ class MainController extends CI_Controller{
 			show_error($this->email->print_debugger());
 		}
 	}
+	
 	/**
 	* Funcion auxiliar que se emplea para encriptar informacion
 	*/

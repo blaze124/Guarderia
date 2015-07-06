@@ -22,6 +22,8 @@
 		echo('<b>Fecha de Nacimiento</b>: '.$res1['f_nac'].'<br>');
 		echo('<b>Domicilio</b>: '.$res1['domicilio'].' <a href="'.base_url().'index.php/mainController/nuevoDom"><button type="button">Modificar</button></a><br>');
 		echo('<b>Tipo de Usuario</b>: '.$rol.'<br>');
+		if($rol == 'Profesor'){echo('<b>Grupo</b>: '.$res1['grupo'].'<br>');}
+
 		
 		if(!isset($res2)){
 			echo('<b>Email</b>: '.$res1['email'].' <a href="'.base_url().'index.php/mainController/nuevoEmail/'.$res1['id'].'"><button type="button">Modificar</button></a><br>');
@@ -29,6 +31,7 @@
 		}
 
 		else{
+			echo('<b>Grupo</b>: '.$res1['grupo'].'<br>');
 			echo('</p>');
 			$i = 0;
 			while($i < count($res2)){

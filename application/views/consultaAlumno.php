@@ -16,7 +16,8 @@
 		echo('<p><b>Usuario</b>: '.$res[0]['nickname'].'<br>');
 		echo('<b>Nombre y Apellidos</b>: '.$res[0]['nombre'].' '.$res[0]['apellidos'].'<br>');
 		echo('<b>Fecha de Nacimiento</b>: '.$res[0]['f_nac'].'<br>');
-		echo('<b>Domicilio</b>: '.$res[0]['domicilio'].'</p>');
+		echo('<b>Domicilio</b>: '.$res[0]['domicilio'].'<br>');
+		echo('<b>Grupo</b>: '.$res[0]['grupo'].'</p>');
 		
 		echo('<h3 class="titulo">Datos del Tutor 1</h3>');
 		echo('<p><b>Nombre y Apellidos</b>: '.$res[1]['nombre'].' '.$res[1]['apellidos'].'<br>');

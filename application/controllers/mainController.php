@@ -270,7 +270,7 @@ class MainController extends CI_Controller{
 							$this->mainModel->addImagen($id,$ruta);
 						}
 						
-						if($datos['privilegios'] == 'PRIVADO'){
+						if($datos['priv'] == 'PRIVADO'){
 							$tutores = $this->mainModel->getTutores();
 							$i=0;
 							$emails=array();

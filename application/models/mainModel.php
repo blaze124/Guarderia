@@ -205,12 +205,13 @@ class MainModel extends CI_Model{
 		$this->db->where('tipo','NOV');
 		$this->db->or_where('tipo','CUR');
 		$this->db->order_by('noticia.id','desc');
+		$this->db->limit(5);
 		
 		$return = $this->db->get();
 		$i = 0;
 		$res[0]=0;
 		if($return->num_rows() != 0){
-			while($i < $return->num_rows() || $i < 5)
+			while($i < $return->num_rows())
 			{
 				$res[$i] = $return->row_array($i);
 				$i++;			

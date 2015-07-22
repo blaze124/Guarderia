@@ -63,7 +63,13 @@
 				echo('<b>Autorización para fotografías</b>: No<br>');
 				break;
 		}
+		
 	echo '</p>';
+
+	if(isset($res[3]['observaciones'])){
+		echo('<h3 class="titulo">Observaciones</h3><p>'.$res[3]['observaciones'].'</p>');
+	}
+
 	echo('<br><a href="'.base_url().'index.php/mainController/consultaAlumnos"><button type="button">Volver a selección de alumnos</button></a>');
 	
 	echo '</div>';

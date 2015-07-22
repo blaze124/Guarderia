@@ -90,6 +90,9 @@
 		<input type="radio" name="autorizacion" value="1"> Sí<br>
 		<input type="radio" name="autorizacion" value="0"> No<br>
 		<br>
+		<p>Obsevaciones</p>
+		<textarea name="observaciones" cols="60" rows="15"></textarea>
+		<br>
 		</div>';
 	
 		echo form_submit('submit','Aceptar');

@@ -103,7 +103,8 @@ class MainController extends CI_Controller{
 					'email_t2'=>$this->input->post('email_t2'),
 					'horario'=>$this->input->post('horario'),
 					'pago'=>$this->input->post('pago'),
-					'fotos'=>$this->input->post('autorizacion')
+					'fotos'=>$this->input->post('autorizacion'),
+					'observaciones'=>nl2br($this->input->post('observaciones'))
 				);
 				
 				$pass=substr(md5(microtime()),1,8);
@@ -904,7 +905,7 @@ class MainController extends CI_Controller{
 				$id= $this->input->post('id');
 
 				$datos = array('cuerpo' => $cuerpo,
-							   'evento' => $id,
+							   'incidencia' => $id,
 							   'nickname' => $_SESSION['user']);
 			}
 

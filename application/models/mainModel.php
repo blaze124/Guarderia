@@ -94,7 +94,8 @@ class MainModel extends CI_Model{
 				'nickname'=>$datos['nickname'],
 				'horario'=>$datos['horario'],
 				'pago'=>$datos['pago'],
-				'fotos'=>$datos['fotos']
+				'fotos'=>$datos['fotos'],
+				'observaciones'=>$datos['observaciones']
 			);
 			
 			$this->db->insert('usuario_alumno',$insert);
@@ -615,6 +616,7 @@ class MainModel extends CI_Model{
 			$this->db->select('*');
 			$this->db->from('incidencia');
 			$this->db->like('fecha',$fecha,'after');
+			$this->db->where('grupo',$grupo);
 
 			$return = $this->db->get();
 

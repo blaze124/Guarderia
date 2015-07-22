@@ -18,7 +18,8 @@
 				foreach ($incidencias as $valor) {
 					$fecha = date("d-m-Y",strtotime($valor['fecha']));
 					$valor['fecha'] = substr($valor['fecha'], -2);
-					if($valor['fecha'] < 10){substr($valor['fecha'], -1);}
+
+					if(intval($valor['fecha'] ) < 10){$valor['fecha'] = substr($valor['fecha'], -1);} 
 
 					if(isset( $datos[$valor['fecha']] )){
 						$cad = $datos[$valor['fecha']];

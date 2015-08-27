@@ -100,7 +100,10 @@ class MainModel extends CI_Model{
 			
 			$this->db->insert('usuario_alumno',$insert);
 			$this->db->insert('tutor',$insert2);
-			$this->db->insert('tutor',$insert3);
+			if ($insert3['nombre'] != null) {
+				$this->db->insert('tutor',$insert3);
+			}
+			
 			$this->db->insert('datosalum',$insert4);
 		}
 		$acceso=array('nickname'=>$datos['nickname'], 'password' => $pass);
@@ -175,9 +178,8 @@ class MainModel extends CI_Model{
 	* Funcion que obtiene el contenido de la base de datos que tenga como identificador el valor $id
 	*/
 	function getContenidoSimple($id){
-		$this->db->select('noticia.*,ruta');
+		$this->db->select('*');
 		$this->db->from('noticia');
-		$this->db->join('imagen','imagen.id_noticia = noticia.id');
 		$this->db->where('noticia.id',$id);
 		$this->db->where('tipo','NOV');
 		$this->db->or_where('tipo','CUR');
@@ -186,13 +188,47 @@ class MainModel extends CI_Model{
 		$return = $this->db->get();
 		$i = 0;
 		$res[0]=0;
+		$res1[0]=0;
+		$res2[0]=0;
 		if($return->num_rows() != 0){
 			while($i < $return->num_rows())
 			{
-				$res[$i] = $return->row_array($i);
+				$res1[$i] = $return->row_array($i);
 				$i++;			
 			}
 		}
+
+		$res[0] = $res1;
+	
+		$vec = array();
+		$i=0;
+
+		foreach($res1 as $valor){
+			array_push($vec, $valor['id']);
+		}
+
+		$a = min($vec);
+		$b = max($vec);
+
+		$this->db->select('*');
+		$this->db->from('imagen');
+		$this->db->where('id_noticia <=', $b);
+		$this->db->where('id_noticia >=', $a);
+
+		$return = $this->db->get();
+
+		$i = 0;
+
+		if($return->num_rows() != 0){
+			while($i < $return->num_rows())
+			{
+				$res2[$i] = $return->row_array($i);
+				$i++;			
+			}
+		}
+
+		$res[1] = $res2;
+
 		return $res;
 	}
 	
@@ -200,9 +236,8 @@ class MainModel extends CI_Model{
 	* Funcion que nos carga los contenidos más recientes para mostrarselos a los usuarios
 	*/
 	function verContenido(){
-		$this->db->select('noticia.*,ruta');
+		$this->db->select('*');
 		$this->db->from('noticia');
-		$this->db->join('imagen','imagen.id_noticia = noticia.id');
 		$this->db->where('tipo','NOV');
 		$this->db->or_where('tipo','CUR');
 		$this->db->order_by('noticia.id','desc');
@@ -211,40 +246,107 @@ class MainModel extends CI_Model{
 		$return = $this->db->get();
 		$i = 0;
 		$res[0]=0;
+		$res1[0]=0;
+		$res2[0]=0;
 		if($return->num_rows() != 0){
 			while($i < $return->num_rows())
 			{
-				$res[$i] = $return->row_array($i);
+				$res1[$i] = $return->row_array($i);
 				$i++;			
 			}
 		}
+
+		$res[0] = $res1;
+	
+		$vec = array();
+		$i=0;
+
+		foreach($res1 as $valor){
+			array_push($vec, $valor['id']);
+		}
+
+		$a = min($vec);
+		$b = max($vec);
+
+		$this->db->select('*');
+		$this->db->from('imagen');
+		$this->db->where('id_noticia <=', $b);
+		$this->db->where('id_noticia >=', $a);
+
+		$return = $this->db->get();
+
+		$i = 0;
+
+		if($return->num_rows() != 0){
+			while($i < $return->num_rows())
+			{
+				$res2[$i] = $return->row_array($i);
+				$i++;			
+			}
+		}
+
+		$res[1] = $res2;
+
 		return $res;
+	
 	}
 	
 	/**
 	* Funcion que nos carga los contenidos más recientes para mostrarselos a los usuarios no registrados en el sistema
 	*/
 	function verContenidoPub(){
-		$this->db->select('noticia.*,ruta');
+		$this->db->select('*');
 		$this->db->from('noticia');
-		$this->db->join('imagen','imagen.id_noticia = noticia.id');
 		$this->db->where('privilegios','PUBLICO');
 		$this->db->where('tipo','NOV');
 		$this->db->or_where('tipo','CUR');
 		$this->db->order_by('noticia.id','desc');
 		$this->db->limit(5);
-
-		$return = $this->db->get();
 		
+		$return = $this->db->get();
 		$i = 0;
 		$res[0]=0;
+		$res1[0]=0;
+		$res2[0]=0;
 		if($return->num_rows() != 0){
 			while($i < $return->num_rows())
 			{
-				$res[$i] = $return->row_array($i);
+				$res1[$i] = $return->row_array($i);
 				$i++;			
 			}
 		}
+
+		$res[0] = $res1;
+	
+		$vec = array();
+		$i=0;
+
+		foreach($res1 as $valor){
+			array_push($vec, $valor['id']);
+		}
+
+		$a = min($vec);
+		$b = max($vec);
+
+		$this->db->select('*');
+		$this->db->from('imagen');
+		$this->db->where('id_noticia <=', $b);
+		$this->db->where('id_noticia >=', $a);
+
+		$return = $this->db->get();
+
+		$i = 0;
+
+		if($return->num_rows() != 0){
+			while($i < $return->num_rows())
+			{
+				$res2[$i] = $return->row_array($i);
+				$i++;			
+			}
+		}
+
+		$res[1] = $res2;
+
 		return $res;
 	}
 	
@@ -281,22 +383,56 @@ class MainModel extends CI_Model{
 	* Funcion que carga el menu mensual más reciente introducido en el sistema
 	*/
 	function verMenusMens(){
-		$this->db->select('noticia.*,ruta');
+		$this->db->select('*');
 		$this->db->from('noticia');
-		$this->db->join('imagen','imagen.id_noticia = noticia.id');
 		$this->db->where('tipo','COM');
 		$this->db->order_by('noticia.id','desc');
-		$this->db->limit(1);
+		$this->db->limit(5);
+		
 		$return = $this->db->get();
 		$i = 0;
 		$res[0]=0;
+		$res1[0]=0;
+		$res2[0]=0;
 		if($return->num_rows() != 0){
 			while($i < $return->num_rows())
 			{
-				$res[$i] = $return->row_array($i);
+				$res1[$i] = $return->row_array($i);
 				$i++;			
 			}
 		}
+
+		$res[0] = $res1;
+	
+		$vec = array();
+		$i=0;
+
+		foreach($res1 as $valor){
+			array_push($vec, $valor['id']);
+		}
+
+		$a = min($vec);
+		$b = max($vec);
+
+		$this->db->select('*');
+		$this->db->from('imagen');
+		$this->db->where('id_noticia <=', $b);
+		$this->db->where('id_noticia >=', $a);
+
+		$return = $this->db->get();
+
+		$i = 0;
+
+		if($return->num_rows() != 0){
+			while($i < $return->num_rows())
+			{
+				$res2[$i] = $return->row_array($i);
+				$i++;			
+			}
+		}
+
+		$res[1] = $res2;
+
 		return $res;
 	}
 	
@@ -304,24 +440,58 @@ class MainModel extends CI_Model{
 	* Funcion que carga el menu mensual indicado con el identificador $id
 	*/
 	function verMenusMensId($id){
-		$this->db->select('noticia.*,ruta');
+		$this->db->select('*');
 		$this->db->from('noticia');
-		$this->db->join('imagen','imagen.id_noticia = noticia.id');
-		$this->db->where('noticia.id',$id);
+		$this->db->where('id',$id);
 		$this->db->where('tipo','COM');
 		$this->db->order_by('noticia.id','desc');
-		$this->db->limit(1);
+		$this->db->limit(5);
+		
 		$return = $this->db->get();
-			$i = 0;
-			$res[0]=0;
-			if($return->num_rows() != 0){
-				while($i < $return->num_rows())
-				{
-					$res[$i] = $return->row_array($i);
-					$i++;			
-				}
+		$i = 0;
+		$res[0]=0;
+		$res1[0]=0;
+		$res2[0]=0;
+		if($return->num_rows() != 0){
+			while($i < $return->num_rows())
+			{
+				$res1[$i] = $return->row_array($i);
+				$i++;			
 			}
-			return $res;
+		}
+
+		$res[0] = $res1;
+	
+		$vec = array();
+		$i=0;
+
+		foreach($res1 as $valor){
+			array_push($vec, $valor['id']);
+		}
+
+		$a = min($vec);
+		$b = max($vec);
+
+		$this->db->select('*');
+		$this->db->from('imagen');
+		$this->db->where('id_noticia <=', $b);
+		$this->db->where('id_noticia >=', $a);
+
+		$return = $this->db->get();
+
+		$i = 0;
+
+		if($return->num_rows() != 0){
+			while($i < $return->num_rows())
+			{
+				$res2[$i] = $return->row_array($i);
+				$i++;			
+			}
+		}
+
+		$res[1] = $res2;
+
+		return $res;
 	}
 
 	/**

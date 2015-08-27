@@ -12,76 +12,77 @@
 <section class="cuerpo">
 <?php
 
-	if($res['0'] == 0){
+	if($res[0] == 0){
+
 		echo '<div class="contenido"><p align="center"> Aún no se ha añadido ningún contenido de este tipo. Disculpe las molestias.</p></div>';
 	}
 	else{
-		$i = 0;
-		
-		$t = count($res);
-		for($i = 0; $i < $t; $i++)
-		{
-			$r = $res[$i]['ruta'];
-			$res[$i]['ruta'] = array($r);
-			
-			$j = $i+1;
-			
-			while($j < $t)
-			{
-				if($res[$i]['id'] == $res[$j]['id'])
-				{
-					$res[$i]['ruta'][] = $res[$j]['ruta'];
-					unset($res[$j]);
-					$res = array_values($res);
-					$t--;
-				}
-				else
-				{
-					$j++;
+	
+		$noticia[0] = 0;
+
+		$datos = $res[0];
+		$rutas = $res[1];
+
+		foreach($datos as $valor){
+			$noticia[$valor['id']]['titular'] = $valor['titular'];
+			$noticia[$valor['id']]['cuerpo'] = $valor['cuerpo'];
+			$noticia[$valor['id']]['fecha'] = $valor['fecha'];
+			$noticia[$valor['id']]['tipo'] = $valor['tipo'];
+
+			$noticia[$valor['id']]['rutas'] = array();
+
+			foreach($rutas as $imgs){
+				if($valor['id'] == $imgs['id_noticia']){
+					array_push($noticia[$valor['id']]['rutas'], $imgs['ruta']);
 				}
 			}
 		}
 
-		if(!isset($_SESSION['rol'])){
-			for($i=0; $i < count($res);$i++){
-				if($res[$i]['privilegios'] == 'PRIVADO'){
-					unset($res[$i]);
-				}
-			}
-		}
-		
-		$res=array_values($res);
-		
-		if(isset($id)){
-			for($i=0; $i < count($res);$i++){
-				if($res[$i]['id'] != $id){
-					unset($res[$i]);
-				}
-			}
-		}
-		
-		foreach($res as $valor)
-		{		
-			echo '<div class="contenido">';
-			echo '<center><div class="titulo"><h2>'.$valor['titular'].'</h2></div>';
+		foreach($noticia as $valor){
 
-			echo '<div><p>'.$valor['cuerpo'].'</p></div>';
-			
-			echo'<p class="comentario">**Click sobre la imagen para ver en tamaño completo**</p>';
+			if($valor == 0){}
+			else{
+				echo '<div class="contenido">';
+				echo '<center><div class="titulo"><h2>'.$valor['titular'].'</h2></div>';
 
-			foreach($valor['ruta'] as $img){
-				$foto = str_replace("C:/xampp/htdocs/","http://localhost/",$img);
-				echo '<a href="'.$foto.'" data-lightbox="image-1" data-title="'.$valor['titular'].'"><img class="img_cont" src="'.$foto.'"/></a>';
+				echo '<div><p>'.$valor['cuerpo'].'</p></div>';
+				
+				echo'<p class="comentario">**Click sobre la imagen para ver en tamaño completo**</p>';
+
+				$i=0;
+
+				$rutas = $valor['rutas'];
+				
+				foreach($rutas as $img){
+
+					if( strpos($img,'.pdf') ){
+						$pdf[$i] = $img;
+						$i++;
+					}
+					else{
+						$foto = str_replace("C:/xampp/htdocs/","http://localhost/",$img);
+						echo '<a href="'.$foto.'" data-lightbox="image-1" data-title="'.$valor['titular'].'"><img class="img_cont" src="'.$foto.'"/></a>';
+					}
+				}
+
+				if(! empty($pdf) ){
+					foreach ($pdf as $val) {
+						$ruta = str_replace("C:/xampp/htdocs/","http://localhost/",$val);
+						echo '<br><a href="'.$ruta.'" target="_blank">Fichero PDF: '.basename($ruta).'</a><br>';
+					}
+				}
+				
+				if($valor['tipo'] == 'NOV'){$tipo = 'Novedades';}
+				else{$tipo = 'Escuela de padres';}
+				echo '<br>';
+				echo '<div class="tipo">'.$tipo.' - '.$valor['fecha'].'</div>';
+				echo '</center></div>';
+
+				$pdf = null;
 			}
-			
-			if($valor['tipo'] == 'NOV'){$tipo = 'Novedades';}
-			else{$tipo = 'Escuela de padres';}
-			
-			echo '<div class="tipo">'.$tipo.' - '.$valor['fecha'].'</div>';
-			echo '</center></div>';
 		}
-		
-		echo '<a href="'.base_url().'index.php/mainController/todoContenido"><p align="center"><button>Ver todas las noticias</button></p></a>';
+			echo '<a href="'.base_url().'index.php/mainController/todoContenido"><p align="center"><button>Ver todas las noticias</button></p></a>';
+
 	}
 ?>
 

@@ -125,13 +125,15 @@ class MainController extends CI_Controller{
 					$destino2 = $data['email_t2'];
 					
 					$this->enviarMail("Bienvenido a la Guardería Bahía Blanca",$cuerpo_mail,$destino);
-					$this->enviarMail("Bienvenido a la Guardería Bahía Blanca",$cuerpo_mail,$destino2);
+					if($destino2 != null){
+						$this->enviarMail("Bienvenido a la Guardería Bahía Blanca",$cuerpo_mail,$destino2);
+					}
 				}
 				
 				$password = $this->crypt_blowfish($pass);
 				
 				$this->mainModel->altaUser($data,$password);
-				header('Location: '.base_url().'index.php/mainController/accesoAlta');
+				header('Location: '.base_url().'/index.php/mainController/accesoAlta');
 			}
 		}
 	}
@@ -252,10 +254,9 @@ class MainController extends CI_Controller{
 				
 					$this->upload->initialize(array(
 						'upload_path'   => $path,
-						'allowed_types' => 'gif|jpg|png|GIF|JPG|PNG|jpeg|JPEG',
-						'max_size' => '10000',
-						'is_image' => TRUE
-					));
+						'allowed_types' => 'gif|jpg|png|GIF|JPG|PNG|jpeg|JPEG|pdf|PDF',
+						'max_size' => '1000000',
+						));
 					
 					if($this->upload->do_multi_upload('userfile')){
 						
@@ -271,7 +272,7 @@ class MainController extends CI_Controller{
 							$this->mainModel->addImagen($id,$ruta);
 						}
 						
-						if($datos['priv'] == 'PRIVADO'){
+						if($datos['privilegios'] == 'PRIVADO'){
 							$tutores = $this->mainModel->getTutores();
 							$i=0;
 							$emails=array();

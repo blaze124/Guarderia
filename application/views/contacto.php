@@ -37,6 +37,11 @@
         	?>
         </div>
     </div>
+    <div class="contenido">
+        <p align="center">
+            <b>L.O.P.D 15/1999</b>: C.E.I. BAHIA BLANCA le informa que los datos personales que nos ha facilitado de forma voluntaria, van a ser incorporados al fichero Clientes y/o proveedores. La finalidad de este es gestionar y comunicar los servicios o productos que le prestamos. Podrá ejercer los derechos de acceso, rectificación, cancelación y oposición, frente al Responsable del Fichero en nuestra dirección <b><u>guarderia.bahiablanca@gmail.com</u></b>.
+        </p>
+    </div>
 </section>
 
 </body>

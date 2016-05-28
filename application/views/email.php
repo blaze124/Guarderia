@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link href="<?php echo base_url()?>css/estilosPrincipal.css" type="text/css" rel="stylesheet">
+<link href="<?php echo base_url() ?>css/estilos_principal.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
@@ -13,7 +13,7 @@
 		<?php
 			$this->load->helper('form');
 			$datos= array('name'=>'sendMail','enctype'=>"multipart/form-data");
-			echo form_open('index.php/mainController/sendMail',$datos);
+			echo form_open('index.php/main_controller/send_mail',$datos);
 		
 			echo"Asunto:<br><input type='text' size='79' name='asunto'><br>";echo form_error('asunto');
 			echo 'Cuerpo:<br><textarea cols="80" rows="10" name="cuerpo"></textarea><br>';echo form_error('cuerpo');

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link href="<?php echo base_url() ?>css/estilosPrincipal.css" type="text/css" rel="stylesheet">
+<link href="<?php echo base_url() ?>css/estilos_principal.css" type="text/css" rel="stylesheet">
 <link href="<?php echo base_url() ?>css/lightbox.css" rel="stylesheet" />
 <script src="<?php echo base_url() ?>js/jquery-1.11.0.min.js"></script>
 <script src="<?php echo base_url() ?>js/lightbox.min.js"></script>
@@ -40,14 +40,14 @@
 
 
     <div align="center">
-        <a href="<?php echo base_url()?>index.php/mainController/trabajamos"><img src="<?php echo base_url()?>imagenes/secciones/trabajamos.png" height='60px' width='140px' style="border:3px solid #660099; border-radius:10px; padding-left:3px; padding-right:3px; margin:2px; background-color:#D8EFFF"></a>
-        <a href="<?php echo base_url()?>index.php/mainController/ofrecemos"><img src="<?php echo base_url()?>imagenes/secciones/ofrecemos.png" height='60px' width='140px' style="border:3px solid #660099; border-radius:10px; padding-left:3px; padding-right:3px; margin:2px; background-color:#D8EFFF"></a>
-        <a href="<?php echo base_url()?>index.php/mainController/instalaciones"><img src="<?php echo base_url()?>imagenes/secciones/instalaciones.png" height='60px' width='140px' style="border:3px solid #660099; border-radius:10px; padding-left:3px; padding-right:3px; margin:2px; background-color:#D8EFFF"></a>
-        <a href="<?php echo base_url()?>index.php/mainController/proyecto_edu"><img src="<?php echo base_url()?>imagenes/secciones/proyecto_edu.png" height='60px' width='140px' style="border:3px solid #660099; border-radius:10px; padding-left:3px; padding-right:3px; margin:2px; background-color:#D8EFFF"></a>
-        <a href="<?php echo base_url()?>index.php/mainController/identidad"><img src="<?php echo base_url()?>imagenes/secciones/identidad.png" height='60px' width='140px' style="border:3px solid #660099; border-radius:10px; padding-left:3px; padding-right:3px; margin:2px; background-color:#D8EFFF"></a>
-        <a href="<?php echo base_url()?>index.php/mainController/dia_escuela"><img src="<?php echo base_url()?>imagenes/secciones/dia_escuela.png" height='60px' width='140px' style="border:3px solid #660099; border-radius:10px; padding-left:3px; padding-right:3px; margin:2px; background-color:#D8EFFF"></a>
-        <a href="<?php echo base_url()?>index.php/mainController/localizanos"><img src="<?php echo base_url()?>imagenes/secciones/localizanos.png" height='60px' width='140px' style="border:3px solid #660099; border-radius:10px; padding-left:3px; padding-right:3px; margin:2px; background-color:#D8EFFF"></a>
-        <a href="<?php echo base_url()?>index.php/mainController/contacto"><img src="<?php echo base_url()?>imagenes/secciones/contacto.png" height='60px' width='140px' style="border:3px solid #660099; border-radius:10px; padding-left:3px; padding-right:3px; margin:2px; background-color:#D8EFFF"></a>
+        <a href="<?php echo base_url()?>index.php/main_controller/trabajamos"><img src="<?php echo base_url()?>imagenes/secciones/trabajamos.png" height='60px' width='140px' style="border:3px solid #660099; border-radius:10px; padding-left:3px; padding-right:3px; margin:2px; background-color:#D8EFFF"></a>
+        <a href="<?php echo base_url()?>index.php/main_controller/ofrecemos"><img src="<?php echo base_url()?>imagenes/secciones/ofrecemos.png" height='60px' width='140px' style="border:3px solid #660099; border-radius:10px; padding-left:3px; padding-right:3px; margin:2px; background-color:#D8EFFF"></a>
+        <a href="<?php echo base_url()?>index.php/main_controller/instalaciones"><img src="<?php echo base_url()?>imagenes/secciones/instalaciones.png" height='60px' width='140px' style="border:3px solid #660099; border-radius:10px; padding-left:3px; padding-right:3px; margin:2px; background-color:#D8EFFF"></a>
+        <a href="<?php echo base_url()?>index.php/main_controller/proyecto_edu"><img src="<?php echo base_url()?>imagenes/secciones/proyecto_edu.png" height='60px' width='140px' style="border:3px solid #660099; border-radius:10px; padding-left:3px; padding-right:3px; margin:2px; background-color:#D8EFFF"></a>
+        <a href="<?php echo base_url()?>index.php/main_controller/identidad"><img src="<?php echo base_url()?>imagenes/secciones/identidad.png" height='60px' width='140px' style="border:3px solid #660099; border-radius:10px; padding-left:3px; padding-right:3px; margin:2px; background-color:#D8EFFF"></a>
+        <a href="<?php echo base_url()?>index.php/main_controller/dia_escuela"><img src="<?php echo base_url()?>imagenes/secciones/dia_escuela.png" height='60px' width='140px' style="border:3px solid #660099; border-radius:10px; padding-left:3px; padding-right:3px; margin:2px; background-color:#D8EFFF"></a>
+        <a href="<?php echo base_url()?>index.php/main_controller/localizanos"><img src="<?php echo base_url()?>imagenes/secciones/localizanos.png" height='60px' width='140px' style="border:3px solid #660099; border-radius:10px; padding-left:3px; padding-right:3px; margin:2px; background-color:#D8EFFF"></a>
+        <a href="<?php echo base_url()?>index.php/main_controller/contacto"><img src="<?php echo base_url()?>imagenes/secciones/contacto.png" height='60px' width='140px' style="border:3px solid #660099; border-radius:10px; padding-left:3px; padding-right:3px; margin:2px; background-color:#D8EFFF"></a>
     </div>
 
     <h1 class="titulo" align="center">Quienes somos</h1>

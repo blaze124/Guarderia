@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link href="<?php echo base_url()?>css/estilosPrincipal.css" type="text/css" rel="stylesheet">
+<link href="<?php echo base_url() ?>css/estilos_principal.css" type="text/css" rel="stylesheet">
 <link href="<?php echo base_url()?>css/lightbox.css" rel="stylesheet" />
 <script src="<?php echo base_url()?>js/jquery-1.11.0.min.js"></script>
 <script src="<?php echo base_url()?>js/lightbox.min.js"></script>
@@ -57,14 +57,14 @@
 							$i++;
 						}
 						else{
-							$foto = str_replace("C:/xampp/htdocs/","http://localhost/",$img);
+							$foto = str_replace("/home/guarderidl/www/", base_url(), $img);
 							echo '<a href="'.$foto.'" data-lightbox="image-1" data-title="'.$valor['titular'].'"><img class="img_cont" src="'.$foto.'"/></a>';
 						}
 					}
 
 					if(! empty($pdf) ){
 						foreach ($pdf as $val) {
-							$ruta = str_replace("C:/xampp/htdocs/","http://localhost/",$val);
+							$ruta = str_replace("/home/guarderidl/www/", base_url(), $val);
 							echo '<br><a href="'.$ruta.'" target="_blank">Fichero PDF: '.basename($ruta).'</a><br>';
 						}
 					}
@@ -77,7 +77,7 @@
 				echo '</center></div>';
 			}
 		}
-		echo '<a href="'.base_url().'index.php/mainController/todoMenus"><p align="center"><button>Ver todos los menús</button></p></a>';
+		echo '<a href="'.base_url().'index.php/main_controller/todo_menus"><p align="center"><button>Ver todos los menús</button></p></a>';
 	}
 ?>
 </section>

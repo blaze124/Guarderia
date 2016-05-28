@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 
-	<link href="<?php echo base_url() ?>css/estilosPrincipal.css" type="text/css" rel="stylesheet" />
+<link href="<?php echo base_url() ?>css/estilos_principal.css" type="text/css" rel="stylesheet">
 
 </head>
 
@@ -23,10 +23,11 @@
 
 					if(isset( $datos[$valor['fecha']] )){
 						$cad = $datos[$valor['fecha']];
-						$datos[$valor['fecha']] = $cad.'<br><a href="'.base_url().'index.php/mainController/verIncidencia/'.$valor['id'].'">Evento día '.$fecha.'<br>Grupo '.$valor['grupo'].'</a>';
+						$datos[$valor['fecha']] = $cad.'<br><a href="'.base_url().'index.php/main_controller/ver_incidencia/'.$valor['id'].'">Evento día '.$fecha.'<br>Grupo '.$valor['grupo'].'</a><br>';
 					}
-
-					$datos[$valor['fecha']] = '<a href="'.base_url().'index.php/mainController/verIncidencia/'.$valor['id'].'">Evento día '.$fecha.'<br>Grupo '.$valor['grupo'].'</a>';
+					else{
+						$datos[$valor['fecha']] = '<a href="'.base_url().'index.php/main_controller/ver_incidencia/'.$valor['id'].'">Evento día '.$fecha.'<br>Grupo '.$valor['grupo'].'</a><br>';
+					}
 				}
 
 				echo $this->calendar->generate($anno,$mes, $datos);
@@ -35,7 +36,7 @@
 				echo $this->calendar->generate($anno,$mes);
 			}
 			if($_SESSION['rol'] == 1){
-				echo '<br><a href="'.base_url().'index.php/mainController/addIncidencia" ><div align="center"><button>Añadir Incidencia</button></div></a>';
+				echo '<br><a href="'.base_url().'index.php/main_controller/add_incidencia" ><div align="center"><button>Añadir Incidencia</button></div></a>';
 			}
 		?>
 

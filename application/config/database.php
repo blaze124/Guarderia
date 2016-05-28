@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = '';
-$db['default']['database'] = 'guarderia';
+$db['default']['hostname'] = 'guarderidladmin.mysql.db';
+$db['default']['username'] = 'guarderidladmin';
+$db['default']['password'] = 'Guarde1234';
+$db['default']['database'] = 'guarderidladmin';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

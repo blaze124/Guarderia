@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link href="<?php echo base_url() ?>css/estilosPrincipal.css" type="text/css" rel="stylesheet">
+<link href="<?php echo base_url() ?>css/estilos_principal.css" type="text/css" rel="stylesheet">
 <link href="<?php echo base_url() ?>css/lightbox.css" rel="stylesheet" />
 <script src="<?php echo base_url() ?>js/jquery-1.11.0.min.js"></script>
 <script src="<?php echo base_url() ?>js/lightbox.min.js"></script>

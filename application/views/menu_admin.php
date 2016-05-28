@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link href="<?php echo base_url()?>css/estilosPrincipal.css" type="text/css" rel="stylesheet">
+<link href="<?php echo base_url() ?>css/estilos_principal.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
@@ -10,47 +10,47 @@
 <nav class='navega' align='center'>
 
 	<ul class='menu' >
-    	<li class='enlace'>Información
+    	<li class='enlace'><a href="<?php echo base_url() ?>" id="informacion">Información</a>
             <ul>
                 <a href="<?php echo base_url() ?>"><li>Bienvenidos</li></a>
-                <a href="<?php echo base_url()?>index.php/mainController/trabajamos"><li>Cómo Trabajamos</li></a>
-                <a href="<?php echo base_url()?>index.php/mainController/ofrecemos"><li>Qué ofrecemos</li></a>
-                <a href="<?php echo base_url()?>index.php/mainController/instalaciones"><li>Instalaciones y Equipamiento</li></a>
-                <a href="<?php echo base_url()?>index.php/mainController/proyecto_edu"><li>Método y proyecto educativo</li></a>
-                <a href="<?php echo base_url()?>index.php/mainController/identidad"><li>Nuestras señas de identidad</li></a>
-                <a href="<?php echo base_url()?>index.php/mainController/dia_escuela"><li>Un día en la escuela</li></a>
-                <a href="<?php echo base_url()?>index.php/mainController/localizanos"><li>Localízanos</li></a>
-                <a href="<?php echo base_url()?>index.php/mainController/contacto"><li>Contacta con nosotros</li></a>
+                <a href="<?php echo base_url()?>index.php/main_controller/trabajamos"><li>Cómo Trabajamos</li></a>
+                <a href="<?php echo base_url()?>index.php/main_controller/ofrecemos"><li>Qué ofrecemos</li></a>
+                <a href="<?php echo base_url()?>index.php/main_controller/instalaciones"><li>Instalaciones y Equipamiento</li></a>
+                <a href="<?php echo base_url()?>index.php/main_controller/proyecto_edu"><li>Método y proyecto educativo</li></a>
+                <a href="<?php echo base_url()?>index.php/main_controller/identidad"><li>Nuestras señas de identidad</li></a>
+                <a href="<?php echo base_url()?>index.php/main_controller/dia_escuela"><li>Un día en la escuela</li></a>
+                <a href="<?php echo base_url()?>index.php/main_controller/localizanos"><li>Localízanos</li></a>
+                <a href="<?php echo base_url()?>index.php/main_controller/contacto"><li>Contacta con nosotros</li></a>
             </ul>
         </li>
 
-       <a href="<?php echo base_url()?>index.php/mainController/verContenido">
+       <a href="<?php echo base_url()?>index.php/main_controller/ver_contenido">
 			<li class='enlace' >Novedades</li>
 		</a>
-        <a href="<?php echo base_url()?>index.php/mainController/menus_mens">
+        <a href="<?php echo base_url()?>index.php/main_controller/menus_mens">
         	<li class='enlace'>Menús mensuales</li>
        	</a>
-        <a href="<?php echo base_url()?>index.php/mainController/incidencias"><li class='enlace'>Incidencias Diarias</li></a>
-        <a href="<?php echo base_url()?>index.php/mainController/mailTutores">
+        <a href="<?php echo base_url()?>index.php/main_controller/incidencias"><li class='enlace'>Incidencias Diarias</li></a>
+        <a href="<?php echo base_url()?>index.php/main_controller/mail_tutores">
 			<li class='enlace'>Correo a padres</li>
 		</a>
         <li class='enlace' >Gest. contenidos
         	<ul>
-            <li><a href="<?php echo base_url()?>index.php/mainController/addContenido"> Agregar</a></li>
-            <li><a href="<?php echo base_url()?>index.php/mainController/delContenido"> Eliminar</a></li>
+            <li><a href="<?php echo base_url()?>index.php/main_controller/add_contenido"> Agregar</a></li>
+            <li><a href="<?php echo base_url()?>index.php/main_controller/del_contenido"> Eliminar</a></li>
             </ul>
         </li>
         <li class='enlace'>Gest. usuarios
             <ul>
-            <li><a href="<?php echo base_url()?>index.php/mainController/accesoAlta"> Alta usuario</a></li>
-            <li><a href="<?php echo base_url()?>index.php/mainController/accesoBaja"> Baja usuario</a></li>
-			<li><a href="<?php echo base_url()?>index.php/mainController/consultaAlumnos"> Consulta </a></li>
+            <li><a href="<?php echo base_url()?>index.php/main_controller/acceso_alta"> Alta usuario</a></li>
+            <li><a href="<?php echo base_url()?>index.php/main_controller/acceso_baja"> Baja usuario</a></li>
+			<li><a href="<?php echo base_url()?>index.php/main_controller/consulta_alumnos"> Consulta </a></li>
             </ul>
         </li>        
-        <a href="<?php echo base_url()?>index.php/mainController/miCuenta">
+        <a href="<?php echo base_url()?>index.php/main_controller/mi_cuenta">
 			<li class='enlace'>Mi cuenta</li>
 		</a>
-        <a href="<?php echo base_url()?>index.php/mainController/cerrarSesion">
+        <a href="<?php echo base_url()?>index.php/main_controller/cerrar_sesion">
         	<li class="enlace">Cerrar Sesión</li>
         </a>
 		<li class='enlace'>

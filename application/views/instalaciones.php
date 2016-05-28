@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link href="<?php echo base_url() ?>css/estilosPrincipal.css" type="text/css" rel="stylesheet">
+<link href="<?php echo base_url() ?>css/estilos_principal.css" type="text/css" rel="stylesheet">
 <link href="<?php echo base_url() ?>css/lightbox.css" rel="stylesheet" />
 <script src="<?php echo base_url() ?>js/jquery-1.11.0.min.js"></script>
 <script src="<?php echo base_url() ?>js/lightbox.min.js"></script>
@@ -98,50 +98,50 @@
 
      <h1 class="titulo" align="center">Galería de imágenes</h1>
      <div class="contenido">
-     	<a href="<?php echo base_url()?>imagenes/Galeria/010.JPG" data-lightbox="image-1" data-title="Instalaciones">
-            <img src="<?php echo base_url()?>imagenes/Galeria/010.JPG"/>
+     	<a href="<?php echo base_url()?>imagenes/Galeria/010.jpg" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/010.jpg"/>
         </a>
-        <a href="<?php echo base_url()?>imagenes/Galeria/002.JPG" data-lightbox="image-1" data-title="Instalaciones">
-            <img src="<?php echo base_url()?>imagenes/Galeria/002.JPG"/>
+        <a href="<?php echo base_url()?>imagenes/Galeria/002.jpg" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/002.jpg"/>
         </a>
-        <a href="<?php echo base_url()?>imagenes/Galeria/005.JPG" data-lightbox="image-1" data-title="Instalaciones">
-            <img src="<?php echo base_url()?>imagenes/Galeria/005.JPG"/>
+        <a href="<?php echo base_url()?>imagenes/Galeria/005.jpg" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/005.jpg"/>
         </a>
-        <a href="<?php echo base_url()?>imagenes/Galeria/008.JPG" data-lightbox="image-1" data-title="Instalaciones">
-            <img src="<?php echo base_url()?>imagenes/Galeria/008.JPG"/>
+        <a href="<?php echo base_url()?>imagenes/Galeria/008.jpg" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/008.jpg"/>
         </a>
-        <a href="<?php echo base_url()?>imagenes/Galeria/012.JPG" data-lightbox="image-1" data-title="Instalaciones">
-            <img src="<?php echo base_url()?>imagenes/Galeria/012.JPG"/>
+        <a href="<?php echo base_url()?>imagenes/Galeria/012.jpg" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/012.jpg"/>
         </a>
-        <a href="<?php echo base_url()?>imagenes/Galeria/016.JPG" data-lightbox="image-1" data-title="Instalaciones">
-            <img src="<?php echo base_url()?>imagenes/Galeria/016.JPG"/>
+        <a href="<?php echo base_url()?>imagenes/Galeria/016.jpg" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/016.jpg"/>
         </a>
-        <a href="<?php echo base_url()?>imagenes/Galeria/017.JPG" data-lightbox="image-1" data-title="Instalaciones">
-            <img src="<?php echo base_url()?>imagenes/Galeria/017.JPG"/>
+        <a href="<?php echo base_url()?>imagenes/Galeria/017.jpg" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/017.jpg"/>
         </a>
-        <a href="<?php echo base_url()?>imagenes/Galeria/019.JPG" data-lightbox="image-1" data-title="Instalaciones">
-            <img src="<?php echo base_url()?>imagenes/Galeria/019.JPG"/>
+        <a href="<?php echo base_url()?>imagenes/Galeria/019.jpg" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/019.jpg"/>
         </a>
-        <a href="<?php echo base_url()?>imagenes/Galeria/022.JPG" data-lightbox="image-1" data-title="Instalaciones">
-            <img src="<?php echo base_url()?>imagenes/Galeria/022.JPG"/>
+        <a href="<?php echo base_url()?>imagenes/Galeria/022.jpg" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/022.jpg"/>
         </a>
-        <a href="<?php echo base_url()?>imagenes/Galeria/024.JPG" data-lightbox="image-1" data-title="Instalaciones">
-            <img src="<?php echo base_url()?>imagenes/Galeria/024.JPG"/>
+        <a href="<?php echo base_url()?>imagenes/Galeria/024.jpg" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/024.jpg"/>
         </a>
-        <a href="<?php echo base_url()?>imagenes/Galeria/028.JPG" data-lightbox="image-1" data-title="Instalaciones">
-            <img src="<?php echo base_url()?>imagenes/Galeria/028.JPG"/>
+        <a href="<?php echo base_url()?>imagenes/Galeria/028.jpg" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/028.jpg"/>
         </a>
-        <a href="<?php echo base_url()?>imagenes/Galeria/034.JPG" data-lightbox="image-1" data-title="Instalaciones">
-            <img src="<?php echo base_url()?>imagenes/Galeria/034.JPG"/>
+        <a href="<?php echo base_url()?>imagenes/Galeria/034.jpg" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/034.jpg"/>
         </a>
-        <a href="<?php echo base_url()?>imagenes/Galeria/032.JPG" data-lightbox="image-1" data-title="Instalaciones">
-            <img src="<?php echo base_url()?>imagenes/Galeria/032.JPG"/>
+        <a href="<?php echo base_url()?>imagenes/Galeria/032.jpg" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/032.jpg"/>
         </a>
-        <a href="<?php echo base_url()?>imagenes/Galeria/040.JPG" data-lightbox="image-1" data-title="Instalaciones">
-            <img src="<?php echo base_url()?>imagenes/Galeria/040.JPG"/>
+        <a href="<?php echo base_url()?>imagenes/Galeria/040.jpg" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/040.jpg"/>
         </a>
-        <a href="<?php echo base_url()?>imagenes/Galeria/041.JPG" data-lightbox="image-1" data-title="Instalaciones">
-            <img src="<?php echo base_url()?>imagenes/Galeria/041.JPG"/>
+        <a href="<?php echo base_url()?>imagenes/Galeria/041.jpg" data-lightbox="image-1" data-title="Instalaciones">
+            <img src="<?php echo base_url()?>imagenes/Galeria/041.jpg"/>
         </a>
 
      </div>
